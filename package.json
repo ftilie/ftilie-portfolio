@@ -1,5 +1,5 @@
 {
-  "homepage": "https://ftilie.github.io/ftilie/ftilie.github.io",
+  "homepage": "https://ftilie.github.io/ftilie-portfolio",
   "name": "ftilie-portfolio",
   "version": "0.1.0",
   "private": false,
@@ -18,8 +18,8 @@
     "start": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "predeploy" : "npm run build",
-    "deploy" : "gh-pages -d build"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "eslintConfig": {
     "extends": [

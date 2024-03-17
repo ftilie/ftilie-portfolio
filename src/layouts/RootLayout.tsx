@@ -3,6 +3,7 @@ import { Box, Container, Paper, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import "~/App.css";
 import { DarkThemeBackgroundColor, DarkThemePurpleAccentColor } from "~/utils/Theme";
+import { red } from "@mui/material/colors";
 
 const RootLayout = (): JSX.Element => {
     const headerOffset = "71px";
@@ -14,8 +15,16 @@ const RootLayout = (): JSX.Element => {
             <Paper>
                 <Stack direction="column" spacing={0}>
                     <Paper sx={{ width: "100%", overflowY: "auto" }}>
-                        <Box height="100px" width="100px" color={DarkThemeBackgroundColor} />
-                        <Box height="100px" width="100px" color={DarkThemePurpleAccentColor} />
+                        <Paper sx={{ width: "100px", height: "100px", overflowY: "auto", backgroundColor: DarkThemeBackgroundColor }}>
+                            <Typography color={DarkThemePurpleAccentColor}>Test</Typography>
+                            <Typography color={"#6d2aff"}>Test</Typography>
+                            <Typography color={"#9146ff"}>Test</Typography>
+
+                            <Typography fontSize={16} color={DarkThemePurpleAccentColor}>{"<FLORIN />"}</Typography>
+                        </Paper>
+                        <Paper sx={{ width: "100px", height: "100px", overflowY: "auto", backgroundColor: DarkThemePurpleAccentColor }} />
+                        <Paper sx={{ width: "100px", height: "100px", overflowY: "auto", backgroundColor: "#6d2aff" }} />
+                        <Paper sx={{ width: "100px", height: "100px", overflowY: "auto", backgroundColor: "#9146ff" }} />
                     </Paper>
                     <Typography>Test</Typography>
                     {/* <Header /> */}

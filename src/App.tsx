@@ -1,11 +1,11 @@
 import { Suspense } from "react";
 import AppWithRouterAccess from "./AppWithRouterAccess";
-import { muiTheme } from "~/utils/MuiTheme";
+import { customMuiTheme } from "~/utils/Theme";
 import { ThemeProvider } from "@mui/material";
 
 function App(): JSX.Element {
     return (
-        <ThemeProvider theme={muiTheme}>
+        <ThemeProvider theme={customMuiTheme}>
             <Suspense fallback={<></>}>
                 <AppWithRouterAccess />
             </Suspense>

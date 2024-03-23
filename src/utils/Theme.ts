@@ -24,42 +24,12 @@ declare module "@mui/material/Chip" {
 //DARK THEME
 
 export const DarkThemeBackgroundColor = "#141414";
-export const DarkThemePurpleAccentColor = "#BB86FC";
+export const DarkThemeHeaderColor = "#141414";
 
-
-
-
-export const BaseColorNavy = "#141724";
-export const LighterBaseColorBlue = "#162256";
-export const AccentColorRed = "#ff4747";
-export const AccentColorOrange = "#ff5959";
-export const LighterAccentColorOrange = "#ff7c5f";
-export const IconColorBlue = "#3d79fc";
-export const BackgroundColorGrey = "#908e97";
-export const DefaultBackgroundColor = "#ffffff";
-
-export const BackgroundColor = "#272727";
-export const HeaderColor = "#1E1E1E";
-export const SidebarColor = "#252525";
-export const CardColor = "#3E3E3E";
-export const HoveredCardColor = "rgba(38, 38, 38, 1)";
-export const CardLabelColor = "#5A5A5A";
-export const CancelLabelColor = "#FF858B";
-export const HighlightedCardColor = "rgba(75, 75, 75, 1)";
-
-export const PendingDeploymentState = "#808080";
-export const InProgressDeploymentState = "#FCAE1E";
-export const CompletedDeploymentState = "#268E6C";
-export const PartialDeploymentState = "#FFF";
-export const FailedDeploymentState = "#D7373F";
-export const CancelledDeploymentState = "#7C0A02";
-
-export const TargetStatusOnline = "#268E6C";
-export const TargetStatusOffline = "#D7373F";
-export const TargetStatusBusy = "#DA7B11";
-export const TargetStatusDisabled = "#6E6E6E";
-
-export const OutdatedAgentBannerBgColor = "#912f20";
+export const DarkThemeLightPurpleAccentColor = "#BB86FC";
+export const DarkThemePurpleAccentColor = "#9146FF";
+export const DarkThemeDarkPurpleAccentColor = "#6D2AFF";
+export const DarkThemeGrayAccentColor = "#323232";
 
 // TODO: Remove this
 // export const overrideMenuTheme = {
@@ -78,11 +48,11 @@ export const customMuiTheme = createTheme({
     spacing: 4,
     palette: {
         background: {
-            default: BackgroundColor,
-            paper: BackgroundColor,
+            default: DarkThemeBackgroundColor,
+            paper: DarkThemeBackgroundColor,
         },
         primary: {
-            main: AccentColorRed,
+            main: DarkThemePurpleAccentColor,
         },
         secondary: {
             main: "rgb(20, 23, 36)",
@@ -112,7 +82,7 @@ export const customMuiTheme = createTheme({
     typography: {
         allVariants: {
             color: "#FFF",
-            fontFamily: "EA Text",
+            fontFamily: "Public Sans",
             fontWeight: 400,
             fontSize: 12,
             lineHeight: 1.33,
@@ -122,32 +92,32 @@ export const customMuiTheme = createTheme({
         "text-after-edge" | "ideographic" | "alphabetic" | "hanging" | "mathematical" | "inherit" | undefined;*/
         },
         h1: {
-            fontFamily: "EA Display",
+            fontFamily: "Public Sans",
             fontWeight: "bold",
             fontSize: 28,
         },
         h2: {
-            fontFamily: "EA Display",
+            fontFamily: "Public Sans",
             fontWeight: "bold",
             fontSize: 18,
         },
         h3: {
-            fontFamily: "EA Display",
+            fontFamily: "Public Sans",
             fontWeight: "bold",
             fontSize: 16,
         },
         h4: {
-            fontFamily: "EA Display",
+            fontFamily: "Public Sans",
             fontWeight: "bold",
             fontSize: 14,
         },
         h5: {
-            fontFamily: "EA Display",
+            fontFamily: "Public Sans",
             fontWeight: "normal",
             fontSize: 14,
             lineHeight: "18.2px",
         },
-        h6: { fontFamily: "EA Display", fontWeight: "bold", fontSize: 15 },
+        h6: { fontFamily: "Public Sans", fontWeight: "bold", fontSize: 15 },
         body1: {
             fontSize: 12,
         },
@@ -160,7 +130,7 @@ export const customMuiTheme = createTheme({
             fontSize: 11,
         },
         subtitle2: {
-            color: DefaultBackgroundColor,
+            color: DarkThemeBackgroundColor,
             fontSize: 7,
         },
     },
@@ -252,7 +222,7 @@ export const customMuiTheme = createTheme({
                         backgroundColor: "none",
                         border: "1px solid",
                         borderColor: "white",
-                        "&:hover": { borderColor: AccentColorRed },
+                        "&:hover": { borderColor: DarkThemePurpleAccentColor },
                     },
                 },
                 {
@@ -282,7 +252,7 @@ export const customMuiTheme = createTheme({
             styleOverrides: {
                 root: {
                     textTransform: "none",
-                    fontFamily: "EA Display",
+                    fontFamily: "Public Sans",
                     fontWeight: 700,
                     fontSize: 14,
                     lineHeight: "18.2px",
@@ -295,8 +265,8 @@ export const customMuiTheme = createTheme({
             },
             styleOverrides: {
                 root: {
-                    color: BackgroundColorGrey,
-                    borderColor: LighterAccentColorOrange,
+                    color: DarkThemeBackgroundColor,
+                    borderColor: DarkThemePurpleAccentColor,
                 },
             },
         },
@@ -306,8 +276,8 @@ export const customMuiTheme = createTheme({
             },
             styleOverrides: {
                 root: {
-                    color: BackgroundColorGrey,
-                    borderColor: LighterAccentColorOrange,
+                    color: DarkThemeBackgroundColor,
+                    borderColor: DarkThemePurpleAccentColor,
                 },
             },
         },
@@ -316,8 +286,8 @@ export const customMuiTheme = createTheme({
             styleOverrides: {
                 root: {
                     focused: {
-                        color: BackgroundColorGrey,
-                        borderColor: LighterAccentColorOrange,
+                        color: DarkThemeBackgroundColor,
+                        borderColor: DarkThemePurpleAccentColor,
                     },
                 },
             },
@@ -330,8 +300,8 @@ export const customMuiTheme = createTheme({
             },
             styleOverrides: {
                 root: {
-                    color: DefaultBackgroundColor,
-                    backgroundColor: AccentColorRed,
+                    color: DarkThemeBackgroundColor,
+                    backgroundColor: DarkThemeLightPurpleAccentColor,
                 },
             },
         },
@@ -342,11 +312,11 @@ export const customMuiTheme = createTheme({
             },
             styleOverrides: {
                 tooltip: {
-                    backgroundColor: HeaderColor,
+                    backgroundColor: DarkThemeHeaderColor,
                     maxWidth: 500,
                 },
                 arrow: {
-                    color: HeaderColor,
+                    color: DarkThemeHeaderColor,
                 },
             },
         },
@@ -354,7 +324,7 @@ export const customMuiTheme = createTheme({
             defaultProps: {},
             styleOverrides: {
                 root: {
-                    color: AccentColorRed,
+                    color: DarkThemePurpleAccentColor,
                 },
             },
         },

@@ -1,9 +1,10 @@
 import { NavLink, Navigate, Route, RouterProvider, createBrowserRouter, createRoutesFromElements, useLocation, useNavigate } from "react-router-dom";
 import { lazy, useEffect, useRef } from "react";
-import { Box, Button, Stack, Theme, useTheme } from "@mui/material";
+import { Box, Button, Divider, Stack, Theme, useTheme } from "@mui/material";
 import GlobalErrorBoundary from "~/components/GlobalErrorBoundary/GlobalErrorBoundary";
 
 const RootLayout = lazy(() => import("~/layouts/RootLayout"));
+const AboutPage = lazy(() => import("~/pages/AboutPage/AboutPage"));
 
 const headerMenuLinks = [
     { label: "About", to: "/about" },
@@ -32,16 +33,33 @@ const RootNavLinks = (): JSX.Element => {
 
     return (
         <>
-            {headerMenuLinks.map(({ label, to }) => (   
-                <Box ml={4} key={to}>
-                    <NavLink key={to} style={({ isActive }) => navLinkStyle({ isActive, theme })} to={to} onClick={() => navigate(to)}>
-                        <Button size="large" id={label} variant="text" sx={{ width: "100%", color: "inherit" }}>
-                            <Stack direction={"row"} gap={1}>
-                                {label}
-                            </Stack>
-                        </Button>
-                    </NavLink>
-                </Box>
+            {headerMenuLinks.map(({ label, to }) => (
+                <>
+                    {label === "Contact" ? (
+                        <Box display="flex" alignItems="center">
+                            <Divider orientation="vertical" flexItem sx={{ borderRightWidth: 3, marginLeft: 12 }} />
+                            <Box ml={12} key={to}>
+                                <NavLink key={to} style={({ isActive }) => navLinkStyle({ isActive, theme })} to={to} onClick={() => navigate(to)}>
+                                    <Button size="large" id={label} variant="text" sx={{ width: "100%", color: "inherit" }}>
+                                        <Stack direction={"row"} gap={1}>
+                                            {label}
+                                        </Stack>
+                                    </Button>
+                                </NavLink>
+                            </Box>
+                        </Box>
+                    ) : (
+                        <Box ml={4} key={to}>
+                            <NavLink key={to} style={({ isActive }) => navLinkStyle({ isActive, theme })} to={to} onClick={() => navigate(to)}>
+                                <Button size="large" id={label} variant="text" sx={{ width: "100%", color: "inherit" }}>
+                                    <Stack direction={"row"} gap={1}>
+                                        {label}
+                                    </Stack>
+                                </Button>
+                            </NavLink>
+                        </Box>
+                    )}
+                </>
             ))}
         </>
     );
@@ -72,6 +90,9 @@ const router = createBrowserRouter(
                 }}
             >
                 <Route index element={<Navigate to="/about" />} />
+                <Route path="about" element={<AboutPage />} />
+
+                <Route path="experience" element={<AboutPage />} />
             </Route>
         </>
     )

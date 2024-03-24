@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Avatar, Box, Chip, Stack, Typography } from "@mui/material";
+import { Avatar, Box, Chip, Divider, Stack, Typography } from "@mui/material";
 import { DarkThemeHeaderColor } from "~/utils/Theme";
 import { useMatches } from "react-router-dom";
 
@@ -42,6 +42,9 @@ const Header = (): JSX.Element => {
                     {headerNavigation}
                 </Stack>
             </Stack>
+            {/* <Stack sx={{ zIndex: 1 }} paddingLeft={4} paddingRight={4}>
+                <Divider />
+            </Stack> */}
         </>
     );
 };

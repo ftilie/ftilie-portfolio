@@ -169,7 +169,13 @@ export const customMuiTheme = createTheme({
                 sx: { borderBottomWidth: 3 },
             },
         },
-
+        MuiStack: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: DarkThemeBackgroundColor,
+                },
+            },
+        },
         MuiCard: {
             defaultProps: {
                 sx: { borderRadius: 4, width: 400, maxWidth: 400 },

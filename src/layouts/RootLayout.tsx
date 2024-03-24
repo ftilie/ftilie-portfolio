@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from "react-router-dom";
-import { Box, Container, Paper, Stack, Typography } from "@mui/material";
+import { Box, Button, Container, Divider, Paper, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import "~/App.css";
 import { DarkThemeBackgroundColor, DarkThemeHeaderColor, DarkThemePurpleAccentColor } from "~/utils/Theme";
@@ -35,7 +35,7 @@ const RootLayout = (): JSX.Element => {
                             <PlaytestSubscriptionDrawer open={drawerState.isPlaytestSubscriptionDrawerOpen} />
                         </Paper> */}
                         <Typography color={"#6d2aff"}>Test</Typography>
-                            <Typography color={"#9146ff"}>Test</Typography>
+                        <Typography color={"#9146ff"}>Test</Typography>
                     </Stack>
                 </Stack>
             </Paper>

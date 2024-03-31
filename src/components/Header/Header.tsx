@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Avatar, Box, Chip, Divider, Stack, Typography } from "@mui/material";
+import { Avatar, Box, Button, Chip, Divider, Stack, Typography } from "@mui/material";
 import { DarkThemeHeaderColor } from "~/utils/Theme";
 import { useMatches } from "react-router-dom";
 
@@ -20,8 +20,14 @@ const Header = (): JSX.Element => {
     const headerLogo = (
         <Stack direction="row" alignItems="center" justifyContent="flex-start">
             <Box ml={1}>
-                {/* <Typography variant="h1">Florin</Typography> */}
                 <Avatar alt="Florin" src="/src/assets/images/Profile.jpg" />
+            </Box>
+            <Box ml={4}>
+                <Stack direction={"row"} gap={1}>
+                    <Button size="large" disabled variant="text" sx={{ width: "100%", color: "inherit" }}>
+                        Florin Tilie 
+                    </Button>
+                </Stack>
             </Box>
         </Stack>
     );

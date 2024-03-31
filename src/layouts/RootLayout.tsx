@@ -17,25 +17,9 @@ const RootLayout = (): JSX.Element => {
                 <Stack direction="column" spacing={0}>
                     <Header />
                     <Stack direction="row" spacing={0} sx={{ height: `calc(100vh - ${headerOffset})` }} alignItems="stretch">
-                        {/* <SideMenu />
-                        <Paper sx={{ width: "100%", overflowY: "auto" }}>
-                            <OutdatedAgentBanner />
-                            <OutdatedAgentModal
-                                icon={
-                                    <Box alignSelf={"center"}>
-                                        <WarningTwoTone color="error" fontSize="medium" />
-                                    </Box>
-                                }
-                            />
-                            <Container sx={{ padding: 8 }}>
-                                <Outlet />
-                            </Container>
-                            <AgentDrawer open={drawerState.isAgentDrawerOpen} />
-                            <PlaytestDrawer open={drawerState.isPlaytestDrawerOpen} />
-                            <PlaytestSubscriptionDrawer open={drawerState.isPlaytestSubscriptionDrawerOpen} />
-                        </Paper> */}
-                        <Typography color={"#6d2aff"}>Test</Typography>
-                        <Typography color={"#9146ff"}>Test</Typography>
+                        <Container sx={{ padding: 8 }}>
+                            <Outlet />
+                        </Container>
                     </Stack>
                 </Stack>
             </Paper>

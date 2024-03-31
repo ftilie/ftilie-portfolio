@@ -33,8 +33,8 @@ const RootNavLinks = (): JSX.Element => {
 
     return (
         <>
-            {headerMenuLinks.map(({ label, to }) => (
-                <>
+            {headerMenuLinks.map(({ label, to }, id) => (
+                <div key={id}>
                     {label === "Contact" ? (
                         <Box display="flex" alignItems="center">
                             <Divider orientation="vertical" flexItem sx={{ borderRightWidth: 3, marginLeft: 12 }} />
@@ -59,7 +59,7 @@ const RootNavLinks = (): JSX.Element => {
                             </NavLink>
                         </Box>
                     )}
-                </>
+                </div>
             ))}
         </>
     );
@@ -68,31 +68,19 @@ const RootNavLinks = (): JSX.Element => {
 const router = createBrowserRouter(
     createRoutesFromElements(
         <>
-            //TODO: remove
-            {/* <Route
-                path="authorization-code/callback"
-                Component={() => {
-                    return (
-                        <SecurityWrapper>
-                            <LoginCallback />
-                        </SecurityWrapper>
-                    );
-                }}
-            /> */}
             <Route
                 path="/"
-                Component={() => {
-                    return <RootLayout />;
-                }}
+                element={<RootLayout />}
                 errorElement={<GlobalErrorBoundary />}
                 handle={{
                     headerMenu: () => <RootNavLinks />,
                 }}
             >
                 <Route index element={<Navigate to="/about" />} />
-                <Route path="about" element={<AboutPage />} />
 
-                <Route path="experience" element={<AboutPage />} />
+                <Route path="about" element={<AboutPage />} />
+                <Route path="experience" element={<></>} />
+                <Route path="contact" element={<></>} />
             </Route>
         </>
     )

@@ -31,16 +31,6 @@ export const DarkThemePurpleAccentColor = "#9146FF";
 export const DarkThemeDarkPurpleAccentColor = "#6D2AFF";
 export const DarkThemeGrayAccentColor = "#323232";
 
-// TODO: Remove this
-// export const overrideMenuTheme = {
-//     "& .MuiPaper-root": {
-//         backgroundColor: BaseColorNavy,
-//         color: DefaultBackgroundColor,
-
-//         border: "1px solid" + LighterBaseColorBlue,
-//     },
-// };
-
 export const customMuiTheme = createTheme({
     shape: {
         borderRadius: 3,

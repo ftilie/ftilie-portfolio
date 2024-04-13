@@ -1,10 +1,12 @@
-import { useEffect, useRef, useState } from "react";
-import { Avatar, Box, Button, Chip, Divider, Stack, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
+import { Avatar, Box, Button, Fade, Stack } from "@mui/material";
 import { DarkThemeHeaderColor } from "~/utils/Theme";
 import { useMatches } from "react-router-dom";
 
 const Header = (): JSX.Element => {
     const matches = useMatches();
+
+    const skills = ["C#", "C/C++", ".NET Framework", "TypeScript", "Node.js", "React Framework", "Python"];
 
     const headerMenu = matches
         .filter((match: any) => Boolean(match.handle?.headerMenu))
@@ -17,16 +19,41 @@ const Header = (): JSX.Element => {
             );
         });
 
+    const [currentSkillIndex, setCurrentSkillIndex] = useState(0);
+    const [transition, setTrantition] = useState(true);
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setTrantition(false);
+
+            setTimeout(() => {
+                setCurrentSkillIndex((prevIndex) => (prevIndex + 1) % skills.length);
+                setTrantition(true);
+            }, 500);
+        }, 5000);
+
+        return () => clearInterval(intervalId);
+    }, []);
+
     const headerLogo = (
         <Stack direction="row" alignItems="center" justifyContent="flex-start">
             <Box ml={1}>
                 <Avatar alt="Florin" src="/src/assets/images/Profile.jpg" />
             </Box>
             <Box ml={4}>
-                <Stack direction={"row"} gap={1}>
-                    <Button size="large" disabled variant="text" sx={{ width: "100%", color: "inherit" }}>
-                        Florin Tilie 
-                    </Button>
+                <Stack direction={"row"}>
+                    <Stack>
+                        <Button size="large" disabled variant="text" sx={{ width: "100%", color: "inherit" }}>
+                            {`Software Engineer |`}
+                        </Button>
+                    </Stack>
+                    <Stack>
+                        <Fade in={transition}>
+                            <Button size="large" disabled variant="text" sx={{ width: "100%", color: "inherit" }}>
+                                {`${skills[currentSkillIndex]}`}
+                            </Button>
+                        </Fade>
+                    </Stack>
                 </Stack>
             </Box>
         </Stack>

@@ -1,10 +1,6 @@
 .boundaryContainer {
-    background-image: url("./errorBackground.jpeg");
+    background-color: rgb(20, 20, 20);
     background-repeat: no-repeat;
     background-size: cover;
     color: white;
-}
-
-a {
-    color: blue;
 }

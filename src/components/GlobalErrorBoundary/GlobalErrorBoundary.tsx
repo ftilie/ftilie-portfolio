@@ -12,32 +12,34 @@ const GlobalErrorBoundary = (): JSX.Element => {
     const LinkedInProfile = "https://www.linkedin.com/in/florin-tilie/";
 
     return (
-        <Grid container spacing={0} direction="column" alignItems="center" justifyContent="center" style={{ minHeight: "100vh" }}>
-            <Stack direction={"row"} alignItems={"center"}>
-                <Stack>
-                    <IconButton disabled>
-                        <BugReport fontSize="large" sx={{ width: "200px", height: "200px" }} />
-                    </IconButton>
-                </Stack>
-                <Stack direction={"column"} maxWidth={"500px"} gap={2}>
-                    <Stack direction={"column"} gap={0}>
-                        <Typography variant="h1">Unable to reach</Typography>
-                        <Typography variant="h3">{fullURL}</Typography>
+        <div className="boundaryContainer">
+            <Grid container spacing={0} direction="column" alignItems="center" justifyContent="center" style={{ minHeight: "100vh" }}>
+                <Stack direction={"row"} alignItems={"center"}>
+                    <Stack>
+                        <IconButton disabled>
+                            <BugReport fontSize="large" sx={{ width: "200px", height: "200px" }} />
+                        </IconButton>
                     </Stack>
-                    <Stack direction={"column"} gap={0}>
-                        <Typography variant="h5" color={theme.palette.grey[500]} style={{ textAlign: "justify", wordWrap: "break-word" }}>
-                            I admire your curious nature, it's what's brought you this far.
-                        </Typography>
-                        <Typography variant="h5" color={theme.palette.grey[500]} style={{ textAlign: "justify", wordWrap: "break-word" }}>
-                            Consider this a strategically placed bug, just waiting to meet fellow curious minds like yours.{" "}
-                            <a href={LinkedInProfile} target="_blank" style={{ color: DarkThemeLightPurpleAccentColor }}>
-                                Let's have a chat!
-                            </a>
-                        </Typography>
+                    <Stack direction={"column"} maxWidth={"500px"} gap={2}>
+                        <Stack direction={"column"} gap={0}>
+                            <Typography variant="h1">Unable to reach</Typography>
+                            <Typography variant="h3">{fullURL}</Typography>
+                        </Stack>
+                        <Stack direction={"column"} gap={0}>
+                            <Typography variant="h5" color={theme.palette.grey[500]} style={{ textAlign: "justify", wordWrap: "break-word" }}>
+                                I admire your curious nature, it's what's brought you this far.
+                            </Typography>
+                            <Typography variant="h5" color={theme.palette.grey[500]} style={{ textAlign: "justify", wordWrap: "break-word" }}>
+                                Consider this a strategically placed bug, just waiting to meet fellow curious minds like yours.{" "}
+                                <a href={LinkedInProfile} target="_blank" style={{ color: DarkThemeLightPurpleAccentColor }}>
+                                    Let's have a chat!
+                                </a>
+                            </Typography>
+                        </Stack>
                     </Stack>
                 </Stack>
-            </Stack>
-        </Grid>
+            </Grid>
+        </div>
     );
 };
 

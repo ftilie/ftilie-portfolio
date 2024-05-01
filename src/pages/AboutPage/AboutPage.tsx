@@ -7,29 +7,12 @@ const AboutPage = (): JSX.Element => {
     const textStyle = {
         fontFamily: "Public Sans",
         fontWeight: "bold",
-        fontSize: 58,
+        fontSize: 64,
     };
-    const theme = useTheme();
-    const skills = ["C#", "C/C++", ".NET Framework", "TypeScript", "Node.js", "React Framework", "Python"];
 
-    const [currentSkillIndex, setCurrentSkillIndex] = useState(0);
-    const [transition, setTrantition] = useState(true);
-
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            setTrantition(false);
-
-            setTimeout(() => {
-                setCurrentSkillIndex((prevIndex) => (prevIndex + 1) % skills.length);
-                setTrantition(true);
-            }, 500);
-        }, 5000);
-
-        return () => clearInterval(intervalId);
-    }, []);
     return (
         <div>
-            <Grid container spacing={0} margin={4} direction="column" justifyContent="center">
+            <Grid container direction={"column"} justifyContent={"center"}>
                 <Stack direction={"row"} alignItems={"center"} gap={8}>
                     <Stack>
                         <Avatar sx={{ width: profileImageDimentions, height: profileImageDimentions }} alt="Florin" src="/src/assets/images/Profile.jpg" />
@@ -50,18 +33,6 @@ const AboutPage = (): JSX.Element => {
                             </Typography>
                         </Stack>
                         <Typography style={textStyle}>Software Engineer</Typography>
-                        <Fade in={transition}>
-                            <Typography
-                                style={{
-                                    fontFamily: "Public Sans",
-                                    fontWeight: "bold",
-                                    fontSize: 32,
-                                }}
-                                color={theme.palette.grey[500]}
-                            >
-                                {`${skills[currentSkillIndex]}`}
-                            </Typography>
-                        </Fade>
                     </Stack>
                 </Stack>
             </Grid>

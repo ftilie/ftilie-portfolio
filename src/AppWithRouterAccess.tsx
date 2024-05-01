@@ -69,14 +69,14 @@ const router = createBrowserRouter(
     createRoutesFromElements(
         <>
             <Route
-                path="/"
+                path="/{app-name}"
                 element={<RootLayout />}
                 errorElement={<GlobalErrorBoundary />}
                 handle={{
                     headerMenu: () => <RootNavLinks />,
                 }}
             >
-                <Route index element={<Navigate to="/about" />} />
+                <Route index element={<Navigate to="/{app-name}/about" />} />
 
                 <Route path="about" element={<AboutPage />} />
                 <Route path="experience" element={<></>} />

@@ -70,9 +70,7 @@ const router = createBrowserRouter(
         <>
             <Route
                 path="/"
-                Component={() => {
-                    return <RootLayout />;
-                }}
+                element={<RootLayout />}
                 errorElement={<GlobalErrorBoundary />}
                 handle={{
                     headerMenu: () => <RootNavLinks />,

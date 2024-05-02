@@ -15,7 +15,7 @@ const AboutPage = (): JSX.Element => {
             <Grid container direction={"column"} justifyContent={"center"}>
                 <Stack direction={"row"} alignItems={"center"} gap={8}>
                     <Stack>
-                        <Avatar sx={{ width: profileImageDimentions, height: profileImageDimentions }} alt="Florin" src="/src/assets/images/Profile.jpg" />
+                        <Avatar sx={{ width: profileImageDimentions, height: profileImageDimentions }} alt="Florin" src="/src/assets/images/Profile.JPG" />
                     </Stack>
                     <Stack direction={"column"} gap={2}>
                         <Typography style={textStyle}>Hi 👋</Typography>

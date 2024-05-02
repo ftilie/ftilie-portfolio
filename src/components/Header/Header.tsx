@@ -38,7 +38,7 @@ const Header = (): JSX.Element => {
     const headerLogo = (
         <Stack direction="row" alignItems="center" justifyContent="flex-start">
             <Box ml={1}>
-                <Avatar alt="Florin" src="/src/assets/images/Profile.jpg" />
+                <Avatar alt="Florin" src="/src/assets/images/Profile.JPG" />
             </Box>
             <Box ml={4}>
                 <Stack direction={"row"}>

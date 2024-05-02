@@ -32,8 +32,9 @@
     "include": [
       "setupTests.ts",
       "src",
-      "src/__mocks__"
-  , "jest", "src/components/export/properties/.tsx"  ],
+      "src/__mocks__",
+      "jest", "src/components/export/properties/.tsx"
+    ],
     "collectCoverageFrom": [
       "**/*.{ts,tsx,js,jsx}",
       "!node_modules/**"

@@ -37,8 +37,8 @@ const RootNavLinks = (): JSX.Element => {
                 <div key={id}>
                     {label === "Contact" ? (
                         <Box display="flex" alignItems="center">
-                            <Divider orientation="vertical" flexItem sx={{ borderRightWidth: 3, marginLeft: 12 }} />
-                            <Box ml={12} key={to}>
+                            <Divider orientation="vertical" flexItem sx={{ borderRightWidth: 3, marginLeft: "4vw" }} />
+                            <Box ml={"4vw"} key={to}>
                                 <NavLink key={to} style={({ isActive }) => navLinkStyle({ isActive, theme })} to={to} onClick={() => navigate(to)}>
                                     <Button size="large" id={label} variant="text" sx={{ width: "100%", color: "inherit" }}>
                                         <Stack direction={"row"} gap={1}>
@@ -49,7 +49,7 @@ const RootNavLinks = (): JSX.Element => {
                             </Box>
                         </Box>
                     ) : (
-                        <Box ml={4} key={to}>
+                        <Box key={to}>
                             <NavLink key={to} style={({ isActive }) => navLinkStyle({ isActive, theme })} to={to} onClick={() => navigate(to)}>
                                 <Button size="large" id={label} variant="text" sx={{ width: "100%", color: "inherit" }}>
                                     <Stack direction={"row"} gap={1}>

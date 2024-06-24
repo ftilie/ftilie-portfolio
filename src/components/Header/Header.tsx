@@ -6,7 +6,7 @@ import { useMatches } from "react-router-dom";
 const Header = (): JSX.Element => {
     const matches = useMatches();
 
-    const skills = ["C#", "C/C++", ".NET Framework", "TypeScript", "Node.js", "React Framework", "Python"];
+    //const skills = ["C#", "C/C++", ".NET Framework", "TypeScript", "Node.js", "React Framework", "Python"];
 
     const headerMenu = matches
         .filter((match: any) => Boolean(match.handle?.headerMenu))
@@ -19,32 +19,19 @@ const Header = (): JSX.Element => {
             );
         });
 
-    const [currentSkillIndex, setCurrentSkillIndex] = useState(0);
-    const [transition, setTrantition] = useState(true);
-
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            setTrantition(false);
-
-            setTimeout(() => {
-                setCurrentSkillIndex((prevIndex) => (prevIndex + 1) % skills.length);
-                setTrantition(true);
-            }, 500);
-        }, 5000);
-
-        return () => clearInterval(intervalId);
-    }, []);
+    //const [currentSkillIndex, setCurrentSkillIndex] = useState(0);
+    //const [transition, setTrantition] = useState(true);
 
     const headerLogo = (
         <Stack direction="row" alignItems="center" justifyContent="flex-start">
-            <Box ml={1}>
-                <Avatar alt="Florin" src="\assets\images\Profile.png" />
+            <Box height={"4vh"} width={"4vh"}>
+                <Avatar alt="Florin" src="\assets\images\Profile.png" sx={{ height: "4vh", width: "4vh" }} />
             </Box>
-            <Box ml={4}>
+            {/* <Box ml={4}>
                 <Stack direction={"row"}>
                     <Stack>
                         <Button size="large" disabled variant="text" sx={{ width: "100%", color: "inherit" }}>
-                            {`Software Engineer |`}
+                            {`Software Engineer`}
                         </Button>
                     </Stack>
                     <Stack>
@@ -55,29 +42,26 @@ const Header = (): JSX.Element => {
                         </Fade>
                     </Stack>
                 </Stack>
-            </Box>
+            </Box> */}
         </Stack>
     );
 
     const headerNavigation = (
-        <Stack direction="row" alignItems="center" justifyContent="flex-start" marginLeft={10}>
+        <Stack direction="row" alignItems="center" justifyContent="flex-start">
             {headerMenu}
         </Stack>
     );
 
     return (
         <>
-            <Stack sx={{ backgroundColor: DarkThemeHeaderColor, zIndex: 1, height: "40px" }} p={4}>
-                <Stack direction="row" alignItems="center" justifyContent="space-between" height="100%">
-                    <Stack direction="row" alignItems="center" justifyContent="left" height="100%">
+            <Stack sx={{ backgroundColor: DarkThemeHeaderColor, zIndex: 1, height: "4vh", width: "95vw" }} padding={"1vh"}>
+                <Stack direction="row" alignItems="center" justifyContent="space-between">
+                    <Stack direction="row" alignItems="center" justifyContent="left">
                         {headerLogo}
                     </Stack>
                     {headerNavigation}
                 </Stack>
             </Stack>
-            {/* <Stack sx={{ zIndex: 1 }} paddingLeft={4} paddingRight={4}>
-                <Divider />
-            </Stack> */}
         </>
     );
 };

@@ -5,7 +5,7 @@ import Header from "~/components/Header/Header";
 import SideMenu from "~/components/SideMenu/SideMenu";
 
 const RootLayout = (): JSX.Element => {
-    const headerOffset = "71px";
+    const headerOffset = "6vh";
 
     return (
         <div>

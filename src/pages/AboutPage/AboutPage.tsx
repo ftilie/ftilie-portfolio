@@ -1,7 +1,30 @@
 import { Avatar, Button, Fade, Grid, Stack, Typography, useTheme } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
+import Card from "~/components/Card/Card";
 import { DarkThemeGrayAccentColor, WhiteBackgroundColor } from "~/utils/Theme";
+
+const csharpIcon = "\\assets\\svgs\\csharp.svg";
+const typescriptIcon = "\\assets\\svgs\\typescript.svg";
+const mongoIcon = "\\assets\\svgs\\mongo.svg";
+const pythonIcon = "\\assets\\svgs\\python.svg";
+const cppIcon = "\\assets\\svgs\\cpp.svg";
+
+const csharp = (
+    <Grid container>
+        <Grid item xs={12} container alignItems={"center"}>
+            <Grid item xs={12} display={"flex"} justifyContent={"center"}>
+                <img src={csharpIcon} alt="C#" style={{ width: "8vw", height: "auto" }} />
+            </Grid>
+            <Grid item xs={4}>
+                y
+            </Grid>
+            <Grid item xs={4}>
+                z
+            </Grid>
+        </Grid>
+    </Grid>
+);
 
 const AboutPage = (): JSX.Element => {
     const profileImageDimentions = "25vh";
@@ -74,9 +97,34 @@ const AboutPage = (): JSX.Element => {
         </Grid>
     );
 
+    const skills = (
+        <Grid container justifyContent={"center"} alignItems={"center"} padding={12}>
+            <Grid item xs={12} container>
+                <Grid item xs={4}>
+                    <Card isInteractable>{csharp}</Card>
+                </Grid>
+                <Grid item xs={4}>
+                    <Card isInteractable>{csharp}</Card>
+                </Grid>
+                <Grid item xs={4}>
+                    <Card isInteractable>{csharp}</Card>
+                </Grid>
+            </Grid>
+            <Grid item xs={12} container justifyContent={"space-evenly"}>
+                <Grid item xs={4}>
+                    <Card isInteractable>{csharp}</Card>
+                </Grid>
+                <Grid item xs={4}>
+                    <Card isInteractable>{csharp}</Card>
+                </Grid>
+            </Grid>
+        </Grid>
+    );
+
     return (
         <div>
             {pageHeading}
+            {skills}
             <Outlet />
         </div>
     );

@@ -23,15 +23,20 @@ export const WhiteBackgroundColor = "#FFFFFF";
 //LIGHT THEME
 
 //DARK THEME
-export const DarkThemeBackgroundColor = "#141414";
-export const DarkThemeHeaderColor = "#141414";
-export const DarkThemeSideMenuColor = "#141414";
 
+//Accent Colors
 export const DarkThemeLightPurpleAccentColor = "#BB86FC";
 export const DarkThemePurpleAccentColor = "#9146FF";
 export const DarkThemeDarkPurpleAccentColor = "#6D2AFF";
 export const DarkThemeGrayAccentColor = "#323232";
 export const DarkThemeLightGrayAccentColor = "#525252";
+
+//Components
+export const DarkThemeBackgroundColor = "#141414";
+export const DarkThemeHeaderColor = "#141414";
+export const DarkThemeSideMenuColor = "#141414";
+export const DarkThemeCardColor = "#141414";
+export const DarkThemeHoveredCardColor = "#323232";
 
 export const customMuiTheme = createTheme({
     shape: {

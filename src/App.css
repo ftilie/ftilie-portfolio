@@ -18,18 +18,18 @@
 
 @font-face {
     font-family: "Public Sans";
-    src: url("/src/assets/fonts/PublicSans-Bold.ttf");
+    src: url("/assets/fonts/PublicSans-Bold.ttf");
     font-weight: bold;
 }
 
 @font-face {
     font-family: "Public Sans";
-    src: url("/src/assets/fonts/PublicSans-Regular.ttf");
+    src: url("/assets/fonts/PublicSans-Regular.ttf");
     font-weight: normal;
 }
 
 @font-face {
     font-family: "Public Sans Text";
-    src: url("/src/assets/fonts/PublicSans-Regular.ttf");
+    src: url("/assets/fonts/PublicSans-Regular.ttf");
     font-weight: normal;
 }

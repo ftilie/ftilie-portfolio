@@ -1,15 +1,17 @@
 import { NavLink, Navigate, Route, RouterProvider, createBrowserRouter, createRoutesFromElements, useLocation, useNavigate } from "react-router-dom";
 import { lazy, useEffect, useRef } from "react";
-import { Box, Button, Divider, Stack, Theme, useTheme } from "@mui/material";
+import { Box, Button, Divider, Stack, Theme, useMediaQuery, useTheme } from "@mui/material";
 import GlobalErrorBoundary from "~/components/GlobalErrorBoundary/GlobalErrorBoundary";
+import MaintenancePage from "./pages/MaintenancePage/MaintenancePage";
+import IconLookup from "~/utils/IconLookup";
 
 const RootLayout = lazy(() => import("~/layouts/RootLayout"));
 const AboutPage = lazy(() => import("~/pages/AboutPage/AboutPage"));
 
 const headerMenuLinks = [
-    { label: "About", to: "/about" },
-    { label: "Experience", to: "/experience" },
-    { label: "Contact", to: "/contact" },
+    { label: "About", to: "/about", icon: "Home", divider: false },
+    { label: "Experience", to: "/experience", icon: "Article", divider: false },
+    { label: "Contact", to: "/contact", icon: "AlternateEmail", divider: true },
 ] as const;
 
 export const navLinkStyle = ({ isActive, theme }: { isActive: boolean; theme: Theme }): { textDecoration: string; color: string } => {
@@ -25,6 +27,8 @@ const RootNavLinks = (): JSX.Element => {
     const navigate = useNavigate();
     const prevPathname = useRef(location.pathname);
 
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
     useEffect(() => {
         if (prevPathname.current !== location.pathname) {
             prevPathname.current = location.pathname;
@@ -33,32 +37,28 @@ const RootNavLinks = (): JSX.Element => {
 
     return (
         <>
-            {headerMenuLinks.map(({ label, to }, id) => (
+            {headerMenuLinks.map(({ label, to, icon, divider }, id) => (
                 <div key={id}>
-                    {label === "Contact" ? (
-                        <Box display="flex" alignItems="center">
-                            <Divider orientation="vertical" flexItem sx={{ borderRightWidth: 3, marginLeft: "4vw" }} />
-                            <Box ml={"4vw"} key={to}>
-                                <NavLink key={to} style={({ isActive }) => navLinkStyle({ isActive, theme })} to={to} onClick={() => navigate(to)}>
-                                    <Button size="large" id={label} variant="text" sx={{ width: "100%", color: "inherit" }}>
-                                        <Stack direction={"row"} gap={1}>
-                                            {label}
+                    <Box display="flex" alignItems="center">
+                        {divider && <Divider orientation="vertical" flexItem sx={{ borderRightWidth: 3, marginLeft: "4vw" }} />}
+                        <Box ml={divider ? "4vw" : "0vw"} key={to}>
+                            <NavLink key={to} style={({ isActive }) => navLinkStyle({ isActive, theme })} to={to} onClick={() => navigate(to)}>
+                                {({ isActive }) => (
+                                    <Button size={"large"} id={label} variant={"text"} sx={{ width: "100%", color: isActive ? theme.palette.primary.main : theme.palette.text.primary }}>
+                                        <Stack direction="row" gap={1}>
+                                            {isSmallScreen ? (
+                                                <IconLookup icon={icon} />
+                                            ) : (
+                                                <Button variant={"text"} startIcon={<IconLookup icon={icon} />} sx={{ color: isActive ? theme.palette.primary.main : theme.palette.text.primary }}>
+                                                    {label}
+                                                </Button>
+                                            )}
                                         </Stack>
                                     </Button>
-                                </NavLink>
-                            </Box>
-                        </Box>
-                    ) : (
-                        <Box key={to}>
-                            <NavLink key={to} style={({ isActive }) => navLinkStyle({ isActive, theme })} to={to} onClick={() => navigate(to)}>
-                                <Button size="large" id={label} variant="text" sx={{ width: "100%", color: "inherit" }}>
-                                    <Stack direction={"row"} gap={1}>
-                                        {label}
-                                    </Stack>
-                                </Button>
+                                )}
                             </NavLink>
                         </Box>
-                    )}
+                    </Box>
                 </div>
             ))}
         </>
@@ -78,9 +78,14 @@ const router = createBrowserRouter(
             >
                 <Route index element={<Navigate to="/about" />} />
 
-                <Route path="about" element={<AboutPage />} />
-                <Route path="experience" element={<></>} />
-                <Route path="contact" element={<></>} />
+                {/* <Route path="about" element={<AboutPage />} /> */}
+                <Route path="about" element={<MaintenancePage />} />
+
+                {/* <Route path="experience" element={<></>} /> */}
+                <Route path="experience" element={<MaintenancePage />} />
+
+                {/* <Route path="contact" element={<></>} /> */}
+                <Route path="contact" element={<MaintenancePage />} />
             </Route>
         </>
     )

@@ -1,9 +1,10 @@
-import { Avatar, Box, Stack } from "@mui/material";
+import { Avatar, Box, Button, Stack } from "@mui/material";
 import { DarkThemeHeaderColor } from "~/utils/Theme";
 import { useMatches } from "react-router-dom";
 
 const Header = (): JSX.Element => {
     const matches = useMatches();
+
     const headerMenu = matches
         .filter((match: any) => Boolean(match.handle?.headerMenu))
         .map((match: any) => {
@@ -17,9 +18,13 @@ const Header = (): JSX.Element => {
 
     const headerLogo = (
         <Stack direction="row" alignItems="center" justifyContent="flex-start">
-            <Box height={"4vh"} width={"4vh"}>
-                <Avatar alt="Florin" src="\assets\images\Profile.png" sx={{ height: "4vh", width: "4vh" }} />
-            </Box>
+            <Button disabled size={"large"} id={"label"} variant={"text"} sx={{ width: "100%" }}>
+                <Box>
+                    <Stack direction="row" gap={1}>
+                        <Avatar alt="Florin" src="\assets\images\Profile.png" />
+                    </Stack>
+                </Box>
+            </Button>
         </Stack>
     );
 
@@ -31,7 +36,7 @@ const Header = (): JSX.Element => {
 
     return (
         <>
-            <Stack sx={{ backgroundColor: DarkThemeHeaderColor, zIndex: 1, height: "4vh", width: "95vw" }} padding={"1vh"}>
+            <Stack sx={{ backgroundColor: DarkThemeHeaderColor, zIndex: 1, height: "6vh", width: "100vw" }}>
                 <Stack direction="row" alignItems="center" justifyContent="space-between">
                     <Stack direction="row" alignItems="center" justifyContent="left">
                         {headerLogo}

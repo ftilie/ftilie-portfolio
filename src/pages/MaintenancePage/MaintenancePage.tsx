@@ -17,12 +17,12 @@ const MaintenancePage = (): JSX.Element => {
                 <Stack direction={"column"} display={"flex"} alignItems={"center"} justifyContent={"center"} style={{ height: "80vh" }}>
                     <Stack>
                         <IconButton disabled>
-                            <Construction fontSize="large" sx={{ width: "20vw", height: "20vw" }} />
-                            <Engineering fontSize="large" sx={{ width: "20vw", height: "20vw" }} />
-                            <SquareFoot fontSize="large" sx={{ width: "20vw", height: "20vw" }} />
+                            <Construction fontSize="large" sx={{ width: "15vw", height: "15vw" }} />
+                            <Engineering fontSize="large" sx={{ width: "15vw", height: "15vw" }} />
+                            <SquareFoot fontSize="large" sx={{ width: "15vw", height: "15vw" }} />
                         </IconButton>
                     </Stack>
-                    <Stack direction={"column"} maxWidth={"60vw"} gap={2}>
+                    <Stack direction={"column"} maxWidth={"45vw"} gap={2}>
                         <Stack direction={"row"}>
                             <Stack direction={"column"} gap={0}>
                                 <Typography variant="h1">Under maintenance</Typography>

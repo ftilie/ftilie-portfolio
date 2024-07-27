@@ -2,16 +2,16 @@ import { NavLink, Navigate, Route, RouterProvider, createBrowserRouter, createRo
 import { lazy, useEffect, useRef } from "react";
 import { Box, Button, Divider, Stack, Theme, useMediaQuery, useTheme } from "@mui/material";
 import GlobalErrorBoundary from "~/components/GlobalErrorBoundary/GlobalErrorBoundary";
-import MaintenancePage from "./pages/MaintenancePage/MaintenancePage";
+import MaintenancePage from "~/pages/MaintenancePage/MaintenancePage";
 import IconLookup from "~/utils/IconLookup";
 
 const RootLayout = lazy(() => import("~/layouts/RootLayout"));
 const AboutPage = lazy(() => import("~/pages/AboutPage/AboutPage"));
 
 const headerMenuLinks = [
-    { label: "About", to: "/about", icon: "Home", divider: false },
-    { label: "Experience", to: "/experience", icon: "Article", divider: false },
-    { label: "Contact", to: "/contact", icon: "AlternateEmail", divider: true },
+    { label: "About", to: "/about", icon: "Home" },
+    { label: "Experience", to: "/experience", icon: "Article" },
+    { label: "Contact", to: "/contact", icon: "AlternateEmail" },
 ] as const;
 
 export const navLinkStyle = ({ isActive, theme }: { isActive: boolean; theme: Theme }): { textDecoration: string; color: string } => {
@@ -37,23 +37,20 @@ const RootNavLinks = (): JSX.Element => {
 
     return (
         <>
-            {headerMenuLinks.map(({ label, to, icon, divider }, id) => (
+            {headerMenuLinks.map(({ label, to, icon }, id) => (
                 <div key={id}>
                     <Box display="flex" alignItems="center">
-                        {divider && <Divider orientation="vertical" flexItem sx={{ borderRightWidth: 3, marginLeft: "4vw" }} />}
-                        <Box ml={divider ? "4vw" : "0vw"} key={to}>
+                        <Box key={to}>
                             <NavLink key={to} style={({ isActive }) => navLinkStyle({ isActive, theme })} to={to} onClick={() => navigate(to)}>
                                 {({ isActive }) => (
-                                    <Button size={"large"} id={label} variant={"text"} sx={{ width: "100%", color: isActive ? theme.palette.primary.main : theme.palette.text.primary }}>
-                                        <Stack direction="row" gap={1}>
-                                            {isSmallScreen ? (
+                                    <Button size="large" id={label} variant="text" sx={{ width: "100%", color: isActive ? theme.palette.primary.main : theme.palette.text.primary }}>
+                                        <Box>
+                                            <Stack direction="row" gap={1} alignItems="center" padding={2}>
                                                 <IconLookup icon={icon} />
-                                            ) : (
-                                                <Button variant={"text"} startIcon={<IconLookup icon={icon} />} sx={{ color: isActive ? theme.palette.primary.main : theme.palette.text.primary }}>
-                                                    {label}
-                                                </Button>
-                                            )}
-                                        </Stack>
+                                                {!isSmallScreen && label}
+                                            </Stack>
+                                            {isActive && <Divider flexItem sx={{ borderBottomWidth: 2, borderColor: theme.palette.primary.main }} />}
+                                        </Box>
                                     </Button>
                                 )}
                             </NavLink>

@@ -1,20 +1,31 @@
 import { GitHub, LinkedIn } from "@mui/icons-material";
-import { Link, Stack } from "@mui/material";
+import { Box, Button, Link, Stack } from "@mui/material";
 import { DarkThemeLightGrayAccentColor, DarkThemeSideMenuColor } from "~/utils/Theme";
 
 const SideMenu = (props: any): JSX.Element => {
-    const sideMenuWidth = "4vh";
-    const imageDimentions = "4vh";
     const githubLink = "https://github.com/ftilie";
     const linkedInLink = "https://www.linkedin.com/in/florin-tilie/";
+
     return (
-        <Stack sx={{ backgroundColor: DarkThemeSideMenuColor, width: sideMenuWidth }} display={"flex"} alignItems={"center"} spacing={4} padding={"1vh"}>
-            <Stack gap={4} justifyContent={"flex-end"} height={"100%"} sx={{ backgroundColor: DarkThemeSideMenuColor, overflow: "auto" }}>
-                <Link href={githubLink} underline="none" rel="noopener noreferrer" target="_blank">
-                    <GitHub sx={{ height: imageDimentions, width: imageDimentions, color: DarkThemeLightGrayAccentColor }} />
+        <Stack sx={{ backgroundColor: DarkThemeSideMenuColor }} display={"flex"} alignItems={"center"}>
+            <Stack gap={2} justifyContent={"flex-end"} height={"100%"} sx={{ backgroundColor: DarkThemeSideMenuColor, overflow: "auto" }}>
+                <Link href={githubLink} underline={"none"} rel={"noopener noreferrer"} target={"_blank"}>
+                    <Button disabled size={"large"} id={"label"} variant={"text"} sx={{ width: "100%" }}>
+                        <Box>
+                            <Stack direction="row" gap={1}>
+                                <GitHub fontSize={"large"} sx={{ color: DarkThemeLightGrayAccentColor }} />
+                            </Stack>
+                        </Box>
+                    </Button>
                 </Link>
-                <Link href={linkedInLink} underline="none" rel="noopener noreferrer" target="_blank">
-                    <LinkedIn sx={{ height: imageDimentions, width: imageDimentions, color: DarkThemeLightGrayAccentColor }} />
+                <Link href={linkedInLink} underline={"none"} rel={"noopener noreferrer"} target={"_blank"}>
+                    <Button disabled size={"large"} id={"label"} variant={"text"} sx={{ width: "100%" }}>
+                        <Box>
+                            <Stack direction="row" gap={1}>
+                                <LinkedIn fontSize={"large"} sx={{ color: DarkThemeLightGrayAccentColor }} />
+                            </Stack>
+                        </Box>
+                    </Button>
                 </Link>
             </Stack>
         </Stack>

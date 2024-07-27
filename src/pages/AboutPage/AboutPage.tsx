@@ -1,14 +1,9 @@
-import { Avatar, Button, Fade, Grid, Stack, Typography, useTheme } from "@mui/material";
+import { Avatar, Button, Fade, Grid, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Card from "~/components/Card/Card";
+import { csharpIcon } from "~/utils/Icons";
 import { DarkThemeGrayAccentColor, WhiteBackgroundColor } from "~/utils/Theme";
-
-const csharpIcon = "\\assets\\svgs\\csharp.svg";
-const typescriptIcon = "\\assets\\svgs\\typescript.svg";
-const mongoIcon = "\\assets\\svgs\\mongo.svg";
-const pythonIcon = "\\assets\\svgs\\python.svg";
-const cppIcon = "\\assets\\svgs\\cpp.svg";
 
 const csharp = (
     <Grid container>
@@ -43,7 +38,8 @@ const AboutPage = (): JSX.Element => {
 
     const pageHeading = (
         <Grid container justifyContent={"center"} direction={"row"} alignItems={"center"} spacing={2}>
-            <Grid item xs={6} container direction={"column"}>
+            <Grid item xs={2} />
+            <Grid item container xs={4} direction={"column"}>
                 <Grid item xs={6} container direction={"row"} display={"flex"} justifyContent={"end"}>
                     <Stack direction={"row"} spacing={2}>
                         <Typography style={grayTextStyle} fontSize={"8vw"}>

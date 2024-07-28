@@ -13,6 +13,7 @@ declare module "@mui/material/Button" {
 declare module "@mui/material/Chip" {
     interface ChipPropsVariantOverrides {
         filledChip: true;
+        outlinedChip: true;
     }
 }
 
@@ -303,10 +304,23 @@ export const customMuiTheme = createTheme({
             },
             styleOverrides: {
                 root: {
-                    color: DarkThemeBackgroundColor,
+                    color: "#FFFFFF",
                     backgroundColor: DarkThemeLightPurpleAccentColor,
                 },
             },
+            variants:[
+                {
+                    props: { variant: "outlinedChip" },
+                    style: {
+                        color: "white",
+                        backgroundColor: "none",
+                        border: "1px solid",
+                        borderColor: "white",
+                        "&:hover": { borderColor: DarkThemeLightPurpleAccentColor },
+                    },
+                },
+
+            ]
         },
         MuiTooltip: {
             defaultProps: {

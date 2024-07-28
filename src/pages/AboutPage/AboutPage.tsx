@@ -2,14 +2,31 @@ import { Avatar, Button, Fade, Grid, Stack, Typography, useMediaQuery, useTheme 
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Card from "~/components/Card/Card";
-import { csharpIcon } from "~/utils/Icons";
+import { InfoChip } from "~/components/InfoChip/InfoChip";
+import { cppIcon, csharpIcon, mongoIcon, pythonIcon, typescriptIcon } from "~/utils/Icons";
 import { DarkThemeGrayAccentColor, WhiteBackgroundColor } from "~/utils/Theme";
 
 const csharp = (
     <Grid container>
-        <Grid item xs={12} container alignItems={"center"}>
+        <Grid item xs={12} container alignItems={"center"} spacing={4}>
             <Grid item xs={12} display={"flex"} justifyContent={"center"}>
                 <img src={csharpIcon} alt="C#" style={{ width: "8vw", height: "auto" }} />
+            </Grid>
+            <Grid item xs={12} display={"flex"} justifyContent={"center"}>
+                <InfoChip text="C#"/>
+            </Grid>
+            <Grid item xs={12} display={"flex"} justifyContent={"center"}>
+                z
+            </Grid>
+        </Grid>
+    </Grid>
+);
+
+const typescript = (
+    <Grid container>
+        <Grid item xs={12} container alignItems={"center"}>
+            <Grid item xs={12} display={"flex"} justifyContent={"center"}>
+                <img src={typescriptIcon} alt="C#" style={{ width: "8vw", height: "auto" }} />
             </Grid>
             <Grid item xs={4}>
                 y
@@ -21,52 +38,104 @@ const csharp = (
     </Grid>
 );
 
+const mongo = (
+    <Grid container>
+        <Grid item xs={12} container alignItems={"center"}>
+            <Grid item xs={12} display={"flex"} justifyContent={"center"}>
+                <img src={mongoIcon} alt="C#" style={{ width: "8vw", height: "auto" }} />
+            </Grid>
+            <Grid item xs={4}>
+                y
+            </Grid>
+            <Grid item xs={4}>
+                z
+            </Grid>
+        </Grid>
+    </Grid>
+);
+
+const python = (
+    <Grid container>
+        <Grid item xs={12} container alignItems={"center"}>
+            <Grid item xs={12} display={"flex"} justifyContent={"center"}>
+                <img src={pythonIcon} alt="C#" style={{ width: "8vw", height: "auto" }} />
+            </Grid>
+            <Grid item xs={4}>
+                y
+            </Grid>
+            <Grid item xs={4}>
+                z
+            </Grid>
+        </Grid>
+    </Grid>
+);
+
+const cpp = (
+    <Grid container>
+        <Grid item xs={12} container alignItems={"center"}>
+            <Grid item xs={12} display={"flex"} justifyContent={"center"}>
+                <img src={cppIcon} alt="C#" style={{ width: "8vw", height: "auto" }} />
+            </Grid>
+            <Grid item xs={4}>
+                y
+            </Grid>
+            <Grid item xs={4}>
+                z
+            </Grid>
+        </Grid>
+    </Grid>
+);
+
+const whiteTextStyle = {
+    fontFamily: "Public Sans",
+    fontWeight: "bold",
+    fontSize: 28,
+    color: WhiteBackgroundColor,
+};
+
+const grayTextStyle = {
+    fontFamily: "Public Sans",
+    fontWeight: "bold",
+    color: DarkThemeGrayAccentColor,
+};
+
 const AboutPage = (): JSX.Element => {
-    const profileImageDimentions = "25vh";
-
-    const whiteTextStyle = {
-        fontFamily: "Public Sans",
-        fontWeight: "bold",
-        color: WhiteBackgroundColor,
-    };
-
-    const grayTextStyle = {
-        fontFamily: "Public Sans",
-        fontWeight: "bold",
-        color: DarkThemeGrayAccentColor,
-    };
-
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
     const pageHeading = (
         <Grid container justifyContent={"center"} direction={"row"} alignItems={"center"} spacing={2}>
-            <Grid item xs={2} />
-            <Grid item container xs={4} direction={"column"}>
-                <Grid item xs={6} container direction={"row"} display={"flex"} justifyContent={"end"}>
-                    <Stack direction={"row"} spacing={2}>
-                        <Typography style={grayTextStyle} fontSize={"8vw"}>
-                            C#
-                        </Typography>
-                        <Stack direction={"column"}>
-                            <Typography style={grayTextStyle} fontSize={"4vw"} display={"flex"} justifyContent={"end"}>
-                                Type
+            {isSmallScreen ? (
+                <></>
+            ) : (
+                <Grid item container xs={6} direction={"column"}>
+                    <Grid item xs={6} container direction={"row"} display={"flex"} justifyContent={"end"}>
+                        <Stack direction={"row"} spacing={2}>
+                            <Typography style={grayTextStyle} fontSize={56}>
+                                C#
                             </Typography>
-                            <Typography style={grayTextStyle} fontSize={"4vw"} display={"flex"} justifyContent={"end"}>
-                                Script
+                            <Stack direction={"column"}>
+                                <Typography style={grayTextStyle} fontSize={28} display={"flex"} justifyContent={"end"}>
+                                    Type
+                                </Typography>
+                                <Typography style={grayTextStyle} fontSize={28} display={"flex"} justifyContent={"end"}>
+                                    Script
+                                </Typography>
+                            </Stack>
+                        </Stack>
+                    </Grid>
+                    <Grid item xs={6} container direction={"row"} display={"flex"} justifyContent={"end"}>
+                        <Stack direction={"row"} spacing={2}>
+                            <Typography style={grayTextStyle} fontSize={28}>
+                                Python
+                            </Typography>
+                            <Typography style={grayTextStyle} fontSize={28}>
+                                C/C++
                             </Typography>
                         </Stack>
-                    </Stack>
+                    </Grid>
                 </Grid>
-                <Grid item xs={6} container direction={"row"} display={"flex"} justifyContent={"end"}>
-                    <Stack direction={"row"} spacing={2}>
-                        <Typography style={grayTextStyle} fontSize={"4vw"}>
-                            Python
-                        </Typography>
-                        <Typography style={grayTextStyle} fontSize={"4vw"}>
-                            C/C++
-                        </Typography>
-                    </Stack>
-                </Grid>
-            </Grid>
-            <Grid item xs={6} container direction={"column"}>
+            )}
+            <Grid item xs={isSmallScreen ? 12 : 6} container direction={"column"}>
                 <Typography style={whiteTextStyle} fontSize={"4vw"}>
                     Hi 👋
                 </Typography>
@@ -100,18 +169,18 @@ const AboutPage = (): JSX.Element => {
                     <Card isInteractable>{csharp}</Card>
                 </Grid>
                 <Grid item xs={4}>
-                    <Card isInteractable>{csharp}</Card>
+                    <Card isInteractable>{typescript}</Card>
                 </Grid>
                 <Grid item xs={4}>
-                    <Card isInteractable>{csharp}</Card>
+                    <Card isInteractable>{mongo}</Card>
                 </Grid>
             </Grid>
             <Grid item xs={12} container justifyContent={"space-evenly"}>
                 <Grid item xs={4}>
-                    <Card isInteractable>{csharp}</Card>
+                    <Card isInteractable>{python}</Card>
                 </Grid>
                 <Grid item xs={4}>
-                    <Card isInteractable>{csharp}</Card>
+                    <Card isInteractable>{cpp}</Card>
                 </Grid>
             </Grid>
         </Grid>

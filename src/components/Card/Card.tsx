@@ -1,7 +1,7 @@
 import { Stack } from "@mui/material";
 import { DarkThemeCardColor, DarkThemeHoveredCardColor } from "~/utils/Theme";
 
-interface CardProps {
+type CardProps = {
     children: JSX.Element;
     isInteractable?: boolean | undefined;
     isSelected?: boolean | undefined;
@@ -16,10 +16,15 @@ const Card = (props: CardProps): JSX.Element => {
 
     return (
         <Stack
-            direction="row"
-            alignItems="stretch"
-            justifyContent="flex-start"
-            sx={isInteractable ? { ...cardContainerStyles, ...cardContainerOverrides, backgroundColor: isSelected ? DarkThemeHoveredCardColor : DarkThemeCardColor, cursor: isInteractable ? "pointer" : "default" } : cardContainerStyles}
+            direction={"row"}
+            alignItems={"stretch"}
+            justifyContent={"flex-start"}
+            padding={4}
+            sx={
+                isInteractable
+                    ? { ...cardContainerStyles, ...cardContainerOverrides, backgroundColor: isSelected ? DarkThemeHoveredCardColor : DarkThemeCardColor, cursor: isInteractable ? "pointer" : "default" }
+                    : cardContainerStyles
+            }
         >
             {children}
         </Stack>

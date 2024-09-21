@@ -75,8 +75,8 @@ const router = createBrowserRouter(
             >
                 <Route index element={<Navigate to="/about" />} />
 
-                {/* <Route path="about" element={<AboutPage />} /> */}
-                <Route path="about" element={<MaintenancePage />} />
+                <Route path="about" element={<AboutPage />} />
+                {/* <Route path="about" element={<MaintenancePage />} /> */}
 
                 {/* <Route path="experience" element={<></>} /> */}
                 <Route path="experience" element={<MaintenancePage />} />

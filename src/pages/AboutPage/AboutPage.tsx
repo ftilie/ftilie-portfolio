@@ -1,102 +1,24 @@
-import { Avatar, Button, Fade, Grid, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
-import { useEffect, useState } from "react";
+import { Box, Grid, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { Outlet } from "react-router-dom";
-import Card from "~/components/Card/Card";
-import { InfoChip } from "~/components/InfoChip/InfoChip";
-import { cppIcon, csharpIcon, mongoIcon, pythonIcon, typescriptIcon } from "~/utils/Icons";
 import { DarkThemeGrayAccentColor, WhiteBackgroundColor } from "~/utils/Theme";
+import SkillCard from "./SkillCard/SkillCard";
+import { Skill } from "~/utils/Enums";
 
-const csharp = (
-    <Grid container>
-        <Grid item xs={12} container alignItems={"center"} spacing={4}>
-            <Grid item xs={12} display={"flex"} justifyContent={"center"}>
-                <img src={csharpIcon} alt="C#" style={{ width: "8vw", height: "auto" }} />
-            </Grid>
-            <Grid item xs={12} display={"flex"} justifyContent={"center"}>
-                <InfoChip text="C#"/>
-            </Grid>
-            <Grid item xs={12} display={"flex"} justifyContent={"center"}>
-                z
-            </Grid>
-        </Grid>
-    </Grid>
-);
-
-const typescript = (
-    <Grid container>
-        <Grid item xs={12} container alignItems={"center"}>
-            <Grid item xs={12} display={"flex"} justifyContent={"center"}>
-                <img src={typescriptIcon} alt="C#" style={{ width: "8vw", height: "auto" }} />
-            </Grid>
-            <Grid item xs={4}>
-                y
-            </Grid>
-            <Grid item xs={4}>
-                z
-            </Grid>
-        </Grid>
-    </Grid>
-);
-
-const mongo = (
-    <Grid container>
-        <Grid item xs={12} container alignItems={"center"}>
-            <Grid item xs={12} display={"flex"} justifyContent={"center"}>
-                <img src={mongoIcon} alt="C#" style={{ width: "8vw", height: "auto" }} />
-            </Grid>
-            <Grid item xs={4}>
-                y
-            </Grid>
-            <Grid item xs={4}>
-                z
-            </Grid>
-        </Grid>
-    </Grid>
-);
-
-const python = (
-    <Grid container>
-        <Grid item xs={12} container alignItems={"center"}>
-            <Grid item xs={12} display={"flex"} justifyContent={"center"}>
-                <img src={pythonIcon} alt="C#" style={{ width: "8vw", height: "auto" }} />
-            </Grid>
-            <Grid item xs={4}>
-                y
-            </Grid>
-            <Grid item xs={4}>
-                z
-            </Grid>
-        </Grid>
-    </Grid>
-);
-
-const cpp = (
-    <Grid container>
-        <Grid item xs={12} container alignItems={"center"}>
-            <Grid item xs={12} display={"flex"} justifyContent={"center"}>
-                <img src={cppIcon} alt="C#" style={{ width: "8vw", height: "auto" }} />
-            </Grid>
-            <Grid item xs={4}>
-                y
-            </Grid>
-            <Grid item xs={4}>
-                z
-            </Grid>
-        </Grid>
-    </Grid>
-);
-
-const whiteTextStyle = {
+const whiteTextStyle: React.CSSProperties = {
     fontFamily: "Public Sans",
     fontWeight: "bold",
-    fontSize: 28,
+    fontSize: 32,
     color: WhiteBackgroundColor,
 };
 
-const grayTextStyle = {
+const grayTextStyle: React.CSSProperties = {
     fontFamily: "Public Sans",
     fontWeight: "bold",
     color: DarkThemeGrayAccentColor,
+    userSelect: "none",
+    WebkitUserSelect: "none",
+    MozUserSelect: "none",
+    msUserSelect: "none",
 };
 
 const AboutPage = (): JSX.Element => {
@@ -110,14 +32,25 @@ const AboutPage = (): JSX.Element => {
                 <Grid item container xs={6} direction={"column"}>
                     <Grid item xs={6} container direction={"row"} display={"flex"} justifyContent={"end"}>
                         <Stack direction={"row"} spacing={2}>
-                            <Typography style={grayTextStyle} fontSize={56}>
-                                C#
-                            </Typography>
+                            <Box
+                                component="span"
+                                style={{
+                                    fontSize: 64,
+                                    transform: "scale(1.4, 1.4)",
+                                    textAlign: "center",
+                                    whiteSpace: "nowrap",
+                                    marginRight: 4,
+                                }}
+                            >
+                                <Typography style={grayTextStyle} fontSize={64}>
+                                    C#
+                                </Typography>
+                            </Box>
                             <Stack direction={"column"}>
-                                <Typography style={grayTextStyle} fontSize={28} display={"flex"} justifyContent={"end"}>
+                                <Typography style={grayTextStyle} fontSize={32} display={"flex"} justifyContent={"end"}>
                                     Type
                                 </Typography>
-                                <Typography style={grayTextStyle} fontSize={28} display={"flex"} justifyContent={"end"}>
+                                <Typography style={grayTextStyle} fontSize={32} display={"flex"} justifyContent={"end"}>
                                     Script
                                 </Typography>
                             </Stack>
@@ -125,10 +58,10 @@ const AboutPage = (): JSX.Element => {
                     </Grid>
                     <Grid item xs={6} container direction={"row"} display={"flex"} justifyContent={"end"}>
                         <Stack direction={"row"} spacing={2}>
-                            <Typography style={grayTextStyle} fontSize={28}>
+                            <Typography style={grayTextStyle} fontSize={32}>
                                 Python
                             </Typography>
-                            <Typography style={grayTextStyle} fontSize={28}>
+                            <Typography style={grayTextStyle} fontSize={32}>
                                 C/C++
                             </Typography>
                         </Stack>
@@ -136,16 +69,11 @@ const AboutPage = (): JSX.Element => {
                 </Grid>
             )}
             <Grid item xs={isSmallScreen ? 12 : 6} container direction={"column"}>
-                <Typography style={whiteTextStyle} fontSize={"4vw"}>
-                    Hi 👋
-                </Typography>
+                <Typography style={whiteTextStyle}>Hi 👋</Typography>
                 <Stack direction={"row"} gap={2}>
-                    <Typography style={whiteTextStyle} fontSize={"4vw"}>
-                        I'm
-                    </Typography>
+                    <Typography style={whiteTextStyle}>I'm</Typography>
                     <Typography
                         style={whiteTextStyle}
-                        fontSize={"4vw"}
                         sx={{
                             background: "linear-gradient(to right, rgb(222, 91, 181), rgb(145, 70, 255))",
                             WebkitBackgroundClip: "text",
@@ -155,32 +83,30 @@ const AboutPage = (): JSX.Element => {
                         Florin
                     </Typography>
                 </Stack>
-                <Typography style={whiteTextStyle} fontSize={"4vw"}>
-                    Software Engineer
-                </Typography>
+                <Typography style={whiteTextStyle}>Software Engineer</Typography>
             </Grid>
         </Grid>
     );
 
     const skills = (
-        <Grid container justifyContent={"center"} alignItems={"center"} padding={12}>
-            <Grid item xs={12} container>
+        <Grid container justifyContent={"center"} alignItems={"center"} padding={12} gap={4}>
+            <Grid item xs={12} container spacing={4}>
                 <Grid item xs={4}>
-                    <Card isInteractable>{csharp}</Card>
+                    <SkillCard skill={Skill.Csharp} />
                 </Grid>
                 <Grid item xs={4}>
-                    <Card isInteractable>{typescript}</Card>
+                    <SkillCard skill={Skill.Typescript} />
                 </Grid>
                 <Grid item xs={4}>
-                    <Card isInteractable>{mongo}</Card>
+                    <SkillCard skill={Skill.MongoDb} />
                 </Grid>
             </Grid>
-            <Grid item xs={12} container justifyContent={"space-evenly"}>
+            <Grid item xs={12} container justifyContent={"space-evenly"} spacing={4}> 
                 <Grid item xs={4}>
-                    <Card isInteractable>{python}</Card>
+                    <SkillCard skill={Skill.Python} />
                 </Grid>
                 <Grid item xs={4}>
-                    <Card isInteractable>{cpp}</Card>
+                    <SkillCard skill={Skill.Cpp} />
                 </Grid>
             </Grid>
         </Grid>

@@ -91,21 +91,21 @@ const AboutPage = (): JSX.Element => {
     const skills = (
         <Grid container justifyContent={"center"} alignItems={"center"} padding={12} gap={4}>
             <Grid item xs={12} container spacing={4}>
-                <Grid item xs={4}>
+                <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
                     <SkillCard skill={Skill.Csharp} />
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
                     <SkillCard skill={Skill.Typescript} />
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
                     <SkillCard skill={Skill.MongoDb} />
                 </Grid>
             </Grid>
-            <Grid item xs={12} container justifyContent={"space-evenly"} spacing={4}> 
-                <Grid item xs={4}>
+            <Grid item xs={12} container justifyContent={"center"} spacing={4}>
+                <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
                     <SkillCard skill={Skill.Python} />
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
                     <SkillCard skill={Skill.Cpp} />
                 </Grid>
             </Grid>

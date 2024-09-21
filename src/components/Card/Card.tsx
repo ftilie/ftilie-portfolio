@@ -6,7 +6,7 @@ type CardProps = {
     isInteractable?: boolean | undefined;
     isSelected?: boolean | undefined;
     styleOverrides?: React.CSSProperties | undefined;
-}
+};
 
 const cardContainerOverrides = { ":hover": { backgroundColor: DarkThemeHoveredCardColor }, transition: "background-color 0.4s" };
 
@@ -19,7 +19,8 @@ const Card = (props: CardProps): JSX.Element => {
             direction={"row"}
             alignItems={"stretch"}
             justifyContent={"flex-start"}
-            padding={4}
+            padding={2}
+            style={{ height: "100%" }}
             sx={
                 isInteractable
                     ? { ...cardContainerStyles, ...cardContainerOverrides, backgroundColor: isSelected ? DarkThemeHoveredCardColor : DarkThemeCardColor, cursor: isInteractable ? "pointer" : "default" }

@@ -13,7 +13,7 @@ const getSkill = (skill: Skill): { iconPath: string; description: string } => {
             return { iconPath: csharpIcon, description: csharpDescription };
         case Skill.Typescript:
             return { iconPath: typescriptIcon, description: typescriptDescription };
-        case Skill.MongoDb:
+        case Skill.Database:
             return { iconPath: mongoIcon, description: mongoDescription };
         case Skill.Python:
             return { iconPath: pythonIcon, description: pythonDescription };
@@ -38,7 +38,7 @@ const SkillCard = ({ skill }: SkillCardProps): JSX.Element => {
                 <Grid container>
                     <Grid item xs={12} container alignItems={"center"} spacing={4}>
                         <Grid item xs={12} display={"flex"} justifyContent={"center"}>
-                            <img src={getSkill(skill).iconPath} alt={"C#"} style={{ width: 100, height: "auto" }} />
+                            <img src={getSkill(skill).iconPath} alt={"C#"} style={{ width: 80, height: "auto" }} />
                         </Grid>
                         <Grid item xs={12} display={"flex"} justifyContent={"center"}>
                             <InfoChip text={skill} isActive={isHovered} />

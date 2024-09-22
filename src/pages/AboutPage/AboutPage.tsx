@@ -89,7 +89,7 @@ const AboutPage = (): JSX.Element => {
     );
 
     const skills = (
-        <Grid container justifyContent={"center"} alignItems={"center"} padding={12} gap={4}>
+        <Grid container justifyContent={"center"} alignItems={"center"} padding={8} gap={8}>
             <Grid item xs={12} container spacing={4}>
                 <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
                     <SkillCard skill={Skill.Csharp} />
@@ -98,7 +98,7 @@ const AboutPage = (): JSX.Element => {
                     <SkillCard skill={Skill.Typescript} />
                 </Grid>
                 <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
-                    <SkillCard skill={Skill.MongoDb} />
+                    <SkillCard skill={Skill.Database} />
                 </Grid>
             </Grid>
             <Grid item xs={12} container justifyContent={"center"} spacing={4}>

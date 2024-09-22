@@ -1,7 +1,7 @@
 export enum Skill {
     Csharp = "C#",
     Typescript = "TypeScript",
-    MongoDb = "Mongo DB",
+    Database = "Database Management",
     Python = "Python",
     Cpp = "C/C++",
 }

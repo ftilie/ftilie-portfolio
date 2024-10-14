@@ -23,10 +23,11 @@ const grayTextStyle: React.CSSProperties = {
 
 const AboutPage = (): JSX.Element => {
     const theme = useTheme();
-    const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+    const isSmScreen = useMediaQuery(theme.breakpoints.down("sm"));
+    const isXlScreen = useMediaQuery(theme.breakpoints.up('xl'));
     const pageHeading = (
         <Grid container justifyContent={"center"} direction={"row"} alignItems={"center"} spacing={2}>
-            {isSmallScreen ? (
+            {isSmScreen ? (
                 <></>
             ) : (
                 <Grid item container xs={6} direction={"column"}>
@@ -68,7 +69,7 @@ const AboutPage = (): JSX.Element => {
                     </Grid>
                 </Grid>
             )}
-            <Grid item xs={isSmallScreen ? 12 : 6} container direction={"column"}>
+            <Grid item xs={isSmScreen ? 12 : 6} container direction={"column"}>
                 <Typography style={whiteTextStyle}>Hi 👋</Typography>
                 <Stack direction={"row"} gap={2}>
                     <Typography style={whiteTextStyle}>I'm</Typography>
@@ -91,21 +92,21 @@ const AboutPage = (): JSX.Element => {
     const skills = (
         <Grid container justifyContent={"center"} alignItems={"center"} padding={8} gap={8}>
             <Grid item xs={12} container spacing={4}>
-                <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+                <Grid item display={"flex"} justifyContent={isXlScreen ? "end": "center"} xs={12} sm={12} md={4} lg={4} xl={4}>
                     <SkillCard skill={Skill.Csharp} />
                 </Grid>
-                <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+                <Grid item display={"flex"} justifyContent={"center"} xs={12} sm={12} md={4} lg={4} xl={4}>
                     <SkillCard skill={Skill.Typescript} />
                 </Grid>
-                <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+                <Grid item display={"flex"} justifyContent={isXlScreen ? "start": "center"} xs={12} sm={12} md={4} lg={4} xl={4}>
                     <SkillCard skill={Skill.Database} />
                 </Grid>
             </Grid>
             <Grid item xs={12} container justifyContent={"center"} spacing={4}>
-                <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+                <Grid item display={"flex"} justifyContent={"center"} xs={12} sm={12} md={4} lg={4} xl={4}>
                     <SkillCard skill={Skill.Python} />
                 </Grid>
-                <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+                <Grid item display={"flex"} justifyContent={"center"} xs={12} sm={12} md={4} lg={4} xl={4}>
                     <SkillCard skill={Skill.Cpp} />
                 </Grid>
             </Grid>
@@ -113,11 +114,11 @@ const AboutPage = (): JSX.Element => {
     );
 
     return (
-        <div>
+        <Stack gap={16}>
             {pageHeading}
             {skills}
             <Outlet />
-        </div>
+        </Stack>
     );
 };
 

@@ -5,7 +5,7 @@ import { cppIcon, csharpIcon, mongoIcon, pythonIcon, typescriptIcon } from "~/ut
 import { Skill } from "~/utils/Enums";
 import { cppDescription, csharpDescription, mongoDescription, pythonDescription, typescriptDescription } from "~/utils/Constants";
 import { DarkThemeLightGrayAccentColor, WhiteBackgroundColor } from "~/utils/Theme";
-import { useState } from "react";
+import { CSSProperties, useState } from "react";
 
 const getSkill = (skill: Skill): { iconPath: string; description: string } => {
     switch (skill) {
@@ -22,6 +22,8 @@ const getSkill = (skill: Skill): { iconPath: string; description: string } => {
     }
 };
 
+const styleOverrides: CSSProperties = { maxWidth: "500px" };
+
 type SkillCardProps = {
     skill: Skill;
 };
@@ -33,17 +35,17 @@ const SkillCard = ({ skill }: SkillCardProps): JSX.Element => {
     };
 
     return (
-        <div onMouseEnter={handleHover} onMouseLeave={handleHover} style={{ height: "100%" }}>
-            <Card isInteractable>
-                <Grid container>
-                    <Grid item xs={12} container alignItems={"center"} spacing={4}>
-                        <Grid item xs={12} display={"flex"} justifyContent={"center"}>
+        <div onMouseEnter={handleHover} onMouseLeave={handleHover} style={{ height: "100%", width: "500px", display: "flex", justifyContent: "center" }}>
+            <Card isInteractable styleOverrides={styleOverrides}>
+                <Grid container style={{ height: "100%" }}>
+                    <Grid item xs={12} container alignItems={"center"} spacing={4} style={{ height: "100%" }}>
+                        <Grid item xs={12} display={"flex"} justifyContent={"center"} style={{ height: "50%" }}>
                             <img src={getSkill(skill).iconPath} alt={"C#"} style={{ width: 80, height: "auto" }} />
                         </Grid>
-                        <Grid item xs={12} display={"flex"} justifyContent={"center"}>
+                        <Grid item xs={12} display={"flex"} justifyContent={"center"} style={{ height: "20%" }}>
                             <InfoChip text={skill} isActive={isHovered} />
                         </Grid>
-                        <Grid item xs={12} display={"flex"} justifyContent={"center"} textAlign={"center"}>
+                        <Grid item xs={12} display={"flex"} justifyContent={"center"} textAlign={"center"} style={{ height: "30%" }}>
                             <Typography variant="h4" style={{ color: isHovered ? WhiteBackgroundColor : DarkThemeLightGrayAccentColor }}>
                                 {getSkill(skill).description}
                             </Typography>

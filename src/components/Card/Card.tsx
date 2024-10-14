@@ -1,7 +1,7 @@
 import { Stack } from "@mui/material";
 import { DarkThemeCardColor, DarkThemeHoveredCardColor } from "~/utils/Theme";
 
-type CardProps = {
+export type CardProps = {
     children: JSX.Element;
     isInteractable?: boolean | undefined;
     isSelected?: boolean | undefined;

@@ -4,14 +4,18 @@ import { DarkThemeGrayAccentColor, WhiteBackgroundColor } from "~/utils/Theme";
 import SkillCard from "./SkillCard/SkillCard";
 import { Skill } from "~/utils/Enums";
 
-const whiteTextStyle: React.CSSProperties = {
+const headerWhiteTextStyle: React.CSSProperties = {
     fontFamily: "Public Sans",
     fontWeight: "bold",
     fontSize: 32,
     color: WhiteBackgroundColor,
+    userSelect: "none",
+    WebkitUserSelect: "none",
+    MozUserSelect: "none",
+    msUserSelect: "none",
 };
 
-const grayTextStyle: React.CSSProperties = {
+const headerGrayTextStyle: React.CSSProperties = {
     fontFamily: "Public Sans",
     fontWeight: "bold",
     color: DarkThemeGrayAccentColor,
@@ -25,6 +29,7 @@ const AboutPage = (): JSX.Element => {
     const theme = useTheme();
     const isSmScreen = useMediaQuery(theme.breakpoints.down("sm"));
     const isXlScreen = useMediaQuery(theme.breakpoints.up('xl'));
+    
     const pageHeading = (
         <Grid container justifyContent={"center"} direction={"row"} alignItems={"center"} spacing={2}>
             {isSmScreen ? (
@@ -43,15 +48,15 @@ const AboutPage = (): JSX.Element => {
                                     marginRight: 4,
                                 }}
                             >
-                                <Typography style={grayTextStyle} fontSize={64}>
+                                <Typography style={headerGrayTextStyle} fontSize={64}>
                                     C#
                                 </Typography>
                             </Box>
                             <Stack direction={"column"}>
-                                <Typography style={grayTextStyle} fontSize={32} display={"flex"} justifyContent={"end"}>
+                                <Typography style={headerGrayTextStyle} fontSize={32} display={"flex"} justifyContent={"end"}>
                                     Type
                                 </Typography>
-                                <Typography style={grayTextStyle} fontSize={32} display={"flex"} justifyContent={"end"}>
+                                <Typography style={headerGrayTextStyle} fontSize={32} display={"flex"} justifyContent={"end"}>
                                     Script
                                 </Typography>
                             </Stack>
@@ -59,10 +64,10 @@ const AboutPage = (): JSX.Element => {
                     </Grid>
                     <Grid item xs={6} container direction={"row"} display={"flex"} justifyContent={"end"}>
                         <Stack direction={"row"} spacing={2}>
-                            <Typography style={grayTextStyle} fontSize={32}>
+                            <Typography style={headerGrayTextStyle} fontSize={32}>
                                 Python
                             </Typography>
-                            <Typography style={grayTextStyle} fontSize={32}>
+                            <Typography style={headerGrayTextStyle} fontSize={32}>
                                 C/C++
                             </Typography>
                         </Stack>
@@ -70,11 +75,11 @@ const AboutPage = (): JSX.Element => {
                 </Grid>
             )}
             <Grid item xs={isSmScreen ? 12 : 6} container direction={"column"}>
-                <Typography style={whiteTextStyle}>Hi 👋</Typography>
+                <Typography style={headerWhiteTextStyle}>Hi 👋</Typography>
                 <Stack direction={"row"} gap={2}>
-                    <Typography style={whiteTextStyle}>I'm</Typography>
+                    <Typography style={headerWhiteTextStyle}>I'm</Typography>
                     <Typography
-                        style={whiteTextStyle}
+                        style={headerWhiteTextStyle}
                         sx={{
                             background: "linear-gradient(to right, rgb(222, 91, 181), rgb(145, 70, 255))",
                             WebkitBackgroundClip: "text",
@@ -84,7 +89,7 @@ const AboutPage = (): JSX.Element => {
                         Florin
                     </Typography>
                 </Stack>
-                <Typography style={whiteTextStyle}>Software Engineer</Typography>
+                <Typography style={headerWhiteTextStyle}>Software Engineer</Typography>
             </Grid>
         </Grid>
     );

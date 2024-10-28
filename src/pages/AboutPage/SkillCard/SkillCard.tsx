@@ -7,7 +7,7 @@ import { cppDescription, csharpDescription, mongoDescription, pythonDescription,
 import { DarkThemeLightGrayAccentColor, WhiteBackgroundColor } from "~/utils/Theme";
 import { CSSProperties, useState } from "react";
 
-const getSkill = (skill: Skill): { iconPath: string; description: string } => {
+const getSkill = (skill: Skill): { iconPath: string; description: string, additionalIconPaths?: string[], extendedDescription?: string } => {
     switch (skill) {
         case Skill.Csharp:
             return { iconPath: csharpIcon, description: csharpDescription };
@@ -34,6 +34,17 @@ const SkillCard = ({ skill }: SkillCardProps): JSX.Element => {
         setIsHovered(!isHovered);
     };
 
+    const substituteBox = (
+        <Box
+            style={{
+                width: isHovered ? 0 : 80,
+                height: isHovered ? 0 : 80,
+                transition: "width 0.35s ease",
+                overflow: "hidden",
+            }}
+        ></Box>
+    );
+
     return (
         <div onMouseEnter={handleHover} onMouseLeave={handleHover} style={{ height: "100%", width: "500px", display: "flex", justifyContent: "center" }}>
             <Card isInteractable styleOverrides={styleOverrides}>
@@ -41,14 +52,8 @@ const SkillCard = ({ skill }: SkillCardProps): JSX.Element => {
                     <Grid item xs={12} container alignItems={"center"} spacing={4} style={{ height: "100%" }}>
                         <Grid item xs={12} display={"flex"} justifyContent={"center"} style={{ height: "50%" }} alignItems={"center"}>
                             <Stack direction={"row"} style={{ backgroundColor: "inherit" }}>
-                                <div
-                                    style={{
-                                        width: isHovered ? 0 : 80,
-                                        height: isHovered ? 0 : 80,
-                                        transition: "width 0.3s ease",
-                                        overflow: "hidden",
-                                    }}
-                                ></div>
+                                {substituteBox}
+                                {substituteBox}
 
                                 <Box
                                     component="img"
@@ -62,16 +67,16 @@ const SkillCard = ({ skill }: SkillCardProps): JSX.Element => {
                                 />
 
                                 {!isHovered ? (
-                                    <div
-                                        style={{
-                                            width: isHovered ? 0 : 80,
-                                            height: isHovered ? 0 : 80,
-                                            transition: "width 0.3s ease",
-                                            overflow: "hidden",
-                                        }}
-                                    ></div>
+                                    substituteBox
                                 ) : (
                                     <Zoom in={isHovered} style={{ transitionDelay: isHovered ? "250ms" : "0ms" }}>
+                                        <Box component="img" src={getSkill(skill).iconPath} alt={"skill"} style={{ width: 80, height: 80, marginRight: isHovered ? 20 : 0 }} />
+                                    </Zoom>
+                                )}
+                                {!isHovered ? (
+                                    substituteBox
+                                ) : (
+                                    <Zoom in={isHovered} style={{ transitionDelay: isHovered ? "350ms" : "0ms" }}>
                                         <Box component="img" src={getSkill(skill).iconPath} alt={"skill"} style={{ width: 80, height: 80 }} />
                                     </Zoom>
                                 )}

@@ -96,7 +96,7 @@ const AboutPage = (): JSX.Element => {
 
     const skills = (
         <Grid container justifyContent={"center"} alignItems={"center"} padding={8} gap={8}>
-            <Grid item xs={12} container spacing={4}>
+            <Grid item xs={12} container spacing={4} alignItems={"center"}>
                 <Grid item display={"flex"} justifyContent={isXlScreen ? "end": "center"} xs={12} sm={12} md={4} lg={4} xl={4}>
                     <SkillCard skill={Skill.Csharp} />
                 </Grid>

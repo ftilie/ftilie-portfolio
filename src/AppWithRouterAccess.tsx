@@ -27,7 +27,7 @@ const RootNavLinks = (): JSX.Element => {
     const navigate = useNavigate();
     const prevPathname = useRef(location.pathname);
 
-    const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
     useEffect(() => {
         if (prevPathname.current !== location.pathname) {

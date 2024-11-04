@@ -7,7 +7,7 @@ import { cppDescription, csharpDescription, mongoDescription, pythonDescription,
 import { DarkThemeLightGrayAccentColor, WhiteBackgroundColor } from "~/utils/Theme";
 import { CSSProperties, useState } from "react";
 
-const getSkill = (skill: Skill): { iconPath: string; description: string, additionalIconPaths?: string[], extendedDescription?: string } => {
+const getSkill = (skill: Skill): { iconPath: string; description: string; additionalIconPaths?: string[]; extendedDescription?: string } => {
     switch (skill) {
         case Skill.Csharp:
             return { iconPath: csharpIcon, description: csharpDescription };
@@ -22,7 +22,11 @@ const getSkill = (skill: Skill): { iconPath: string; description: string, additi
     }
 };
 
-const styleOverrides: CSSProperties = { maxWidth: "500px", cursor: "default" };
+const styleOverrides: CSSProperties = { maxWidth: "500px", cursor: "default", display: "flex", alignItems: "center", height: "250px" };
+
+/* Skill card width is set to 350px so in order to accomodate the rendering of all substituteBoxes on smaller screens 
+the icon size had to be adjusted*/
+const ICON_SIZE = 55;
 
 type SkillCardProps = {
     skill: Skill;
@@ -30,15 +34,15 @@ type SkillCardProps = {
 
 const SkillCard = ({ skill }: SkillCardProps): JSX.Element => {
     const [isHovered, setIsHovered] = useState(false);
-    const handleHover = () => {
-        setIsHovered(!isHovered);
+    const handleHover = (value: boolean) => {
+        setIsHovered(value);
     };
 
     const substituteBox = (
         <Box
             style={{
-                width: isHovered ? 0 : 80,
-                height: isHovered ? 0 : 80,
+                width: isHovered ? 0 : ICON_SIZE,
+                height: isHovered ? 0 : ICON_SIZE,
                 transition: "width 0.35s ease",
                 overflow: "hidden",
             }}
@@ -46,54 +50,57 @@ const SkillCard = ({ skill }: SkillCardProps): JSX.Element => {
     );
 
     return (
-        <div onMouseEnter={handleHover} onMouseLeave={handleHover} style={{ height: "100%", width: "500px", display: "flex", justifyContent: "center" }}>
-            <Card isInteractable styleOverrides={styleOverrides}>
-                <Grid container style={{ height: "100%" }}>
-                    <Grid item xs={12} container alignItems={"center"} spacing={4} style={{ height: "100%" }}>
-                        <Grid item xs={12} display={"flex"} justifyContent={"center"} style={{ height: "50%" }} alignItems={"center"}>
-                            <Stack direction={"row"} style={{ backgroundColor: "inherit" }}>
-                                {substituteBox}
-                                {substituteBox}
+        <Box padding={2} height={250}>
+            <Box onMouseEnter={() => handleHover(true)} onMouseLeave={() => handleHover(false)} style={{ display: "flex", justifyContent: "center" }}>
+                <Card isInteractable styleOverrides={styleOverrides}>
+                    <Grid container style={{ height: "100%" }}>
+                        <Grid item xs={12} container alignItems={"center"} spacing={4} style={{ height: "100%" }}>
+                            <Grid item xs={12} display={"flex"} justifyContent={"center"} style={{ height: "50%" }} alignItems={"center"}>
+                                <Stack direction={"row"} style={{ backgroundColor: "inherit", display: "flex", alignItems: "center", height: "80px" }}>
+                                    {substituteBox}
+                                    {substituteBox}
 
-                                <Box
-                                    component="img"
-                                    src={getSkill(skill).iconPath}
-                                    alt={"skill"}
-                                    style={{
-                                        width: 80,
-                                        height: 80,
-                                        marginRight: isHovered ? 20 : 0,
-                                    }}
-                                />
+                                    <Box
+                                        component="img"
+                                        src={getSkill(skill).iconPath}
+                                        alt={"skill"}
+                                        style={{
+                                            width: isHovered ? ICON_SIZE : 80,
+                                            height: isHovered ? ICON_SIZE : 80,
+                                            marginRight: isHovered ? 20 : 0,
+                                            transition: "transform 0.35s ease",
+                                        }}
+                                    />
 
-                                {!isHovered ? (
-                                    substituteBox
-                                ) : (
-                                    <Zoom in={isHovered} style={{ transitionDelay: isHovered ? "250ms" : "0ms" }}>
-                                        <Box component="img" src={getSkill(skill).iconPath} alt={"skill"} style={{ width: 80, height: 80, marginRight: isHovered ? 20 : 0 }} />
-                                    </Zoom>
-                                )}
-                                {!isHovered ? (
-                                    substituteBox
-                                ) : (
-                                    <Zoom in={isHovered} style={{ transitionDelay: isHovered ? "350ms" : "0ms" }}>
-                                        <Box component="img" src={getSkill(skill).iconPath} alt={"skill"} style={{ width: 80, height: 80 }} />
-                                    </Zoom>
-                                )}
-                            </Stack>
-                        </Grid>
-                        <Grid item xs={12} display={"flex"} justifyContent={"center"} style={{ height: "20%" }}>
-                            <InfoChip text={skill} isActive={isHovered} />
-                        </Grid>
-                        <Grid item xs={12} display={"flex"} justifyContent={"center"} textAlign={"center"} style={{ height: "30%" }}>
-                            <Typography variant="h4" style={{ color: isHovered ? WhiteBackgroundColor : DarkThemeLightGrayAccentColor }}>
-                                {getSkill(skill).description}
-                            </Typography>
+                                    {!isHovered ? (
+                                        substituteBox
+                                    ) : (
+                                        <Zoom in={isHovered} style={{ transitionDelay: isHovered ? "250ms" : "0ms" }}>
+                                            <Box component="img" src={getSkill(skill).iconPath} alt={"skill"} style={{ width: ICON_SIZE, height: ICON_SIZE, marginRight: isHovered ? 20 : 0 }} />
+                                        </Zoom>
+                                    )}
+                                    {!isHovered ? (
+                                        substituteBox
+                                    ) : (
+                                        <Zoom in={isHovered} style={{ transitionDelay: isHovered ? "350ms" : "0ms" }}>
+                                            <Box component="img" src={getSkill(skill).iconPath} alt={"skill"} style={{ width: ICON_SIZE, height: ICON_SIZE }} />
+                                        </Zoom>
+                                    )}
+                                </Stack>
+                            </Grid>
+                            <Grid item xs={12} display={"flex"} justifyContent={"center"} style={{ height: "20%" }}>
+                                <InfoChip text={skill} isActive={isHovered} />
+                            </Grid>
+                            <Grid item xs={12} display={"flex"} justifyContent={"center"} textAlign={"center"} style={{ height: "30%" }}>
+                                <Typography variant="h4" style={{ color: isHovered ? WhiteBackgroundColor : DarkThemeLightGrayAccentColor }}>
+                                    {getSkill(skill).description}
+                                </Typography>
+                            </Grid>
                         </Grid>
                     </Grid>
-                </Grid>
-            </Card>
-        </div>
+                </Card>
+            </Box>
+        </Box>
     );
 };
 

@@ -1,24 +1,81 @@
 import { Box, Grid, Stack, Typography, Zoom } from "@mui/material";
 import Card from "~/components/Card/Card";
 import InfoChip from "~/components/InfoChip/InfoChip";
-import { cppIcon, csharpIcon, mongoIcon, pythonIcon, typescriptIcon } from "~/utils/Icons";
+import { cIcon, cppIcon, csharpIcon, dotNetIcon, mongoIcon, protobufIcon, pythonIcon, pytorchIcon, reactIcon, sqlIcon, tanStackIcon, tensorflowIcon, typescriptIcon } from "~/utils/Icons";
 import { Skill } from "~/utils/Enums";
 import { cppDescription, csharpDescription, mongoDescription, pythonDescription, typescriptDescription } from "~/utils/Constants";
 import { DarkThemeLightGrayAccentColor, WhiteBackgroundColor } from "~/utils/Theme";
 import { CSSProperties, useState } from "react";
 
-const getSkill = (skill: Skill): { iconPath: string; description: string; additionalIconPaths?: string[]; extendedDescription?: string } => {
+const getSkill = (skill: Skill): { iconPath: string; description: string; additionalIconPaths?: { path: string; tooltip: string }[]; extendedDescription?: string } => {
     switch (skill) {
         case Skill.Csharp:
-            return { iconPath: csharpIcon, description: csharpDescription };
+            return {
+                iconPath: csharpIcon,
+                description: csharpDescription,
+                additionalIconPaths: [
+                    {
+                        path: dotNetIcon,
+                        tooltip: "dotNet",
+                    },
+                    {
+                        path: protobufIcon,
+                        tooltip: "Protobuf",
+                    },
+                ],
+            };
         case Skill.Typescript:
-            return { iconPath: typescriptIcon, description: typescriptDescription };
+            return {
+                iconPath: typescriptIcon,
+                description: typescriptDescription,
+                additionalIconPaths: [
+                    {
+                        path: reactIcon,
+                        tooltip: "React",
+                    },
+                    {
+                        path: tanStackIcon,
+                        tooltip: "TanStack",
+                    },
+                ],
+            };
         case Skill.Database:
-            return { iconPath: mongoIcon, description: mongoDescription };
+            return {
+                iconPath: mongoIcon,
+                description: mongoDescription,
+                additionalIconPaths: [
+                    {
+                        path: sqlIcon,
+                        tooltip: "SQL",
+                    },
+                ],
+            };
         case Skill.Python:
-            return { iconPath: pythonIcon, description: pythonDescription };
+            return {
+                iconPath: pythonIcon,
+                description: pythonDescription,
+                additionalIconPaths: [
+                    {
+                        path: tensorflowIcon,
+                        tooltip: "Tensorflow",
+                    },
+                    {
+                        path: pytorchIcon,
+                        tooltip: "Pytorch",
+                    },
+                ],
+            };
         case Skill.Cpp:
-            return { iconPath: cppIcon, description: cppDescription };
+            return {
+                iconPath: cppIcon,
+                description: cppDescription,
+                additionalIconPaths: [
+                    {
+                        path: cIcon,
+                        tooltip: "C",
+                    },
+                ],
+            };
     }
 };
 
@@ -26,7 +83,7 @@ const styleOverrides: CSSProperties = { maxWidth: "500px", cursor: "default", di
 
 /* Skill card width is set to 350px so in order to accomodate the rendering of all substituteBoxes on smaller screens 
 the icon size had to be adjusted*/
-const ICON_SIZE = 55;
+const ICON_SIZE = 60;
 
 type SkillCardProps = {
     skill: Skill;
@@ -56,35 +113,37 @@ const SkillCard = ({ skill }: SkillCardProps): JSX.Element => {
                     <Grid container style={{ height: "100%" }}>
                         <Grid item xs={12} container alignItems={"center"} spacing={4} style={{ height: "100%" }}>
                             <Grid item xs={12} display={"flex"} justifyContent={"center"} style={{ height: "50%" }} alignItems={"center"}>
-                                <Stack direction={"row"} style={{ backgroundColor: "inherit", display: "flex", alignItems: "center", height: "80px" }}>
-                                    {substituteBox}
-                                    {substituteBox}
+                                <Stack direction={"row"} style={{ backgroundColor: "inherit" }}>
+                                    {getSkill(skill).additionalIconPaths?.map((value, index) => <Box key={index}>{substituteBox}</Box>)}
 
                                     <Box
                                         component="img"
                                         src={getSkill(skill).iconPath}
-                                        alt={"skill"}
+                                        alt="skill"
                                         style={{
-                                            width: isHovered ? ICON_SIZE : 80,
-                                            height: isHovered ? ICON_SIZE : 80,
-                                            marginRight: isHovered ? 20 : 0,
-                                            transition: "transform 0.35s ease",
+                                            width: ICON_SIZE,
+                                            height: ICON_SIZE,
+                                            marginRight: (getSkill(skill).additionalIconPaths?.length ?? 0) > 0 && isHovered ? 20 : 0,
                                         }}
                                     />
 
-                                    {!isHovered ? (
-                                        substituteBox
-                                    ) : (
-                                        <Zoom in={isHovered} style={{ transitionDelay: isHovered ? "250ms" : "0ms" }}>
-                                            <Box component="img" src={getSkill(skill).iconPath} alt={"skill"} style={{ width: ICON_SIZE, height: ICON_SIZE, marginRight: isHovered ? 20 : 0 }} />
-                                        </Zoom>
-                                    )}
-                                    {!isHovered ? (
-                                        substituteBox
-                                    ) : (
-                                        <Zoom in={isHovered} style={{ transitionDelay: isHovered ? "350ms" : "0ms" }}>
-                                            <Box component="img" src={getSkill(skill).iconPath} alt={"skill"} style={{ width: ICON_SIZE, height: ICON_SIZE }} />
-                                        </Zoom>
+                                    {getSkill(skill).additionalIconPaths?.map((value, index) =>
+                                        !isHovered ? (
+                                            <Box key={index}>{substituteBox}</Box>
+                                        ) : (
+                                            <Zoom key={index} in={isHovered} style={{ transitionDelay: isHovered ? `${250 + index * 100}ms` : "0ms" }}>
+                                                <Box
+                                                    component="img"
+                                                    src={value.path}
+                                                    alt="skill"
+                                                    style={{
+                                                        width: ICON_SIZE,
+                                                        height: ICON_SIZE,
+                                                        marginRight: (getSkill(skill).additionalIconPaths?.length ?? 0) !== index + 1 && isHovered ? 20 : 0,
+                                                    }}
+                                                />
+                                            </Zoom>
+                                        )
                                     )}
                                 </Stack>
                             </Grid>

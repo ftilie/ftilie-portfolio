@@ -110,7 +110,7 @@ const AboutPage = (): JSX.Element => {
     );
 
     const skills = (
-        <Grid container justifyContent="center" alignItems="center" padding={8} gap={8}>
+        <Grid container justifyContent="center" alignItems="center" gap={8}>
             <Grid item xs={12} container spacing={4} alignItems="center">
                 <Grid item {...skillGridItemStyles} justifyContent={isXlScreen ? "end" : "center"}>
                     <SkillCard skill={SkillEnum.Csharp} />
@@ -134,22 +134,10 @@ const AboutPage = (): JSX.Element => {
     );
 
     return (
-        <Box
-            sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                minHeight: "100%",
-                overflow: "auto",
-                position: "relative",
-            }}
-        >
-            <Stack gap={16} sx={{ position: "relative", zIndex: 1 }}>
-                {pageHeading}
-                {skills}
-            </Stack>
-        </Box>
+        <Stack gap={16} sx={{ position: "relative", zIndex: 1 }}>
+            {pageHeading}
+            {skills}
+        </Stack>
     );
 };
 

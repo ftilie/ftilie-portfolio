@@ -1,6 +1,7 @@
 import { Avatar, Box, Button, Stack } from "@mui/material";
 import { DarkThemeHeaderColor } from "~/utils/Theme";
 import { useMatches } from "react-router-dom";
+import { HEADER_HEIGHT } from "~/utils/Constants";
 
 const Header = (): JSX.Element => {
     const matches = useMatches();
@@ -36,7 +37,7 @@ const Header = (): JSX.Element => {
 
     return (
         <>
-            <Stack sx={{ backgroundColor: DarkThemeHeaderColor, zIndex: 1, height: "6vh", width: "100vw" }}>
+            <Stack sx={{ backgroundColor: DarkThemeHeaderColor, zIndex: 1, height: HEADER_HEIGHT, width: "100vw", alignSelf: "center" }}>
                 <Stack direction="row" alignItems="center" justifyContent="space-between">
                     <Stack direction="row" alignItems="center" justifyContent="left">
                         {headerLogo}

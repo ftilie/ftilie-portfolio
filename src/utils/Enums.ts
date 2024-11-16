@@ -1,4 +1,4 @@
-export enum Skill {
+export enum SkillEnum {
     Csharp = "C#",
     Typescript = "TypeScript",
     Database = "Database Management",

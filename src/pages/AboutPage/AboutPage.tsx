@@ -2,7 +2,7 @@ import { Box, Grid, Stack, Typography, useMediaQuery, useTheme } from "@mui/mate
 import { Outlet } from "react-router-dom";
 import { DarkThemeGrayAccentColor, WhiteBackgroundColor } from "~/utils/Theme";
 import SkillCard from "./SkillCard/SkillCard";
-import { Skill } from "~/utils/Enums";
+import { SkillEnum } from "~/utils/Enums";
 
 const headerWhiteTextStyle: React.CSSProperties = {
     fontFamily: "Public Sans",
@@ -27,6 +27,18 @@ const headerGrayTextStyle: React.CSSProperties = {
 
 const MIN_SKILL_CARD_WIDTH = 350;
 const MAX_SKILL_CARD_WIDTH = 500;
+
+const skillGridItemStyles = {
+    display: "flex",
+    alignSelf: "stretch",
+    xs: 12,
+    sm: 12,
+    md: 12,
+    lg: 4,
+    xl: 4,
+    minWidth: MIN_SKILL_CARD_WIDTH,
+    maxWidth: MAX_SKILL_CARD_WIDTH,
+};
 
 const AboutPage = (): JSX.Element => {
     const theme = useTheme();
@@ -98,35 +110,46 @@ const AboutPage = (): JSX.Element => {
     );
 
     const skills = (
-        <Grid container justifyContent={"center"} alignItems={"center"} padding={8} gap={8}>
-            <Grid item xs={12} container spacing={4} alignItems={"center"}>
-                <Grid item display={"flex"} justifyContent={isXlScreen ? "end" : "center"} xs={12} sm={12} md={12} lg={4} xl={4} minWidth={MIN_SKILL_CARD_WIDTH} maxWidth={MAX_SKILL_CARD_WIDTH}>
-                    <SkillCard skill={Skill.Csharp} />
+        <Grid container justifyContent="center" alignItems="center" padding={8} gap={8}>
+            <Grid item xs={12} container spacing={4} alignItems="center">
+                <Grid item {...skillGridItemStyles} justifyContent={isXlScreen ? "end" : "center"}>
+                    <SkillCard skill={SkillEnum.Csharp} />
                 </Grid>
-                <Grid item display={"flex"} justifyContent={"center"} xs={12} sm={12} md={12} lg={4} xl={4} minWidth={MIN_SKILL_CARD_WIDTH} maxWidth={MAX_SKILL_CARD_WIDTH}>
-                    <SkillCard skill={Skill.Typescript} />
+                <Grid item {...skillGridItemStyles} justifyContent="center">
+                    <SkillCard skill={SkillEnum.Typescript} />
                 </Grid>
-                <Grid item display={"flex"} justifyContent={isXlScreen ? "start" : "center"} xs={12} sm={12} md={12} lg={4} xl={4} minWidth={MIN_SKILL_CARD_WIDTH} maxWidth={MAX_SKILL_CARD_WIDTH}>
-                    <SkillCard skill={Skill.Database} />
+                <Grid item {...skillGridItemStyles} justifyContent={isXlScreen ? "start" : "center"}>
+                    <SkillCard skill={SkillEnum.Database} />
                 </Grid>
             </Grid>
-            <Grid item xs={12} container justifyContent={"center"} spacing={4} alignItems={"center"}>
-                <Grid item display={"flex"} justifyContent={"center"} xs={12} sm={12} md={12} lg={4} xl={4} minWidth={MIN_SKILL_CARD_WIDTH} maxWidth={MAX_SKILL_CARD_WIDTH}>
-                    <SkillCard skill={Skill.Python} />
+            <Grid item xs={12} container justifyContent="center" spacing={4} alignItems="center">
+                <Grid item {...skillGridItemStyles} justifyContent="center">
+                    <SkillCard skill={SkillEnum.Python} />
                 </Grid>
-                <Grid item display={"flex"} justifyContent={"center"} xs={12} sm={12} md={12} lg={4} xl={4} minWidth={MIN_SKILL_CARD_WIDTH} maxWidth={MAX_SKILL_CARD_WIDTH}>
-                    <SkillCard skill={Skill.Cpp} />
+                <Grid item {...skillGridItemStyles} justifyContent="center">
+                    <SkillCard skill={SkillEnum.Cpp} />
                 </Grid>
             </Grid>
         </Grid>
     );
 
     return (
-        <Stack gap={16}>
-            {pageHeading}
-            {skills}
-            <Outlet />
-        </Stack>
+        <Box
+            sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                minHeight: "100%",
+                overflow: "auto",
+                position: "relative",
+            }}
+        >
+            <Stack gap={16} sx={{ position: "relative", zIndex: 1 }}>
+                {pageHeading}
+                {skills}
+            </Stack>
+        </Box>
     );
 };
 

@@ -20,7 +20,7 @@ const Card = (props: CardProps): JSX.Element => {
             alignItems={"stretch"}
             justifyContent={"flex-start"}
             padding={2}
-            style={{ ...styleOverrides, height: "100%" }}
+            style={{ ...styleOverrides, height: "100%", width: "100%" }}
             sx={
                 isInteractable
                     ? { ...cardContainerStyles, ...cardContainerOverrides, backgroundColor: isSelected ? DarkThemeHoveredCardColor : DarkThemeCardColor, cursor: isInteractable ? "pointer" : "default" }

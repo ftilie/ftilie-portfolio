@@ -308,7 +308,7 @@ export const customMuiTheme = createTheme({
                     backgroundColor: DarkThemeLightPurpleAccentColor,
                 },
             },
-            variants:[
+            variants: [
                 {
                     props: { variant: "outlinedChip" },
                     style: {
@@ -319,13 +319,12 @@ export const customMuiTheme = createTheme({
                         "&:hover": { borderColor: DarkThemeLightPurpleAccentColor },
                     },
                 },
-
-            ]
+            ],
         },
         MuiTooltip: {
             defaultProps: {
                 placement: "top",
-                followCursor: true,
+                followCursor: false,
             },
             styleOverrides: {
                 tooltip: {

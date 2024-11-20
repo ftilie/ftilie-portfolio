@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import { DarkThemeGrayAccentColor, WhiteBackgroundColor } from "~/utils/Theme";
 import SkillCard from "./SkillCard/SkillCard";
 import { SkillEnum } from "~/utils/Enums";
+import { HEADER_HEIGHT } from "~/utils/Constants";
 
 const headerWhiteTextStyle: React.CSSProperties = {
     fontFamily: "Public Sans",
@@ -46,7 +47,7 @@ const AboutPage = (): JSX.Element => {
     const isXlScreen = useMediaQuery(theme.breakpoints.up("xl"));
 
     const pageHeading = (
-        <Grid container justifyContent={"center"} direction={"row"} alignItems={"center"} spacing={2}>
+        <Grid container justifyContent={"center"} direction={"row"} alignItems={"center"} spacing={2} height={"30vh"}>
             {isSmScreen ? (
                 <></>
             ) : (
@@ -111,8 +112,8 @@ const AboutPage = (): JSX.Element => {
 
     const skills = (
         <Grid container justifyContent="center" alignItems="center" gap={8}>
-            <Grid item xs={12} container spacing={4} alignItems="center">
-                <Grid item {...skillGridItemStyles} justifyContent={isXlScreen ? "end" : "center"}>
+            <Grid item xs={12} container justifyContent="center" alignItems="center">
+                <Grid item {...skillGridItemStyles} justifyContent={isXlScreen ? "end" : "center"} height={"100%"}>
                     <SkillCard skill={SkillEnum.Csharp} />
                 </Grid>
                 <Grid item {...skillGridItemStyles} justifyContent="center">
@@ -122,7 +123,7 @@ const AboutPage = (): JSX.Element => {
                     <SkillCard skill={SkillEnum.Database} />
                 </Grid>
             </Grid>
-            <Grid item xs={12} container justifyContent="center" spacing={4} alignItems="center">
+            <Grid item xs={12} container justifyContent="center" alignItems="center">
                 <Grid item {...skillGridItemStyles} justifyContent="center">
                     <SkillCard skill={SkillEnum.Python} />
                 </Grid>
@@ -134,7 +135,7 @@ const AboutPage = (): JSX.Element => {
     );
 
     return (
-        <Stack gap={16} sx={{ position: "relative", zIndex: 1 }}>
+        <Stack gap={16} sx={{ position: "relative", zIndex: 1, display: "flex", alignSelf: "center", height: `calc(90vh - ${HEADER_HEIGHT})` }}>
             {pageHeading}
             {skills}
         </Stack>

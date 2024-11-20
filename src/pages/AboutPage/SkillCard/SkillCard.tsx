@@ -34,6 +34,17 @@ type SkillCardProps = {
 
 const SkillCard = ({ skill }: SkillCardProps): JSX.Element => {
     const [isHovered, setIsHovered] = useState(false);
+    const [infoChipText, setInfoChipText] = useState(getSkill(skill).tooltip);
+    const [isInfoChipUpdating, setIsInfoChipUpdating] = useState(false);
+
+    const handleImageHover = (text: string) => {
+        setIsInfoChipUpdating(true);
+        setTimeout(() => {
+            setInfoChipText(text);
+            setIsInfoChipUpdating(false);
+        }, 200);
+    };
+
     const handleHover = (value: boolean) => {
         setIsHovered(value);
     };
@@ -51,11 +62,21 @@ const SkillCard = ({ skill }: SkillCardProps): JSX.Element => {
 
     return (
         <Box padding={2} width={"100%"} maxWidth={"500px"}>
-            <Box onMouseEnter={() => handleHover(true)} onMouseLeave={() => handleHover(false)} style={{ display: "flex", justifyContent: "center", height: "100%" }}>
+            <Box onMouseEnter={() => handleHover(true)} onMouseLeave={() => handleHover(false)} style={{ display: "flex", justifyContent: "center" }}>
                 <Card isInteractable styleOverrides={styleOverrides}>
                     <Grid container style={{ height: "100%", width: "100%" }}>
-                        <Grid item xs={12} container alignItems={"center"} spacing={4} style={{ height: "100%" }}>
-                            <Grid item xs={12} display={"flex"} justifyContent={"center"} style={{ height: "50%" }} alignItems={"center"}>
+                        <Grid item xs={12} container alignItems={"center"} padding={2} gap={4} style={{ height: "100%" }}>
+                            <Grid
+                                item
+                                xs={12}
+                                display={"flex"}
+                                justifyContent={"center"}
+                                style={{
+                                    height: "50%",
+                                    width: `${(1 + (getSkill(skill)?.additionalIconPaths?.length ?? 0)) * 100}px`,
+                                }}
+                                alignItems={"center"}
+                            >
                                 <Stack direction={"row"} style={{ backgroundColor: "inherit" }}>
                                     {/* To help center the main icon when the card is not selected */}
                                     {getSkill(skill).additionalIconPaths?.map((value, index) => <Box key={index}>{substituteBox}</Box>)}
@@ -69,7 +90,7 @@ const SkillCard = ({ skill }: SkillCardProps): JSX.Element => {
                                         style={{
                                             width: ICON_SIZE,
                                             height: ICON_SIZE,
-                                            marginRight: (getSkill(skill).additionalIconPaths?.length ?? 0) > 0 && isHovered ? 20 : 0,
+                                            paddingRight: (getSkill(skill).additionalIconPaths?.length ?? 0) > 0 && isHovered ? 20 : 0,
                                         }}
                                     />
                                     {/* </Tooltip> */}
@@ -79,25 +100,35 @@ const SkillCard = ({ skill }: SkillCardProps): JSX.Element => {
                                             <Box key={index}>{substituteBox}</Box>
                                         ) : (
                                             <Zoom key={index} in={isHovered} style={{ transitionDelay: isHovered ? `${250 + index * 100}ms` : "0ms" }}>
-                                                {/* <Tooltip title={value.tooltip}> */}
                                                 <Box
                                                     component="img"
                                                     src={value.path}
                                                     alt="skill"
+                                                    onMouseEnter={() => handleImageHover(value.tooltip)}
+                                                    onMouseLeave={() => handleImageHover(getSkill(skill).tooltip)}
                                                     style={{
                                                         width: ICON_SIZE,
                                                         height: ICON_SIZE,
-                                                        marginRight: (getSkill(skill).additionalIconPaths?.length ?? 0) !== index + 1 && isHovered ? 20 : 0,
+                                                        /* We prefer using padding instead of margin here to include the the added area
+                                                        in the same bounding box that triggers the onEnter/onLeave changes */
+                                                        paddingRight: (getSkill(skill).additionalIconPaths?.length ?? 0) !== index + 1 && isHovered ? 20 : 0,
                                                     }}
                                                 />
-                                                {/* </Tooltip> */}
                                             </Zoom>
                                         )
                                     )}
                                 </Stack>
                             </Grid>
                             <Grid item xs={12} display={"flex"} justifyContent={"center"} style={{ height: "20%" }}>
-                                <InfoChip text={skill} isActive={isHovered} />
+                                <Box
+                                    style={{
+                                        transition: "opacity 0.5s, transform 0.5s",
+                                        opacity: isInfoChipUpdating ? 0 : 1,
+                                        transform: isInfoChipUpdating ? "scale(0.8)" : "scale(1)",
+                                    }}
+                                >
+                                    <InfoChip text={infoChipText} isActive={isHovered} />
+                                </Box>
                             </Grid>
                             <Grid item xs={12} display={"flex"} justifyContent={"center"} textAlign={"center"} style={{ height: "30%" }}>
                                 <Typography variant="h4" style={{ color: isHovered ? WhiteBackgroundColor : DarkThemeLightGrayAccentColor }}>

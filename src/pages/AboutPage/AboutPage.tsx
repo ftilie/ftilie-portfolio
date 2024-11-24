@@ -1,11 +1,13 @@
 import { Box, Grid, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
-import { Outlet } from "react-router-dom";
 import { DarkThemeGrayAccentColor, WhiteBackgroundColor } from "~/utils/Theme";
 import SkillCard from "./SkillCard/SkillCard";
 import { SkillEnum } from "~/utils/Enums";
 import { HEADER_HEIGHT } from "~/utils/Constants";
-import { useEffect, useRef, useState } from "react";
 import DescriptionCarousel from "~/components/DescriptionCarousel/DescriptionCarousel";
+
+const MIN_SKILL_CARD_WIDTH = 350;
+const MAX_SKILL_CARD_WIDTH = 500;
+const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
 
 const headerWhiteTextStyle: React.CSSProperties = {
     fontFamily: "Public Sans",
@@ -28,9 +30,6 @@ const headerGrayTextStyle: React.CSSProperties = {
     msUserSelect: "none",
 };
 
-const MIN_SKILL_CARD_WIDTH = 350;
-const MAX_SKILL_CARD_WIDTH = 500;
-
 const skillGridItemStyles = {
     display: "flex",
     alignSelf: "stretch",
@@ -50,10 +49,12 @@ const sectionStyle = {
     justifyContent: "center",
     alignItems: "center",
     alignSelf: "center",
-    height: `calc(100vh - ${HEADER_HEIGHT})`,
+    ...(isMobile
+        ? {} // No height for mobile
+        : { height: `calc(100vh - ${HEADER_HEIGHT})` }),
     scrollSnapAlign: "start",
     paddingLeft: 8,
-    paddignRight: 8,
+    paddingRight: 8,
 };
 
 const AboutPage = (): JSX.Element => {
@@ -160,16 +161,18 @@ const AboutPage = (): JSX.Element => {
                 scrollBehavior: "smooth",
             }}
         >
-            {/* Skill Section */}
-            <Stack gap={16} sx={{ ...sectionStyle }}>
-                {pageHeading}
-                {skills}
-            </Stack>
+            <Stack gap={16}>
+                {/* Skill Section */}
+                <Stack gap={16} sx={{ ...sectionStyle }}>
+                    {pageHeading}
+                    {skills}
+                </Stack>
 
-            {/* Description Section */}
-            {/* <Stack gap={16} sx={{ ...sectionStyle }}>
-                {description}
-            </Stack> */}
+                {/* Description Section */}
+                {/* <Stack gap={16} sx={{ ...sectionStyle }}>
+                    {description}
+                </Stack> */}
+            </Stack>
         </Box>
     );
 };

@@ -4,3 +4,9 @@ export type Skill = {
     description: string;
     additionalIconPaths?: { path: string; tooltip: string }[];
 };
+
+export type CarouselDescription = {
+    se: string;
+    skills: string;
+    funFact: string;
+};

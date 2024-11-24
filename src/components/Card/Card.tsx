@@ -12,7 +12,7 @@ const cardContainerOverrides = { ":hover": { backgroundColor: DarkThemeHoveredCa
 
 const Card = (props: CardProps): JSX.Element => {
     const { children, isInteractable, isSelected, styleOverrides } = props;
-    const cardContainerStyles = { ...styleOverrides, borderRadius: "10px", backgroundColor: DarkThemeCardColor };
+    const cardContainerStyles = { ...styleOverrides, borderRadius: "20px", backgroundColor: DarkThemeCardColor };
 
     return (
         <Stack

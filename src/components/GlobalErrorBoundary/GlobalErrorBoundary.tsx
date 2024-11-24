@@ -14,7 +14,7 @@ const GlobalErrorBoundary = (): JSX.Element => {
     return (
         <div className="boundaryContainer">
             <Grid container spacing={0} direction={"column"}>
-                <Stack direction={"column"} display={"flex"} alignItems={"center"} justifyContent={"center"} style={{ height: "80vh" }}>
+                <Stack direction={"column"} display={"flex"} alignItems={"center"} justifyContent={"center"} style={{ height: "100vh" }}>
                     <Stack>
                         <IconButton disabled>
                             <BugReport fontSize="large" sx={{ width: "15vw", height: "15vw" }} />

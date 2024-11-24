@@ -4,6 +4,8 @@ import { DarkThemeGrayAccentColor, WhiteBackgroundColor } from "~/utils/Theme";
 import SkillCard from "./SkillCard/SkillCard";
 import { SkillEnum } from "~/utils/Enums";
 import { HEADER_HEIGHT } from "~/utils/Constants";
+import { useEffect, useRef, useState } from "react";
+import DescriptionCarousel from "~/components/DescriptionCarousel/DescriptionCarousel";
 
 const headerWhiteTextStyle: React.CSSProperties = {
     fontFamily: "Public Sans",
@@ -39,6 +41,19 @@ const skillGridItemStyles = {
     xl: 4,
     minWidth: MIN_SKILL_CARD_WIDTH,
     maxWidth: MAX_SKILL_CARD_WIDTH,
+};
+
+const sectionStyle = {
+    position: "relative",
+    zIndex: 1,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    alignSelf: "center",
+    height: `calc(100vh - ${HEADER_HEIGHT})`,
+    scrollSnapAlign: "start",
+    paddingLeft: 8,
+    paddignRight: 8,
 };
 
 const AboutPage = (): JSX.Element => {
@@ -134,11 +149,28 @@ const AboutPage = (): JSX.Element => {
         </Grid>
     );
 
+    const description = <DescriptionCarousel />;
+
     return (
-        <Stack gap={16} sx={{ position: "relative", zIndex: 1, display: "flex", alignSelf: "center", height: `calc(90vh - ${HEADER_HEIGHT})` }}>
-            {pageHeading}
-            {skills}
-        </Stack>
+        <Box
+            sx={{
+                height: `calc(100vh - ${HEADER_HEIGHT})`,
+                scrollSnapType: "y mandatory",
+                //overflowY: "scroll",
+                scrollBehavior: "smooth",
+            }}
+        >
+            {/* Skill Section */}
+            <Stack gap={16} sx={{ ...sectionStyle }}>
+                {pageHeading}
+                {skills}
+            </Stack>
+
+            {/* Description Section */}
+            {/* <Stack gap={16} sx={{ ...sectionStyle }}>
+                {description}
+            </Stack> */}
+        </Box>
     );
 };
 

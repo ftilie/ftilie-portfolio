@@ -6,7 +6,11 @@ export type Skill = {
 };
 
 export type CarouselDescription = {
-    se: string;
-    skills: string;
-    funFact: string;
+    skill: string;
+    description: string;
+};
+
+export type PersonalInterests = {
+    skill: string;
+    description: string;
 };

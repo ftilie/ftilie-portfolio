@@ -2,8 +2,9 @@ import { Box, Grid, Stack, Typography, useMediaQuery, useTheme } from "@mui/mate
 import { DarkThemeGrayAccentColor, WhiteBackgroundColor } from "~/utils/Theme";
 import SkillCard from "./SkillCard/SkillCard";
 import { SkillEnum } from "~/utils/Enums";
-import { HEADER_HEIGHT } from "~/utils/Constants";
+import { carouselDescription, HEADER_HEIGHT, personalInterests, SIDE_PADDING } from "~/utils/Constants";
 import DescriptionCarousel from "~/components/DescriptionCarousel/DescriptionCarousel";
+import InterestTabs from "~/components/InterestTabs/InterestTabs";
 
 const MIN_SKILL_CARD_WIDTH = 350;
 const MAX_SKILL_CARD_WIDTH = 500;
@@ -48,13 +49,12 @@ const sectionStyle = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    alignSelf: "center",
     ...(isMobile
         ? {} // No height for mobile
         : { height: `calc(100vh - ${HEADER_HEIGHT})` }),
     scrollSnapAlign: "start",
-    paddingLeft: 8,
-    paddingRight: 8,
+    paddingLeft: SIDE_PADDING,
+    paddingRight: SIDE_PADDING,
 };
 
 const AboutPage = (): JSX.Element => {
@@ -150,14 +150,28 @@ const AboutPage = (): JSX.Element => {
         </Grid>
     );
 
-    const description = <DescriptionCarousel />;
+    const description = (
+        <Grid container justifyContent="center" alignItems="center" gap={8}>
+            <Grid item xs={12}>
+                <DescriptionCarousel description={carouselDescription} />
+            </Grid>
+        </Grid>
+    );
+
+    const interests = (
+        <Grid container justifyContent="center" alignItems="center" gap={8}>
+            <Grid item xs={12}>
+                <InterestTabs interests={personalInterests} />
+            </Grid>
+        </Grid>
+    );
 
     return (
-        <Box
+        <Stack
             sx={{
                 height: `calc(100vh - ${HEADER_HEIGHT})`,
                 scrollSnapType: "y mandatory",
-                //overflowY: "scroll",
+                overflowY: "scroll",
                 scrollBehavior: "smooth",
             }}
         >
@@ -169,11 +183,12 @@ const AboutPage = (): JSX.Element => {
                 </Stack>
 
                 {/* Description Section */}
-                {/* <Stack gap={16} sx={{ ...sectionStyle }}>
+                <Stack gap={16} sx={{ ...sectionStyle }}>
                     {description}
-                </Stack> */}
+                    {interests}
+                </Stack>
             </Stack>
-        </Box>
+        </Stack>
     );
 };
 

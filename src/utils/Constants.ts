@@ -1,7 +1,8 @@
 import { csharpIcon, dotNetIcon, mongoIcon, protobufIcon, reactIcon, tanStackIcon, typescriptIcon, sqlIcon, pythonIcon, tensorflowIcon, pytorchIcon, cppIcon, cIcon } from "./Icons";
-import { CarouselDescription, Skill } from "./Types";
+import { CarouselDescription, PersonalInterests, Skill } from "./Types";
 
 export const HEADER_HEIGHT = "60px";
+export const SIDE_PADDING = 8;
 
 const getDiff = (startDate: string, endDate?: string) => {
     const start = new Date(startDate);
@@ -92,8 +93,37 @@ export const cppSkill: Skill = {
     ],
 };
 
-export const description: CarouselDescription = {
-    se: "A highly skilled and versatile Full-Stack Software Engineer with extensive experience in C# and TypeScript. Proficient in Python and C/C++, with a strong background in building and maintaining robust applications. Adept at using React for front-end development and well-versed in .NET for back-end services. Demonstrates comprehensive expertise in database management, optimization, and MongoDB aggregation pipelines. Known for effectively querying databases and enhancing data management systems to improve performance and scalability. Passionate about solving complex problems and delivering high-quality software solutions.",
-    skills: "Proficient in building dynamic and responsive web applications using the React framework. Skilled in creating reusable components, managing state with Redux or Context API, and integrating RESTful APIs. Experienced in modern JavaScript (ES6+), HTML, and CSS, with a strong understanding of front-end best practices and performance optimization. Capable of translating design wireframes into high-quality code and collaborating effectively within a team environment.",
-    funFact: '" Time control is the best super power "',
-};
+export const carouselDescription: CarouselDescription[] = [
+    {
+        skill: "Software Engineer",
+        description:
+            "A highly skilled and versatile Full-Stack Software Engineer with extensive experience in C# and TypeScript. Proficient in Python and C/C++, with a strong background in building and maintaining robust applications. Adept at using React for front-end development and well-versed in .NET for back-end services. Demonstrates comprehensive expertise in database management, optimization, and MongoDB aggregation pipelines. Known for effectively querying databases and enhancing data management systems to improve performance and scalability. Passionate about solving complex problems and delivering high-quality software solutions.",
+    },
+    {
+        skill: "Web Developer Skills",
+        description:
+            "Proficient in building dynamic and responsive web applications using the React framework. Skilled in creating reusable components, managing state with Redux or Context API, and integrating RESTful APIs. Experienced in modern JavaScript (ES6+), HTML, and CSS, with a strong understanding of front-end best practices and performance optimization. Capable of translating design wireframes into high-quality code and collaborating effectively within a team environment.",
+    },
+    {
+        skill: "Fun Fact",
+        description: '" Time control is the best super power "',
+    },
+];
+
+export const personalInterests: PersonalInterests[] = [
+    {
+        skill: "Computer Vision",
+        description:
+            "A highly skilled and versatile Full-Stack Software Engineer with extensive experience in C# and TypeScript. Proficient in Python and C/C++, with a strong background in building and maintaining robust applications. Adept at using React for front-end development and well-versed in .NET for back-end services. Demonstrates comprehensive expertise in database management, optimization, and MongoDB aggregation pipelines. Known for effectively querying databases and enhancing data management systems to improve performance and scalability. Passionate about solving complex problems and delivering high-quality software solutions.",
+    },
+    {
+        skill: "Design",
+        description:
+            "A highly skilled and versatile Full-Stack Software Engineer with extensive experience in C# and TypeScript. Proficient in Python and C/C++, with a strong background in building and maintaining robust applications. Adept at using React for front-end development and well-versed in .NET for back-end services. Demonstrates comprehensive expertise in database management, optimization, and MongoDB aggregation pipelines. Known for effectively querying databases and enhancing data management systems to improve performance and scalability. Passionate about solving complex problems and delivering high-quality software solutions.",
+    },
+    {
+        skill: "Web Development",
+        description:
+            "A highly skilled and versatile Full-Stack Software Engineer with extensive experience in C# and TypeScript. Proficient in Python and C/C++, with a strong background in building and maintaining robust applications. Adept at using React for front-end development and well-versed in .NET for back-end services. Demonstrates comprehensive expertise in database management, optimization, and MongoDB aggregation pipelines. Known for effectively querying databases and enhancing data management systems to improve performance and scalability. Passionate about solving complex problems and delivering high-quality software solutions.",
+    },
+];

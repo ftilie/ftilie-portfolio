@@ -2,9 +2,13 @@ import { Box, Grid, Stack, Typography, useMediaQuery, useTheme } from "@mui/mate
 import { DarkThemeGrayAccentColor, WhiteBackgroundColor } from "~/utils/Theme";
 import SkillCard from "./SkillCard/SkillCard";
 import { SkillEnum } from "~/utils/Enums";
-import { carouselDescription, HEADER_HEIGHT, personalInterests, SIDE_PADDING } from "~/utils/Constants";
+import { HEADER_HEIGHT, personalInterests, SIDE_PADDING } from "~/utils/Constants";
 import DescriptionCarousel from "~/components/DescriptionCarousel/DescriptionCarousel";
 import InterestTabs from "~/components/InterestTabs/InterestTabs";
+import SoftwareEngineerDescription from "~/components/DescriptionCarousel/SoftwareEngineerDescription";
+import WebDevelopmentDescription from "~/components/DescriptionCarousel/WebDevelopmentDescription";
+import FunFactDescription from "~/components/DescriptionCarousel/FunFactDescription";
+import CardStack from "~/components/CardStack/CardStack";
 
 const MIN_SKILL_CARD_WIDTH = 350;
 const MAX_SKILL_CARD_WIDTH = 500;
@@ -153,7 +157,25 @@ const AboutPage = (): JSX.Element => {
     const description = (
         <Grid container justifyContent="center" alignItems="center" gap={8}>
             <Grid item xs={12}>
-                <DescriptionCarousel description={carouselDescription} />
+                <DescriptionCarousel>
+                    {/* This approach allows individual customization on each carousel element */}
+                    <SoftwareEngineerDescription />
+                    <WebDevelopmentDescription />
+                    <FunFactDescription />
+                </DescriptionCarousel>
+            </Grid>
+        </Grid>
+    );
+
+    const cardStack = (
+        <Grid container justifyContent="center" alignItems="center" gap={8}>
+            <Grid item xs={12}>
+                <CardStack>
+                    {/* This approach allows individual customization on each carousel element */}
+                    <SoftwareEngineerDescription />
+                    <WebDevelopmentDescription />
+                    <FunFactDescription />
+                </CardStack>
             </Grid>
         </Grid>
     );
@@ -161,7 +183,7 @@ const AboutPage = (): JSX.Element => {
     const interests = (
         <Grid container justifyContent="center" alignItems="center" gap={8}>
             <Grid item xs={12}>
-                <InterestTabs interests={personalInterests} />
+                <InterestTabs personalInterests={personalInterests} />
             </Grid>
         </Grid>
     );
@@ -185,6 +207,7 @@ const AboutPage = (): JSX.Element => {
                 {/* Description Section */}
                 <Stack gap={16} sx={{ ...sectionStyle }}>
                     {description}
+                    {/* {cardStack} */}
                     {interests}
                 </Stack>
             </Stack>

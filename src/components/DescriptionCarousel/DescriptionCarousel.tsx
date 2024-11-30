@@ -1,12 +1,16 @@
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
-import { Avatar, Grid, IconButton, MobileStepper, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Avatar, Grid, IconButton, MobileStepper, Stack, useMediaQuery, useTheme } from "@mui/material";
 import { useState } from "react";
-import { DarkThemeHoveredCardColor, WhiteBackgroundColor } from "~/utils/Theme";
-import { CarouselDescription } from "~/utils/Types";
+import { DarkThemeHoveredCardColor } from "~/utils/Theme";
 
 const AVATAR_SIZE = 200;
 const DESCRIPTION_CARD_HEIGHT = 400;
-const cardContainerStyles = { borderRadius: "20px", backgroundColor: DarkThemeHoveredCardColor, width: "100%", height: DESCRIPTION_CARD_HEIGHT };
+const cardContainerStyles = {
+    borderRadius: "20px",
+    backgroundColor: DarkThemeHoveredCardColor,
+    width: "100%",
+    height: DESCRIPTION_CARD_HEIGHT,
+};
 const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
 
 const avatarGridItemStyles = {
@@ -16,18 +20,13 @@ const avatarGridItemStyles = {
 };
 
 type DescriptionCarouselProps = {
-    description: CarouselDescription[];
+    children: JSX.Element[];
 };
 
-const DescriptionCarousel = (props: DescriptionCarouselProps): JSX.Element => {
-    const { description } = props;
+const DescriptionCarousel = ({ children }: DescriptionCarouselProps): JSX.Element => {
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
     const [activeStep, setActiveStep] = useState(0);
-
-    const getValueAtPosition = (descriptionArray: CarouselDescription[], position: number): string | undefined => {
-        return descriptionArray[position]?.description;
-    };
 
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -42,8 +41,8 @@ const DescriptionCarousel = (props: DescriptionCarouselProps): JSX.Element => {
             {!isMobile && !isSmallScreen && (
                 <Grid item {...avatarGridItemStyles} sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                     <Avatar
-                        alt="Florin"
-                        src="\assets\images\Profile.png"
+                        alt="Profile Avatar"
+                        src="/assets/images/Profile.png"
                         sx={{
                             maxWidth: AVATAR_SIZE,
                             maxHeight: AVATAR_SIZE,
@@ -78,19 +77,18 @@ const DescriptionCarousel = (props: DescriptionCarouselProps): JSX.Element => {
                         width: "100%",
                     }}
                 >
-                    <Typography variant="h4" style={{ color: WhiteBackgroundColor }}>
-                        {getValueAtPosition(description, activeStep)}
-                    </Typography>
+                    {/* Render the currently active child */}
+                    {children[activeStep]}
                 </Stack>
                 <Stack sx={{ width: "50%" }}>
                     <MobileStepper
                         variant="dots"
-                        steps={Object.keys(description).length}
+                        steps={children.length}
                         position="static"
                         activeStep={activeStep}
                         style={{ backgroundColor: DarkThemeHoveredCardColor }}
                         nextButton={
-                            <IconButton size="small" onClick={handleNext} disabled={activeStep === Object.keys(description).length - 1}>
+                            <IconButton size="small" onClick={handleNext} disabled={activeStep === children.length - 1}>
                                 {theme.direction === "rtl" ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
                             </IconButton>
                         }

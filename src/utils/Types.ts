@@ -5,12 +5,7 @@ export type Skill = {
     additionalIconPaths?: { path: string; tooltip: string }[];
 };
 
-export type CarouselDescription = {
-    skill: string;
-    description: string;
-};
-
 export type PersonalInterests = {
-    skill: string;
+    interest: string;
     description: string;
 };

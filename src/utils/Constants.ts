@@ -1,4 +1,5 @@
 import { csharpIcon, dotNetIcon, mongoIcon, protobufIcon, reactIcon, tanStackIcon, typescriptIcon, sqlIcon, pythonIcon, tensorflowIcon, pytorchIcon, cppIcon, cIcon } from "./Icons";
+import { DarkThemeHoveredCardColor } from "./Theme";
 import { PersonalInterests, Skill } from "./Types";
 
 export const HEADER_HEIGHT = "60px";
@@ -14,6 +15,7 @@ const getDiff = (startDate: string, endDate?: string) => {
     return years;
 };
 
+// SkillCard
 const csharpExp = getDiff("2020-07-01");
 const csharpDescription = `Over ${csharpExp} years of experience in developing robust and scalable applications using C# programming language. Skilled in object-oriented design principles and .NET framework.`;
 export const csharpSkill: Skill = {
@@ -93,6 +95,13 @@ export const cppSkill: Skill = {
     ],
 };
 
+// DescriptionCarousel
+export const AVATAR_SIZE = 200;
+export const DESCRIPTION_CARD_HEIGHT = 400;
+export const DESCRIPTION_CARD_MAX_WIDTH= 1000;
+export const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
+
+// InterestTabs
 export const personalInterests: PersonalInterests[] = [
     {
         interest: "Computer Vision",

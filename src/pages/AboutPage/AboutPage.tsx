@@ -3,12 +3,11 @@ import { DarkThemeGrayAccentColor, WhiteBackgroundColor } from "~/utils/Theme";
 import SkillCard from "./SkillCard/SkillCard";
 import { SkillEnum } from "~/utils/Enums";
 import { HEADER_HEIGHT, personalInterests, SIDE_PADDING } from "~/utils/Constants";
-import DescriptionCarousel from "~/components/DescriptionCarousel/DescriptionCarousel";
 import InterestTabs from "~/components/InterestTabs/InterestTabs";
 import SoftwareEngineerDescription from "~/components/DescriptionCarousel/SoftwareEngineerDescription";
 import WebDevelopmentDescription from "~/components/DescriptionCarousel/WebDevelopmentDescription";
 import FunFactDescription from "~/components/DescriptionCarousel/FunFactDescription";
-import CardStack from "~/components/CardStack/CardStack";
+import DescriptionCarousel from "~/components/DescriptionCarousel/DescriptionCarousel";
 
 const MIN_SKILL_CARD_WIDTH = 350;
 const MAX_SKILL_CARD_WIDTH = 500;
@@ -167,19 +166,6 @@ const AboutPage = (): JSX.Element => {
         </Grid>
     );
 
-    const cardStack = (
-        <Grid container justifyContent="center" alignItems="center" gap={8}>
-            <Grid item xs={12}>
-                <CardStack>
-                    {/* This approach allows individual customization on each carousel element */}
-                    <SoftwareEngineerDescription />
-                    <WebDevelopmentDescription />
-                    <FunFactDescription />
-                </CardStack>
-            </Grid>
-        </Grid>
-    );
-
     const interests = (
         <Grid container justifyContent="center" alignItems="center" gap={8}>
             <Grid item xs={12}>
@@ -190,24 +176,45 @@ const AboutPage = (): JSX.Element => {
 
     return (
         <Stack
-            sx={{
-                height: `calc(100vh - ${HEADER_HEIGHT})`,
-                scrollSnapType: "y mandatory",
-                overflowY: "scroll",
-                scrollBehavior: "smooth",
-            }}
+            sx={
+                isXlScreen
+                    ? {
+                          height: `calc(100vh - ${HEADER_HEIGHT})`,
+                          scrollSnapType: "y mandatory",
+                          overflowY: "scroll",
+                          scrollBehavior: "smooth",
+                      }
+                    : undefined
+            }
         >
             <Stack gap={16}>
                 {/* Skill Section */}
-                <Stack gap={16} sx={{ ...sectionStyle }}>
+                <Stack
+                    gap={16}
+                    sx={
+                        isXlScreen
+                            ? {
+                                  ...sectionStyle,
+                              }
+                            : undefined
+                    }
+                >
                     {pageHeading}
                     {skills}
                 </Stack>
 
                 {/* Description Section */}
-                <Stack gap={16} sx={{ ...sectionStyle }}>
+                <Stack
+                    gap={16}
+                    sx={
+                        isXlScreen
+                            ? {
+                                  ...sectionStyle,
+                              }
+                            : undefined
+                    }
+                >
                     {description}
-                    {/* {cardStack} */}
                     {interests}
                 </Stack>
             </Stack>

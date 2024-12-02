@@ -12,7 +12,7 @@ const InterestTabs = (props: InterestTabsProps): JSX.Element => {
     return (
         <Grid container sx={{ padding: 4, paddingLeft: 16, paddingRight: 16 }} alignItems="center" gap={16}>
             <Grid item xs={12} style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 16 }}>
-                <Typography variant="h4" style={{ color: DarkThemeLightGrayAccentColor }}>
+                <Typography variant="h4" style={{ color: DarkThemeLightGrayAccentColor, userSelect: "none", WebkitUserSelect: "none", MozUserSelect: "none", msUserSelect: "none" }}>
                     Other Interests:
                 </Typography>
                 {personalInterests.map((personalInterest) => (

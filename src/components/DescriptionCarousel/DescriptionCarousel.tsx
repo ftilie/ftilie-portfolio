@@ -1,7 +1,7 @@
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
-import { Box, IconButton, MobileStepper, Stack, useTheme } from "@mui/material";
+import { Box, IconButton, MobileStepper, Stack, useMediaQuery, useTheme } from "@mui/material";
 import { useState } from "react";
-import { DESCRIPTION_CARD_HEIGHT, DESCRIPTION_CARD_MAX_WIDTH } from "~/utils/Constants";
+import { DESCRIPTION_CARD_PADDING_HEIGHT, DESCRIPTION_CAROUSEL_MAX_WIDTH, DESCRIPTION_CAROUSEL_MIN_WIDTH } from "~/utils/Constants";
 
 type DescriptionCarouselProps = {
     children: JSX.Element[];
@@ -37,7 +37,8 @@ const DescriptionCarousel = ({ children }: DescriptionCarouselProps): JSX.Elemen
             <Box
                 sx={{
                     overflow: "hidden",
-                    maxWidth: DESCRIPTION_CARD_MAX_WIDTH,
+                    maxWidth: DESCRIPTION_CAROUSEL_MAX_WIDTH,
+                    minWidth: DESCRIPTION_CAROUSEL_MIN_WIDTH,
                     width: "100%",
                     margin: "0 auto",
                     position: "relative",
@@ -56,11 +57,11 @@ const DescriptionCarousel = ({ children }: DescriptionCarouselProps): JSX.Elemen
                             key={index}
                             sx={{
                                 flex: "0 0 100%",
-                                maxWidth: DESCRIPTION_CARD_MAX_WIDTH,
+                                maxWidth: DESCRIPTION_CAROUSEL_MAX_WIDTH,
                                 display: "flex",
                                 justifyContent: "center",
                                 alignItems: "center",
-                                height: DESCRIPTION_CARD_HEIGHT,
+                                height: DESCRIPTION_CARD_PADDING_HEIGHT,
                                 boxSizing: "border-box",
                                 padding: 2,
                             }}

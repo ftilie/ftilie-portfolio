@@ -97,8 +97,12 @@ export const cppSkill: Skill = {
 
 // DescriptionCarousel
 export const AVATAR_SIZE = 200;
+export const DESCRIPTION_CARD_PADDING_HEIGHT = 600;
 export const DESCRIPTION_CARD_HEIGHT = 400;
-export const DESCRIPTION_CARD_MAX_WIDTH= 1000;
+export const DESCRIPTION_CAROUSEL_MAX_WIDTH = "100%";
+export const DESCRIPTION_CAROUSEL_MIN_WIDTH = 400;
+export const DESCRIPTION_CARD_MAX_WIDTH = 1000;
+export const DESCRIPTION_CARD_MIN_WIDTH = 400;
 export const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
 
 // InterestTabs

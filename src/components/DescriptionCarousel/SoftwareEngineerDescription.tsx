@@ -41,7 +41,7 @@ const csharpBadge = (
             position: "absolute" as const,
             width: "175px",
             height: "175px",
-            transform: "rotate(-10deg)",
+            transform: "rotate(350deg)",
             zIndex: 2,
             top: "-90px",
             right: "-90px",
@@ -70,7 +70,7 @@ const firstMongoBadge = (
     <Box
         component="img"
         src={mongoIcon}
-        alt="thirdMongoBadge"
+        alt="firstMongoBadge"
         sx={{
             position: "absolute" as const,
             width: "200px",
@@ -92,7 +92,7 @@ const secondMongoBadge = (
             position: "absolute" as const,
             width: "150px",
             height: "150px",
-            transform: "rotate(-45deg)",
+            transform: "rotate(315deg)",
             zIndex: 1,
             bottom: "-30px",
             left: "-120px",
@@ -109,7 +109,7 @@ const dotNetBadge = (
             position: "absolute" as const,
             width: "75px",
             height: "75px",
-            transform: "rotate(-45deg)",
+            transform: "rotate(315deg)",
             zIndex: 3,
             bottom: "-15px",
             left: "-20px",
@@ -121,7 +121,7 @@ const SoftwareEngineerDescription = (): JSX.Element => {
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
     return (
-        <Box sx={{ position: "relative", display: "inline-block0", width: "100%", maxWidth: DESCRIPTION_CARD_MAX_WIDTH }}>
+        <Box sx={{ position: "relative", display: "inline-block", width: "100%", maxWidth: DESCRIPTION_CARD_MAX_WIDTH }}>
             {/* Top Left Corner Badge */}
 
             {/* Top Right Corner Badge */}

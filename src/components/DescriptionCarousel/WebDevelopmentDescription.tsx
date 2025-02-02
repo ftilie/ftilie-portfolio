@@ -1,6 +1,6 @@
 import { Avatar, Box, Grid, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { AVATAR_SIZE, DESCRIPTION_CARD_HEIGHT, DESCRIPTION_CARD_MAX_WIDTH, DESCRIPTION_CARD_MIN_WIDTH, isMobile } from "~/utils/Constants";
-import { csharpIcon, dotNetIcon, mongoIcon, pythonIcon, typescriptIcon } from "~/utils/Icons";
+import { cssIcon, mongoIcon, reactIcon, recoilIcon, tanStackIcon, typescriptIcon } from "~/utils/Icons";
 import { DarkThemeHoveredCardColor, WhiteBackgroundColor } from "~/utils/Theme";
 
 const cardContainerStyles = {
@@ -15,6 +15,89 @@ const avatarGridItemStyles = {
     justifyContent: "start",
 };
 
+const recoilBadge = (
+    <Box
+        component="img"
+        src={recoilIcon}
+        alt="recoilBadge"
+        sx={{
+            position: "absolute" as const,
+            width: "150px",
+            height: "150px",
+            transform: "rotate(60deg)",
+            zIndex: 2,
+            bottom: "-54px",
+            right: "-40px",
+        }}
+    />
+);
+
+const firstReactBadge = (
+    <Box
+        component="img"
+        src={reactIcon}
+        alt="firstReactBadge"
+        sx={{
+            position: "absolute" as const,
+            width: "100px",
+            height: "100px",
+            transform: "rotate(90deg)",
+            zIndex: 1,
+            bottom: "-27px",
+            left: "55px",
+        }}
+    />
+);
+
+const secondReactBadge = (
+    <Box
+        component="img"
+        src={reactIcon}
+        alt="secondReactBadge"
+        sx={{
+            position: "absolute" as const,
+            width: "50px",
+            height: "50px",
+            transform: "rotate(65deg)",
+            zIndex: 1,
+            bottom: "20px",
+            left: "165px",
+        }}
+    />
+);
+
+const dotBadge = (
+    <Box
+        sx={{
+            position: "absolute",
+            width: "18px",
+            height: "18px",
+            backgroundColor: "rgb(0, 216, 255)",
+            borderRadius: "50%",
+            zIndex: 3,
+            bottom: "14px",
+            left: "96px",
+        }}
+    />
+);
+
+const reactBadge = (
+    <Box
+        component="img"
+        src={reactIcon}
+        alt="reactBadge"
+        sx={{
+            position: "absolute" as const,
+            width: "100px",
+            height: "100px",
+            transform: "rotate(20deg)",
+            zIndex: 1,
+            bottom: "49px",
+            right: "-45px",
+        }}
+    />
+);
+
 const typescriptBadge = (
     <Box
         component="img"
@@ -22,46 +105,12 @@ const typescriptBadge = (
         alt="typescriptBadge"
         sx={{
             position: "absolute" as const,
-            width: "100px",
-            height: "100px",
-            transform: "rotate(15deg)",
-            zIndex: 1,
-            top: "-60px",
-            right: "50px",
-        }}
-    />
-);
-
-const csharpBadge = (
-    <Box
-        component="img"
-        src={csharpIcon}
-        alt="csharpBadge"
-        sx={{
-            position: "absolute" as const,
-            width: "175px",
-            height: "175px",
-            transform: "rotate(-10deg)",
+            width: "120px",
+            height: "120px",
+            transform: "rotate(330deg)",
             zIndex: 2,
-            top: "-90px",
-            right: "-90px",
-        }}
-    />
-);
-
-const pythonBadge = (
-    <Box
-        component="img"
-        src={pythonIcon}
-        alt="pythonBadge"
-        sx={{
-            position: "absolute" as const,
-            width: "110px",
-            height: "110px",
-            transform: "rotate(45deg)",
-            zIndex: 3,
-            top: "60px",
-            right: "-60px",
+            bottom: "-20px",
+            left: "-20px",
         }}
     />
 );
@@ -70,15 +119,15 @@ const firstMongoBadge = (
     <Box
         component="img"
         src={mongoIcon}
-        alt="thirdMongoBadge"
+        alt="firstMongoBadge"
         sx={{
             position: "absolute" as const,
-            width: "200px",
-            height: "200px",
-            transform: "rotate(0deg)",
-            zIndex: 2,
-            bottom: "-15px",
-            left: "-100px",
+            width: "150px",
+            height: "150px",
+            transform: "rotate(190deg)",
+            zIndex: 1,
+            top: "15px",
+            right: "-55px",
         }}
     />
 );
@@ -90,29 +139,63 @@ const secondMongoBadge = (
         alt="secondMongoBadge"
         sx={{
             position: "absolute" as const,
-            width: "150px",
-            height: "150px",
-            transform: "rotate(-45deg)",
+            width: "100px",
+            height: "100px",
+            transform: "rotate(150deg)",
             zIndex: 1,
-            bottom: "-30px",
-            left: "-120px",
+            top: "5px",
+            right: "-75px",
         }}
     />
 );
 
-const dotNetBadge = (
+const thirdMongoBadge = (
     <Box
         component="img"
-        src={dotNetIcon}
-        alt="dotNetBadge"
+        src={mongoIcon}
+        alt="thirdMongoBadge"
         sx={{
             position: "absolute" as const,
-            width: "75px",
-            height: "75px",
-            transform: "rotate(-45deg)",
+            width: "135px",
+            height: "135px",
+            transform: "rotate(285deg)",
+            zIndex: 1,
+            top: "-65px",
+            right: "10px",
+        }}
+    />
+);
+
+const fourthMongoBadge = (
+    <Box
+        component="img"
+        src={mongoIcon}
+        alt="fourthMongoBadge"
+        sx={{
+            position: "absolute" as const,
+            width: "50px",
+            height: "50px",
+            transform: "rotate(20deg)",
+            zIndex: 1,
+            top: "-70px",
+            right: "-25px",
+        }}
+    />
+);
+
+const tanStackBadge = (
+    <Box
+        component="img"
+        src={tanStackIcon}
+        alt="tanStackBadge"
+        sx={{
+            position: "absolute" as const,
+            width: "125px",
+            height: "125px",
+            transform: "rotate(190deg)",
             zIndex: 3,
-            bottom: "-15px",
-            left: "-20px",
+            top: "-55px",
+            right: "-50px",
         }}
     />
 );
@@ -121,20 +204,22 @@ const WebDevelopmentDescription = (): JSX.Element => {
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
     return (
-        <Box sx={{ position: "relative", display: "inline-block0", width: "100%", maxWidth: DESCRIPTION_CARD_MAX_WIDTH }}>
+        <Box sx={{ position: "relative", display: "inline-block", width: "100%", maxWidth: DESCRIPTION_CARD_MAX_WIDTH }}>
             {/* Top Left Corner Badge */}
-
             {/* Top Right Corner Badge */}
-            {typescriptBadge}
-            {csharpBadge}
-            {pythonBadge}
-
-            {/* Bottom Left Corner Badge */}
             {firstMongoBadge}
             {secondMongoBadge}
-            {dotNetBadge}
-
+            {tanStackBadge}
+            {thirdMongoBadge}
+            {fourthMongoBadge}
+            {/* Bottom Left Corner Badge */}
+            {typescriptBadge}
+            {firstReactBadge}
+            {secondReactBadge}
+            {dotBadge}
             {/* Bottom Right Corner Badge */}
+            {recoilBadge}
+            {reactBadge}
 
             <Box
                 style={{

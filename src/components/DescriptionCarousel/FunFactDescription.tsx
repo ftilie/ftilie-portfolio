@@ -121,7 +121,7 @@ const FunFactDescription = (): JSX.Element => {
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
     return (
-        <Box sx={{ position: "relative", display: "inline-block0", width: "100%", maxWidth: DESCRIPTION_CARD_MAX_WIDTH }}>
+        <Box sx={{ position: "relative", display: "inline-block", width: "100%", maxWidth: DESCRIPTION_CARD_MAX_WIDTH }}>
             {/* Top Left Corner Badge */}
 
             {/* Top Right Corner Badge */}

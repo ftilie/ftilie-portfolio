@@ -20,3 +20,7 @@ export const pytorchIcon = "\\assets\\svgs\\pytorch.svg";
 /* C++ */
 export const cppIcon = "\\assets\\svgs\\cpp.svg";
 export const cIcon = "\\assets\\svgs\\c.svg";
+
+/* Description Carousel */
+export const recoilIcon = "\\assets\\svgs\\recoil.svg";
+export const cssIcon = "\\assets\\svgs\\css.svg";

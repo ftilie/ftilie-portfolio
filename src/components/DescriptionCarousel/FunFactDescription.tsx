@@ -1,6 +1,7 @@
+import { AccessTime } from "@mui/icons-material";
 import { Avatar, Box, Grid, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { AVATAR_SIZE, DESCRIPTION_CARD_HEIGHT, DESCRIPTION_CARD_MAX_WIDTH, DESCRIPTION_CARD_MIN_WIDTH, isMobile } from "~/utils/Constants";
-import { csharpIcon, dotNetIcon, mongoIcon, pythonIcon, typescriptIcon } from "~/utils/Icons";
+import { autoAwesomeIcon } from "~/utils/Icons";
 import { DarkThemeHoveredCardColor, DarkThemeLightGrayAccentColor, WhiteBackgroundColor } from "~/utils/Theme";
 
 const cardContainerStyles = {
@@ -15,104 +16,38 @@ const avatarGridItemStyles = {
     justifyContent: "start",
 };
 
-const typescriptBadge = (
-    <Box
-        component="img"
-        src={typescriptIcon}
-        alt="typescriptBadge"
-        sx={{
-            position: "absolute" as const,
-            width: "100px",
-            height: "100px",
-            transform: "rotate(15deg)",
-            zIndex: 1,
-            top: "-60px",
-            right: "50px",
-        }}
-    />
+const watchBadge = (
+    <Box>
+        <AccessTime
+            sx={{
+                position: "absolute" as const,
+                width: "175px",
+                height: "175px",
+                transform: "rotate(-10deg)",
+                zIndex: 2,
+                bottom: "-90px",
+                right: "-90px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+            }}
+        />
+    </Box>
 );
 
-const csharpBadge = (
+const autoAwesomeBadge = (
     <Box
         component="img"
-        src={csharpIcon}
-        alt="csharpBadge"
+        src={autoAwesomeIcon}
+        alt="autoAwesomeBadge"
         sx={{
             position: "absolute" as const,
             width: "175px",
             height: "175px",
-            transform: "rotate(-10deg)",
+            transform: "rotate(350deg)",
             zIndex: 2,
             top: "-90px",
             right: "-90px",
-        }}
-    />
-);
-
-const pythonBadge = (
-    <Box
-        component="img"
-        src={pythonIcon}
-        alt="pythonBadge"
-        sx={{
-            position: "absolute" as const,
-            width: "110px",
-            height: "110px",
-            transform: "rotate(45deg)",
-            zIndex: 3,
-            top: "60px",
-            right: "-60px",
-        }}
-    />
-);
-
-const firstMongoBadge = (
-    <Box
-        component="img"
-        src={mongoIcon}
-        alt="thirdMongoBadge"
-        sx={{
-            position: "absolute" as const,
-            width: "200px",
-            height: "200px",
-            transform: "rotate(0deg)",
-            zIndex: 2,
-            bottom: "-15px",
-            left: "-100px",
-        }}
-    />
-);
-
-const secondMongoBadge = (
-    <Box
-        component="img"
-        src={mongoIcon}
-        alt="secondMongoBadge"
-        sx={{
-            position: "absolute" as const,
-            width: "150px",
-            height: "150px",
-            transform: "rotate(-45deg)",
-            zIndex: 1,
-            bottom: "-30px",
-            left: "-120px",
-        }}
-    />
-);
-
-const dotNetBadge = (
-    <Box
-        component="img"
-        src={dotNetIcon}
-        alt="dotNetBadge"
-        sx={{
-            position: "absolute" as const,
-            width: "75px",
-            height: "75px",
-            transform: "rotate(-45deg)",
-            zIndex: 3,
-            bottom: "-15px",
-            left: "-20px",
         }}
     />
 );
@@ -123,16 +58,11 @@ const FunFactDescription = (): JSX.Element => {
     return (
         <Box sx={{ position: "relative", display: "inline-block", width: "100%", maxWidth: DESCRIPTION_CARD_MAX_WIDTH }}>
             {/* Top Left Corner Badge */}
-
+            {/* {watchBadge}
+            {autoAwesome} */}
             {/* Top Right Corner Badge */}
-            {typescriptBadge}
-            {csharpBadge}
-            {pythonBadge}
 
             {/* Bottom Left Corner Badge */}
-            {firstMongoBadge}
-            {secondMongoBadge}
-            {dotNetBadge}
 
             {/* Bottom Right Corner Badge */}
 

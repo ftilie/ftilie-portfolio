@@ -64,6 +64,7 @@ const DescriptionCarousel = ({ children }: DescriptionCarouselProps): JSX.Elemen
                                 height: DESCRIPTION_CARD_PADDING_HEIGHT,
                                 boxSizing: "border-box",
                                 padding: 2,
+                                overflow: "hidden",
                             }}
                         >
                             {child}

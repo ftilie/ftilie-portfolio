@@ -25,3 +25,6 @@ export const cIcon = "\\assets\\svgs\\c.svg";
 export const recoilIcon = "\\assets\\svgs\\recoil.svg";
 export const cssIcon = "\\assets\\svgs\\css.svg";
 export const autoAwesomeIcon = "\\assets\\svgs\\autoAwesome.svg";
+export const accessTimeIcon = "\\assets\\svgs\\accessTime.svg";
+export const historyIcon = "\\assets\\svgs\\history.svg";
+export const hourglassIcon = "\\assets\\svgs\\hourglass.svg";

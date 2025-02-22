@@ -1,7 +1,7 @@
 import { AccessTime } from "@mui/icons-material";
 import { Avatar, Box, Grid, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { AVATAR_SIZE, DESCRIPTION_CARD_HEIGHT, DESCRIPTION_CARD_MAX_WIDTH, DESCRIPTION_CARD_MIN_WIDTH, isMobile } from "~/utils/Constants";
-import { autoAwesomeIcon } from "~/utils/Icons";
+import { accessTimeIcon, autoAwesomeIcon, historyIcon, hourglassIcon, mongoIcon } from "~/utils/Icons";
 import { DarkThemeHoveredCardColor, DarkThemeLightGrayAccentColor, WhiteBackgroundColor } from "~/utils/Theme";
 
 const cardContainerStyles = {
@@ -17,37 +17,103 @@ const avatarGridItemStyles = {
 };
 
 const watchBadge = (
-    <Box>
-        <AccessTime
-            sx={{
-                position: "absolute" as const,
-                width: "175px",
-                height: "175px",
-                transform: "rotate(-10deg)",
-                zIndex: 2,
-                bottom: "-90px",
-                right: "-90px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-            }}
-        />
-    </Box>
-);
-
-const autoAwesomeBadge = (
     <Box
         component="img"
-        src={autoAwesomeIcon}
+        src={accessTimeIcon}
         alt="autoAwesomeBadge"
         sx={{
             position: "absolute" as const,
-            width: "175px",
-            height: "175px",
-            transform: "rotate(350deg)",
+            width: "100px",
+            height: "100px",
+            transform: "rotate(340deg)",
+            zIndex: 3,
+            bottom: "-60px",
+            right: "-20px",
+        }}
+    />
+);
+
+const historyBadge = (
+    <Box
+        component="img"
+        src={historyIcon}
+        alt="historyBadge"
+        sx={{
+            position: "absolute" as const,
+            width: "75px",
+            height: "75px",
+            transform: "rotate(50deg)",
             zIndex: 2,
-            top: "-90px",
-            right: "-90px",
+            bottom: "16px",
+            right: "10px",
+        }}
+    />
+);
+
+const firstMongoBadge = (
+    <Box
+        component="img"
+        src={mongoIcon}
+        alt="firstMongoBadge"
+        sx={{
+            position: "absolute" as const,
+            width: "150px",
+            height: "150px",
+            transform: "rotate(45deg)",
+            zIndex: 1,
+            bottom: "-10px",
+            right: "-110px",
+        }}
+    />
+);
+
+const secondMongoBadge = (
+    <Box
+        component="img"
+        src={mongoIcon}
+        alt="secondMongoBadge"
+        sx={{
+            position: "absolute" as const,
+            width: "250px",
+            height: "250px",
+            transform: "rotate(20deg)",
+            zIndex: 0,
+            bottom: "-5px",
+            right: "-150px",
+        }}
+    />
+);
+
+const firstAutoAwesomeBadge = (
+    <Box
+        component="img"
+        src={autoAwesomeIcon}
+        alt="firstAutoAwesomeBadge"
+        sx={{
+            position: "absolute" as const,
+            width: "75px",
+            height: "75px",
+            transform: "rotate(0deg)",
+            zIndex: 1,
+            bottom: "-25px",
+            right: "80px",
+        }}
+    />
+);
+
+const secondAutoAwesomeBadge = (
+    <Box
+        component="img"
+        src={autoAwesomeIcon}
+        alt="secondAutoAwesomeBadge"
+        sx={{
+            position: "absolute" as const,
+            width: "150px",
+            height: "150px",
+            transform: "rotate(135deg)",
+            zIndex: 1,
+            top: "-50px",
+            right: "-50px",
         }}
     />
 );
@@ -58,13 +124,15 @@ const FunFactDescription = (): JSX.Element => {
     return (
         <Box sx={{ position: "relative", display: "inline-block", width: "100%", maxWidth: DESCRIPTION_CARD_MAX_WIDTH }}>
             {/* Top Left Corner Badge */}
-            {/* {watchBadge}
-            {autoAwesome} */}
             {/* Top Right Corner Badge */}
-
+            {secondAutoAwesomeBadge}
             {/* Bottom Left Corner Badge */}
-
             {/* Bottom Right Corner Badge */}
+            {watchBadge}
+            {historyBadge}
+            {firstAutoAwesomeBadge}
+            {firstMongoBadge}
+            {secondMongoBadge}
 
             <Box
                 style={{

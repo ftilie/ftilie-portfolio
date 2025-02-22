@@ -1,8 +1,7 @@
-import { AccessTime } from "@mui/icons-material";
 import { Avatar, Box, Grid, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { AVATAR_SIZE, DESCRIPTION_CARD_HEIGHT, DESCRIPTION_CARD_MAX_WIDTH, DESCRIPTION_CARD_MIN_WIDTH, isMobile } from "~/utils/Constants";
-import { accessTimeIcon, autoAwesomeIcon, historyIcon, mongoIcon } from "~/utils/Icons";
-import { DarkThemeHoveredCardColor, DarkThemeLightGrayAccentColor, WhiteBackgroundColor } from "~/utils/Theme";
+import { figmaIcon, materialUiIcon, typescriptIcon } from "~/utils/Icons";
+import { DarkThemeHoveredCardColor, WhiteBackgroundColor } from "~/utils/Theme";
 
 const cardContainerStyles = {
     borderRadius: "20px",
@@ -16,126 +15,173 @@ const avatarGridItemStyles = {
     justifyContent: "start",
 };
 
-const watchBadge = (
+const figmaBadge = (
     <Box
         component="img"
-        src={accessTimeIcon}
-        alt="autoAwesomeBadge"
+        src={figmaIcon}
+        alt="figmaBadge"
         sx={{
             position: "absolute" as const,
-            width: "100px",
-            height: "100px",
-            transform: "rotate(340deg)",
-            zIndex: 4,
+            width: "150px",
+            height: "150px",
+            transform: "rotate(15deg)",
+            zIndex: 2,
             bottom: "-60px",
             right: "-20px",
         }}
     />
 );
 
-const historyBadge = (
+const typescriptBadge = (
     <Box
         component="img"
-        src={historyIcon}
-        alt="historyBadge"
+        src={typescriptIcon}
+        alt="typescriptBadge"
         sx={{
             position: "absolute" as const,
-            width: "75px",
-            height: "75px",
-            transform: "rotate(50deg)",
-            zIndex: 3,
-            bottom: "16px",
-            right: "10px",
-        }}
-    />
-);
-
-const firstMongoBadge = (
-    <Box
-        component="img"
-        src={mongoIcon}
-        alt="firstMongoBadge"
-        sx={{
-            position: "absolute" as const,
-            width: "150px",
-            height: "150px",
-            transform: "rotate(45deg)",
-            zIndex: 2,
-            bottom: "-10px",
-            right: "-110px",
-        }}
-    />
-);
-
-const secondMongoBadge = (
-    <Box
-        component="img"
-        src={mongoIcon}
-        alt="secondMongoBadge"
-        sx={{
-            position: "absolute" as const,
-            width: "250px",
-            height: "250px",
-            transform: "rotate(20deg)",
+            width: "100px",
+            height: "100px",
+            transform: "rotate(340deg)",
             zIndex: 1,
-            bottom: "-5px",
-            right: "-150px",
+            bottom: "60px",
+            right: "-30px",
         }}
     />
 );
 
-const firstAutoAwesomeBadge = (
+const firstDotBadge = (
     <Box
-        component="img"
-        src={autoAwesomeIcon}
-        alt="firstAutoAwesomeBadge"
         sx={{
-            position: "absolute" as const,
-            width: "75px",
-            height: "75px",
-            transform: "rotate(0deg)",
-            zIndex: 2,
-            bottom: "-25px",
-            right: "80px",
+            position: "absolute",
+            width: "50px",
+            height: "50px",
+            backgroundColor: "rgb(10, 207, 131)",
+            borderRadius: "50%",
+            zIndex: 1,
+            bottom: "-10px",
+            right: "135px",
         }}
     />
 );
 
-const secondAutoAwesomeBadge = (
+const secondDotBadge = (
+    <Box
+        sx={{
+            position: "absolute",
+            width: "30px",
+            height: "30px",
+            backgroundColor: "rgb(242, 78, 30)",
+            borderRadius: "50%",
+            zIndex: 1,
+            bottom: "40px",
+            right: "125px",
+        }}
+    />
+);
+
+const thirdDotBadge = (
+    <Box
+        sx={{
+            position: "absolute",
+            width: "20px",
+            height: "20px",
+            backgroundColor: "rgb(26, 188, 254)",
+            borderRadius: "50%",
+            zIndex: 1,
+            bottom: "130px",
+            right: "-55px",
+        }}
+    />
+);
+
+const firstMaterialUiBadge = (
     <Box
         component="img"
-        src={autoAwesomeIcon}
-        alt="secondAutoAwesomeBadge"
+        src={materialUiIcon}
+        alt="firstMaterialUiBadge"
         sx={{
             position: "absolute" as const,
-            width: "150px",
-            height: "150px",
-            transform: "rotate(135deg)",
+            width: "125px",
+            height: "125px",
+            transform: "rotate(350deg)",
+            zIndex: 1,
+            top: "-40px",
+            left: "-45px",
+        }}
+    />
+);
+
+const secondMaterialUiBadge = (
+    <Box
+        component="img"
+        src={materialUiIcon}
+        alt="secondMaterialUiBadge"
+        sx={{
+            position: "absolute" as const,
+            width: "125px",
+            height: "125px",
+            transform: "rotate(170deg)",
             zIndex: 2,
             top: "-50px",
-            right: "-50px",
+            left: "65px",
         }}
     />
 );
 
-const FunFactDescription = (): JSX.Element => {
+const thirdMaterialUiBadge = (
+    <Box
+        component="img"
+        src={materialUiIcon}
+        alt="thirdMaterialUiBadge"
+        sx={{
+            position: "absolute" as const,
+            width: "85px",
+            height: "85px",
+            transform: "rotate(348deg)",
+            zIndex: 2,
+            top: "-26px",
+            left: "180px",
+        }}
+    />
+);
+
+const fourthMaterialUiBadge = (
+    <Box
+        component="img"
+        src={materialUiIcon}
+        alt="fourthMaterialUiBadge"
+        sx={{
+            position: "absolute" as const,
+            width: "75px",
+            height: "75px",
+            transform: "rotate(350deg)",
+            zIndex: 2,
+            top: "49px",
+            left: "16px",
+        }}
+    />
+);
+
+const WebDesignDescription = (): JSX.Element => {
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
     return (
         <Box sx={{ position: "relative", display: "inline-block", width: "100%", maxWidth: DESCRIPTION_CARD_MAX_WIDTH }}>
             {/* Top Left Corner Badge */}
-
+            {firstMaterialUiBadge}
+            {secondMaterialUiBadge}
+            {thirdMaterialUiBadge}
+            {fourthMaterialUiBadge}
             {/* Top Right Corner Badge */}
-            {secondAutoAwesomeBadge}
 
             {/* Bottom Left Corner Badge */}
 
             {/* Bottom Right Corner Badge */}
-            {watchBadge}
-            {historyBadge}
-            {firstAutoAwesomeBadge}
-            {firstMongoBadge}
-            {secondMongoBadge}
+            {figmaBadge}
+            {typescriptBadge}
+            {firstDotBadge}
+            {secondDotBadge}
+            {thirdDotBadge}
 
             <Box
                 style={{
@@ -183,14 +229,14 @@ const FunFactDescription = (): JSX.Element => {
                                 width: "100%",
                             }}
                         >
-                            <Stack style={{ backgroundColor: DarkThemeHoveredCardColor }}>
-                                <Typography variant="h4" style={{ color: WhiteBackgroundColor }}>
-                                    "Time control is the best super power."
-                                </Typography>
-                                <Typography variant="h4" style={{ color: DarkThemeLightGrayAccentColor, display: "flex", justifyContent: "end" }}>
-                                    ~Florin
-                                </Typography>
-                            </Stack>
+                            <Typography variant="h4" style={{ color: WhiteBackgroundColor }}>
+                                A software engineer with a strong passion for crafting intuitive and visually compelling experiences. With keen attention to detail, creating sustainable and versatile designs that adapt seamlessly
+                                across platforms.
+                            </Typography>
+                            <br />
+                            <Typography variant="h4" style={{ color: WhiteBackgroundColor }}>
+                                Proficient in Figma, bringing ideas to life with precision, ensuring both aesthetics and functionality work hand in hand.
+                            </Typography>
                         </Stack>
                     </Grid>
                 </Grid>
@@ -199,4 +245,4 @@ const FunFactDescription = (): JSX.Element => {
     );
 };
 
-export default FunFactDescription;
+export default WebDesignDescription;

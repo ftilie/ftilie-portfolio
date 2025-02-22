@@ -27,4 +27,5 @@ export const cssIcon = "\\assets\\svgs\\css.svg";
 export const autoAwesomeIcon = "\\assets\\svgs\\autoAwesome.svg";
 export const accessTimeIcon = "\\assets\\svgs\\accessTime.svg";
 export const historyIcon = "\\assets\\svgs\\history.svg";
-export const hourglassIcon = "\\assets\\svgs\\hourglass.svg";
+export const figmaIcon = "\\assets\\svgs\\figma.svg";
+export const materialUiIcon = "\\assets\\svgs\\materialUi.svg";

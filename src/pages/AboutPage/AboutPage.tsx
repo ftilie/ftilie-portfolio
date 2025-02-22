@@ -8,6 +8,7 @@ import SoftwareEngineerDescription from "~/components/DescriptionCarousel/Softwa
 import WebDevelopmentDescription from "~/components/DescriptionCarousel/WebDevelopmentDescription";
 import FunFactDescription from "~/components/DescriptionCarousel/FunFactDescription";
 import DescriptionCarousel from "~/components/DescriptionCarousel/DescriptionCarousel";
+import WebDesignDescription from "~/components/DescriptionCarousel/WebDesignDescription";
 
 const MIN_SKILL_CARD_WIDTH = 350;
 const MAX_SKILL_CARD_WIDTH = 500;
@@ -160,6 +161,7 @@ const AboutPage = (): JSX.Element => {
                     {/* This approach allows individual customization on each carousel element */}
                     <SoftwareEngineerDescription />
                     <WebDevelopmentDescription />
+                    <WebDesignDescription />
                     <FunFactDescription />
                 </DescriptionCarousel>
             </Grid>

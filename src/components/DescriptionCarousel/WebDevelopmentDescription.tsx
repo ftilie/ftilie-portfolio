@@ -22,6 +22,7 @@ const recoilBadge = (
         alt="recoilBadge"
         sx={{
             position: "absolute" as const,
+            userSelect: "none",
             width: "150px",
             height: "150px",
             transform: "rotate(60deg)",
@@ -39,6 +40,7 @@ const firstReactBadge = (
         alt="firstReactBadge"
         sx={{
             position: "absolute" as const,
+            userSelect: "none",
             width: "100px",
             height: "100px",
             transform: "rotate(90deg)",
@@ -56,6 +58,7 @@ const secondReactBadge = (
         alt="secondReactBadge"
         sx={{
             position: "absolute" as const,
+            userSelect: "none",
             width: "50px",
             height: "50px",
             transform: "rotate(65deg)",
@@ -69,7 +72,8 @@ const secondReactBadge = (
 const dotBadge = (
     <Box
         sx={{
-            position: "absolute",
+            position: "absolute" as const,
+            userSelect: "none",
             width: "18px",
             height: "18px",
             backgroundColor: "rgb(0, 216, 255)",
@@ -88,6 +92,7 @@ const reactBadge = (
         alt="reactBadge"
         sx={{
             position: "absolute" as const,
+            userSelect: "none",
             width: "100px",
             height: "100px",
             transform: "rotate(20deg)",
@@ -105,6 +110,7 @@ const typescriptBadge = (
         alt="typescriptBadge"
         sx={{
             position: "absolute" as const,
+            userSelect: "none",
             width: "120px",
             height: "120px",
             transform: "rotate(330deg)",
@@ -122,6 +128,7 @@ const firstMongoBadge = (
         alt="firstMongoBadge"
         sx={{
             position: "absolute" as const,
+            userSelect: "none",
             width: "150px",
             height: "150px",
             transform: "rotate(190deg)",
@@ -139,6 +146,7 @@ const secondMongoBadge = (
         alt="secondMongoBadge"
         sx={{
             position: "absolute" as const,
+            userSelect: "none",
             width: "100px",
             height: "100px",
             transform: "rotate(150deg)",
@@ -156,6 +164,7 @@ const thirdMongoBadge = (
         alt="thirdMongoBadge"
         sx={{
             position: "absolute" as const,
+            userSelect: "none",
             width: "135px",
             height: "135px",
             transform: "rotate(285deg)",
@@ -173,6 +182,7 @@ const fourthMongoBadge = (
         alt="fourthMongoBadge"
         sx={{
             position: "absolute" as const,
+            userSelect: "none",
             width: "50px",
             height: "50px",
             transform: "rotate(20deg)",
@@ -190,6 +200,7 @@ const tanStackBadge = (
         alt="tanStackBadge"
         sx={{
             position: "absolute" as const,
+            userSelect: "none",
             width: "125px",
             height: "125px",
             transform: "rotate(190deg)",

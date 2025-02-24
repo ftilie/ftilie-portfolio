@@ -22,6 +22,7 @@ const figmaBadge = (
         alt="figmaBadge"
         sx={{
             position: "absolute" as const,
+            userSelect: "none",
             width: "150px",
             height: "150px",
             transform: "rotate(15deg)",
@@ -39,6 +40,7 @@ const typescriptBadge = (
         alt="typescriptBadge"
         sx={{
             position: "absolute" as const,
+            userSelect: "none",
             width: "100px",
             height: "100px",
             transform: "rotate(340deg)",
@@ -52,7 +54,8 @@ const typescriptBadge = (
 const firstDotBadge = (
     <Box
         sx={{
-            position: "absolute",
+            position: "absolute" as const,
+            userSelect: "none",
             width: "50px",
             height: "50px",
             backgroundColor: "rgb(10, 207, 131)",
@@ -67,7 +70,8 @@ const firstDotBadge = (
 const secondDotBadge = (
     <Box
         sx={{
-            position: "absolute",
+            position: "absolute" as const,
+            userSelect: "none",
             width: "30px",
             height: "30px",
             backgroundColor: "rgb(242, 78, 30)",
@@ -82,7 +86,8 @@ const secondDotBadge = (
 const thirdDotBadge = (
     <Box
         sx={{
-            position: "absolute",
+            position: "absolute" as const,
+            userSelect: "none",
             width: "20px",
             height: "20px",
             backgroundColor: "rgb(26, 188, 254)",
@@ -101,6 +106,7 @@ const firstMaterialUiBadge = (
         alt="firstMaterialUiBadge"
         sx={{
             position: "absolute" as const,
+            userSelect: "none",
             width: "125px",
             height: "125px",
             transform: "rotate(350deg)",
@@ -118,6 +124,7 @@ const secondMaterialUiBadge = (
         alt="secondMaterialUiBadge"
         sx={{
             position: "absolute" as const,
+            userSelect: "none",
             width: "125px",
             height: "125px",
             transform: "rotate(170deg)",
@@ -135,6 +142,7 @@ const thirdMaterialUiBadge = (
         alt="thirdMaterialUiBadge"
         sx={{
             position: "absolute" as const,
+            userSelect: "none",
             width: "85px",
             height: "85px",
             transform: "rotate(348deg)",
@@ -152,6 +160,7 @@ const fourthMaterialUiBadge = (
         alt="fourthMaterialUiBadge"
         sx={{
             position: "absolute" as const,
+            userSelect: "none",
             width: "75px",
             height: "75px",
             transform: "rotate(350deg)",
@@ -173,9 +182,7 @@ const WebDesignDescription = (): JSX.Element => {
             {thirdMaterialUiBadge}
             {fourthMaterialUiBadge}
             {/* Top Right Corner Badge */}
-
             {/* Bottom Left Corner Badge */}
-
             {/* Bottom Right Corner Badge */}
             {figmaBadge}
             {typescriptBadge}

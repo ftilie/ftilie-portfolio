@@ -1,3 +1,8 @@
+/* Avatars */
+export const engineeringIcon = "\\assets\\svgs\\engineering.svg";
+export const codeIcon = "\\assets\\svgs\\code.svg";
+export const architectureIcon = "\\assets\\svgs\\architecture.svg";
+
 /* C# */
 export const csharpIcon = "\\assets\\svgs\\csharp.svg";
 export const dotNetIcon = "\\assets\\svgs\\dotnet.svg";

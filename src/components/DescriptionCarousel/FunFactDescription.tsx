@@ -23,6 +23,7 @@ const watchBadge = (
         alt="autoAwesomeBadge"
         sx={{
             position: "absolute" as const,
+            userSelect: "none",
             width: "100px",
             height: "100px",
             transform: "rotate(340deg)",
@@ -40,6 +41,7 @@ const historyBadge = (
         alt="historyBadge"
         sx={{
             position: "absolute" as const,
+            userSelect: "none",
             width: "75px",
             height: "75px",
             transform: "rotate(50deg)",
@@ -57,6 +59,7 @@ const firstMongoBadge = (
         alt="firstMongoBadge"
         sx={{
             position: "absolute" as const,
+            userSelect: "none",
             width: "150px",
             height: "150px",
             transform: "rotate(45deg)",
@@ -74,6 +77,7 @@ const secondMongoBadge = (
         alt="secondMongoBadge"
         sx={{
             position: "absolute" as const,
+            userSelect: "none",
             width: "250px",
             height: "250px",
             transform: "rotate(20deg)",
@@ -91,6 +95,7 @@ const firstAutoAwesomeBadge = (
         alt="firstAutoAwesomeBadge"
         sx={{
             position: "absolute" as const,
+            userSelect: "none",
             width: "75px",
             height: "75px",
             transform: "rotate(0deg)",
@@ -108,6 +113,7 @@ const secondAutoAwesomeBadge = (
         alt="secondAutoAwesomeBadge"
         sx={{
             position: "absolute" as const,
+            userSelect: "none",
             width: "150px",
             height: "150px",
             transform: "rotate(135deg)",
@@ -124,12 +130,9 @@ const FunFactDescription = (): JSX.Element => {
     return (
         <Box sx={{ position: "relative", display: "inline-block", width: "100%", maxWidth: DESCRIPTION_CARD_MAX_WIDTH }}>
             {/* Top Left Corner Badge */}
-
             {/* Top Right Corner Badge */}
             {secondAutoAwesomeBadge}
-
             {/* Bottom Left Corner Badge */}
-
             {/* Bottom Right Corner Badge */}
             {watchBadge}
             {historyBadge}

@@ -1,6 +1,6 @@
-import { Avatar, Box, Grid, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
-import { AVATAR_SIZE, DESCRIPTION_CARD_HEIGHT, DESCRIPTION_CARD_MAX_WIDTH, DESCRIPTION_CARD_MIN_WIDTH, isMobile } from "~/utils/Constants";
-import { csharpIcon, dotNetIcon, mongoIcon, pythonIcon, typescriptIcon } from "~/utils/Icons";
+import { Box, Grid, Grow, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { DESCRIPTION_CARD_BACKGROUND_ICON, DESCRIPTION_CARD_BACKGROUND_ICON_PLACEHOLDER, DESCRIPTION_CARD_HEIGHT, DESCRIPTION_CARD_MAX_WIDTH, DESCRIPTION_CARD_MIN_WIDTH, isMobile } from "~/utils/Constants";
+import { csharpIcon, dotNetIcon, engineeringIcon, mongoIcon, pythonIcon, typescriptIcon } from "~/utils/Icons";
 import { DarkThemeHoveredCardColor, WhiteBackgroundColor } from "~/utils/Theme";
 
 const cardContainerStyles = {
@@ -22,6 +22,7 @@ const typescriptBadge = (
         alt="typescriptBadge"
         sx={{
             position: "absolute" as const,
+            userSelect: "none",
             width: "100px",
             height: "100px",
             transform: "rotate(15deg)",
@@ -39,6 +40,7 @@ const csharpBadge = (
         alt="csharpBadge"
         sx={{
             position: "absolute" as const,
+            userSelect: "none",
             width: "175px",
             height: "175px",
             transform: "rotate(350deg)",
@@ -56,6 +58,7 @@ const pythonBadge = (
         alt="pythonBadge"
         sx={{
             position: "absolute" as const,
+            userSelect: "none",
             width: "110px",
             height: "110px",
             transform: "rotate(45deg)",
@@ -73,6 +76,7 @@ const firstMongoBadge = (
         alt="firstMongoBadge"
         sx={{
             position: "absolute" as const,
+            userSelect: "none",
             width: "200px",
             height: "200px",
             transform: "rotate(0deg)",
@@ -90,6 +94,7 @@ const secondMongoBadge = (
         alt="secondMongoBadge"
         sx={{
             position: "absolute" as const,
+            userSelect: "none",
             width: "150px",
             height: "150px",
             transform: "rotate(315deg)",
@@ -107,6 +112,7 @@ const dotNetBadge = (
         alt="dotNetBadge"
         sx={{
             position: "absolute" as const,
+            userSelect: "none",
             width: "75px",
             height: "75px",
             transform: "rotate(315deg)",
@@ -123,17 +129,15 @@ const SoftwareEngineerDescription = (): JSX.Element => {
     return (
         <Box sx={{ position: "relative", display: "inline-block", width: "100%", maxWidth: DESCRIPTION_CARD_MAX_WIDTH }}>
             {/* Top Left Corner Badge */}
-
             {/* Top Right Corner Badge */}
             {typescriptBadge}
-            {csharpBadge}
-            {pythonBadge}
+            <Grow in>{csharpBadge}</Grow>
 
+            {pythonBadge}
             {/* Bottom Left Corner Badge */}
             {firstMongoBadge}
             {secondMongoBadge}
             {dotNetBadge}
-
             {/* Bottom Right Corner Badge */}
 
             <Box
@@ -144,16 +148,38 @@ const SoftwareEngineerDescription = (): JSX.Element => {
             >
                 <Grid container sx={{ ...cardContainerStyles, padding: 4, paddingLeft: 16, paddingRight: 16 }} alignItems="center" gap={16}>
                     {!isMobile && !isSmallScreen && (
-                        <Grid item {...avatarGridItemStyles} sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                            <Avatar
-                                alt="Profile Avatar"
-                                src="/assets/images/Profile.png"
+                        <Box
+                            sx={{
+                                position: "absolute",
+                                bottom: 0,
+                                left: 0,
+                                width: DESCRIPTION_CARD_BACKGROUND_ICON,
+                                height: DESCRIPTION_CARD_BACKGROUND_ICON,
+                                zIndex: 0,
+                            }}
+                        >
+                            <Box
+                                component="img"
+                                src={engineeringIcon}
                                 sx={{
-                                    maxWidth: AVATAR_SIZE,
-                                    maxHeight: AVATAR_SIZE,
                                     width: "100%",
                                     height: "100%",
-                                    borderRadius: "50%",
+                                    objectFit: "contain",
+                                }}
+                            />
+                        </Box>
+                    )}
+
+                    {!isMobile && !isSmallScreen && (
+                        <Grid item {...avatarGridItemStyles} sx={{ display: "flex", justifyContent: "start", alignItems: "end" }}>
+                            <Box
+                                sx={{
+                                    width: DESCRIPTION_CARD_BACKGROUND_ICON_PLACEHOLDER,
+                                    height: DESCRIPTION_CARD_BACKGROUND_ICON_PLACEHOLDER,
+                                    display: "flex",
+                                    justifyContent: "start",
+                                    alignItems: "end",
+                                    overflow: "hidden",
                                 }}
                             />
                         </Grid>

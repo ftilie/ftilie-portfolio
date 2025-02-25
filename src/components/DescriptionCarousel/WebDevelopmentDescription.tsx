@@ -1,7 +1,8 @@
-import { Avatar, Box, Grid, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
-import { AVATAR_SIZE, DESCRIPTION_CARD_HEIGHT, DESCRIPTION_CARD_MAX_WIDTH, DESCRIPTION_CARD_MIN_WIDTH, isMobile } from "~/utils/Constants";
-import { cssIcon, mongoIcon, reactIcon, recoilIcon, tanStackIcon, typescriptIcon } from "~/utils/Icons";
-import { DarkThemeHoveredCardColor, WhiteBackgroundColor } from "~/utils/Theme";
+import { Code, DesignServices } from "@mui/icons-material";
+import { Box, Grid, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { DESCRIPTION_CARD_BACKGROUND_ICON, DESCRIPTION_CARD_HEIGHT, DESCRIPTION_CARD_MAX_WIDTH, DESCRIPTION_CARD_MIN_WIDTH, isMobile } from "~/utils/Constants";
+import { mongoIcon, reactIcon, recoilIcon, tanStackIcon, typescriptIcon } from "~/utils/Icons";
+import { DarkThemeHoveredCardColor, DarkThemeLightGrayAccentColor, WhiteBackgroundColor } from "~/utils/Theme";
 
 const cardContainerStyles = {
     borderRadius: "20px",
@@ -240,16 +241,16 @@ const WebDevelopmentDescription = (): JSX.Element => {
             >
                 <Grid container sx={{ ...cardContainerStyles, padding: 4, paddingLeft: 16, paddingRight: 16 }} alignItems="center" gap={16}>
                     {!isMobile && !isSmallScreen && (
-                        <Grid item {...avatarGridItemStyles} sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                            <Avatar
-                                alt="Profile Avatar"
-                                src="/assets/images/Profile.png"
+                        <Grid item {...avatarGridItemStyles} sx={{ display: "flex", justifyContent: "start", alignItems: "end" }}>
+                            <Code
                                 sx={{
-                                    maxWidth: AVATAR_SIZE,
-                                    maxHeight: AVATAR_SIZE,
-                                    width: "100%",
-                                    height: "100%",
-                                    borderRadius: "50%",
+                                    color: DarkThemeLightGrayAccentColor,
+                                    width: DESCRIPTION_CARD_BACKGROUND_ICON,
+                                    height: DESCRIPTION_CARD_BACKGROUND_ICON,
+                                    display: "flex",
+                                    justifyContent: "start",
+                                    alignItems: "end",
+                                    overflow: "hidden",
                                 }}
                             />
                         </Grid>

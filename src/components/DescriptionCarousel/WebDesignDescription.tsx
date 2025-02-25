@@ -1,7 +1,8 @@
+import { Architecture } from "@mui/icons-material";
 import { Avatar, Box, Grid, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
-import { AVATAR_SIZE, DESCRIPTION_CARD_HEIGHT, DESCRIPTION_CARD_MAX_WIDTH, DESCRIPTION_CARD_MIN_WIDTH, isMobile } from "~/utils/Constants";
+import { AVATAR_SIZE, DESCRIPTION_CARD_BACKGROUND_ICON, DESCRIPTION_CARD_HEIGHT, DESCRIPTION_CARD_MAX_WIDTH, DESCRIPTION_CARD_MIN_WIDTH, isMobile } from "~/utils/Constants";
 import { figmaIcon, materialUiIcon, typescriptIcon } from "~/utils/Icons";
-import { DarkThemeHoveredCardColor, WhiteBackgroundColor } from "~/utils/Theme";
+import { DarkThemeHoveredCardColor, DarkThemeLightGrayAccentColor, WhiteBackgroundColor } from "~/utils/Theme";
 
 const cardContainerStyles = {
     borderRadius: "20px",
@@ -125,12 +126,12 @@ const secondMaterialUiBadge = (
         sx={{
             position: "absolute" as const,
             userSelect: "none",
-            width: "125px",
-            height: "125px",
-            transform: "rotate(170deg)",
+            width: "100px",
+            height: "100px",
+            transform: "rotate(50deg)",
             zIndex: 2,
-            top: "-50px",
-            left: "65px",
+            top: "-10px",
+            left: "70px",
         }}
     />
 );
@@ -140,24 +141,6 @@ const thirdMaterialUiBadge = (
         component="img"
         src={materialUiIcon}
         alt="thirdMaterialUiBadge"
-        sx={{
-            position: "absolute" as const,
-            userSelect: "none",
-            width: "85px",
-            height: "85px",
-            transform: "rotate(348deg)",
-            zIndex: 2,
-            top: "-26px",
-            left: "180px",
-        }}
-    />
-);
-
-const fourthMaterialUiBadge = (
-    <Box
-        component="img"
-        src={materialUiIcon}
-        alt="fourthMaterialUiBadge"
         sx={{
             position: "absolute" as const,
             userSelect: "none",
@@ -180,7 +163,6 @@ const WebDesignDescription = (): JSX.Element => {
             {firstMaterialUiBadge}
             {secondMaterialUiBadge}
             {thirdMaterialUiBadge}
-            {fourthMaterialUiBadge}
             {/* Top Right Corner Badge */}
             {/* Bottom Left Corner Badge */}
             {/* Bottom Right Corner Badge */}
@@ -198,16 +180,17 @@ const WebDesignDescription = (): JSX.Element => {
             >
                 <Grid container sx={{ ...cardContainerStyles, padding: 4, paddingLeft: 16, paddingRight: 16 }} alignItems="center" gap={16}>
                     {!isMobile && !isSmallScreen && (
-                        <Grid item {...avatarGridItemStyles} sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                            <Avatar
-                                alt="Profile Avatar"
-                                src="/assets/images/Profile.png"
+                        <Grid item {...avatarGridItemStyles} sx={{ display: "flex", justifyContent: "start", alignItems: "end" }}>
+                            <Architecture
                                 sx={{
-                                    maxWidth: AVATAR_SIZE,
-                                    maxHeight: AVATAR_SIZE,
-                                    width: "100%",
-                                    height: "100%",
-                                    borderRadius: "50%",
+                                    color: DarkThemeLightGrayAccentColor,
+                                    width: DESCRIPTION_CARD_BACKGROUND_ICON,
+                                    height: DESCRIPTION_CARD_BACKGROUND_ICON,
+                                    display: "flex",
+                                    justifyContent: "start",
+                                    alignItems: "end",
+                                    overflow: "hidden",
+                                    rotate: "30deg",
                                 }}
                             />
                         </Grid>

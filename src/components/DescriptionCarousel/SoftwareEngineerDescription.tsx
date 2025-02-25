@@ -1,7 +1,8 @@
+import { Engineering } from "@mui/icons-material";
 import { Box, Grid, Grow, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
-import { DESCRIPTION_CARD_BACKGROUND_ICON, DESCRIPTION_CARD_BACKGROUND_ICON_PLACEHOLDER, DESCRIPTION_CARD_HEIGHT, DESCRIPTION_CARD_MAX_WIDTH, DESCRIPTION_CARD_MIN_WIDTH, isMobile } from "~/utils/Constants";
-import { csharpIcon, dotNetIcon, engineeringIcon, mongoIcon, pythonIcon, typescriptIcon } from "~/utils/Icons";
-import { DarkThemeHoveredCardColor, WhiteBackgroundColor } from "~/utils/Theme";
+import { DESCRIPTION_CARD_BACKGROUND_ICON, DESCRIPTION_CARD_HEIGHT, DESCRIPTION_CARD_MAX_WIDTH, DESCRIPTION_CARD_MIN_WIDTH, isMobile } from "~/utils/Constants";
+import { csharpIcon, dotNetIcon, mongoIcon, pythonIcon, typescriptIcon } from "~/utils/Icons";
+import { DarkThemeHoveredCardColor, DarkThemeLightGrayAccentColor, WhiteBackgroundColor } from "~/utils/Theme";
 
 const cardContainerStyles = {
     borderRadius: "20px",
@@ -148,34 +149,12 @@ const SoftwareEngineerDescription = (): JSX.Element => {
             >
                 <Grid container sx={{ ...cardContainerStyles, padding: 4, paddingLeft: 16, paddingRight: 16 }} alignItems="center" gap={16}>
                     {!isMobile && !isSmallScreen && (
-                        <Box
-                            sx={{
-                                position: "absolute",
-                                bottom: 0,
-                                left: 0,
-                                width: DESCRIPTION_CARD_BACKGROUND_ICON,
-                                height: DESCRIPTION_CARD_BACKGROUND_ICON,
-                                zIndex: 0,
-                            }}
-                        >
-                            <Box
-                                component="img"
-                                src={engineeringIcon}
-                                sx={{
-                                    width: "100%",
-                                    height: "100%",
-                                    objectFit: "contain",
-                                }}
-                            />
-                        </Box>
-                    )}
-
-                    {!isMobile && !isSmallScreen && (
                         <Grid item {...avatarGridItemStyles} sx={{ display: "flex", justifyContent: "start", alignItems: "end" }}>
-                            <Box
+                            <Engineering
                                 sx={{
-                                    width: DESCRIPTION_CARD_BACKGROUND_ICON_PLACEHOLDER,
-                                    height: DESCRIPTION_CARD_BACKGROUND_ICON_PLACEHOLDER,
+                                    color: DarkThemeLightGrayAccentColor,
+                                    width: DESCRIPTION_CARD_BACKGROUND_ICON,
+                                    height: DESCRIPTION_CARD_BACKGROUND_ICON,
                                     display: "flex",
                                     justifyContent: "start",
                                     alignItems: "end",

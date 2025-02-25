@@ -103,8 +103,7 @@ export const DESCRIPTION_CAROUSEL_MAX_WIDTH = "100%";
 export const DESCRIPTION_CAROUSEL_MIN_WIDTH = 400;
 export const DESCRIPTION_CARD_MAX_WIDTH = 1000;
 export const DESCRIPTION_CARD_MIN_WIDTH = 400;
-export const DESCRIPTION_CARD_BACKGROUND_ICON = 350;
-export const DESCRIPTION_CARD_BACKGROUND_ICON_PLACEHOLDER = 250;
+export const DESCRIPTION_CARD_BACKGROUND_ICON = 250;
 export const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
 
 // InterestTabs

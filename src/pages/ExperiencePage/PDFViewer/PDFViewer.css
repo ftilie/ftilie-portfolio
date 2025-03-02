@@ -1,0 +1,4 @@
+/* Set the Viewer background color to transparent */
+.rpv-core__inner-page {
+    background-color: transparent !important;
+}

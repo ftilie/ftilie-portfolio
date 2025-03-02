@@ -7,6 +7,7 @@ import IconLookup from "~/utils/IconLookup";
 
 const RootLayout = lazy(() => import("~/layouts/RootLayout"));
 const AboutPage = lazy(() => import("~/pages/AboutPage/AboutPage"));
+const ExperiencePage = lazy(() => import("~/pages/ExperiencePage/ExperiencePage"));
 
 const headerMenuLinks = [
     { label: "About", to: "/about", icon: "Home" },
@@ -27,7 +28,7 @@ const RootNavLinks = (): JSX.Element => {
     const navigate = useNavigate();
     const prevPathname = useRef(location.pathname);
 
-    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
     useEffect(() => {
         if (prevPathname.current !== location.pathname) {
@@ -74,14 +75,8 @@ const router = createBrowserRouter(
                 }}
             >
                 <Route index element={<Navigate to="/about" />} />
-
                 <Route path="about" element={<AboutPage />} />
-                {/* <Route path="about" element={<MaintenancePage />} /> */}
-
-                {/* <Route path="experience" element={<></>} /> */}
-                <Route path="experience" element={<MaintenancePage />} />
-
-                {/* <Route path="contact" element={<></>} /> */}
+                <Route path="experience" element={<ExperiencePage />} />
                 <Route path="contact" element={<MaintenancePage />} />
             </Route>
         </>

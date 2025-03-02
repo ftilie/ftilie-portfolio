@@ -15,8 +15,8 @@ const InterestTabs = (props: InterestTabsProps): JSX.Element => {
                 <Typography variant="h4" style={{ color: DarkThemeLightGrayAccentColor, userSelect: "none", WebkitUserSelect: "none", MozUserSelect: "none", msUserSelect: "none" }}>
                     Other Interests:
                 </Typography>
-                {personalInterests.map((personalInterest) => (
-                    <InfoChip text={personalInterest.interest} />
+                {personalInterests.map((personalInterest, personalInterestIndex) => (
+                    <InfoChip key={personalInterestIndex} text={personalInterest.interest} />
                 ))}
             </Grid>
         </Grid>

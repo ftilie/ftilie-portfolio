@@ -1,0 +1,36 @@
+[debug] [2025-03-09T16:02:54.242Z] ----------------------------------------------------------------------
+[debug] [2025-03-09T16:02:54.245Z] Command:       C:\nvm4w\nodejs\node.exe C:\Users\ftilie\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2025-03-09T16:02:54.246Z] CLI Version:   13.8.0
+[debug] [2025-03-09T16:02:54.246Z] Platform:      win32
+[debug] [2025-03-09T16:02:54.246Z] Node Version:  v21.2.0
+[debug] [2025-03-09T16:02:54.247Z] Time:          Sun Mar 09 2025 18:02:54 GMT+0200 (Eastern European Standard Time)
+[debug] [2025-03-09T16:02:54.247Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-03-09T16:02:54.250Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2025-03-09T16:02:54.359Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-03-09T16:02:54.360Z] > authorizing via signed-in user (florintilie@gmail.com)
+[debug] [2025-03-09T16:02:54.360Z] [iam] checking project ftilie for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-03-09T16:02:54.361Z] > refreshing access token with scopes: []
+[debug] [2025-03-09T16:02:54.363Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-03-09T16:02:54.363Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-03-09T16:02:54.618Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2025-03-09T16:02:54.619Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-03-09T16:02:54.619Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/ftilie:testIamPermissions [none]
+[debug] [2025-03-09T16:02:54.619Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/ftilie:testIamPermissions x-goog-quota-user=projects/ftilie
+[debug] [2025-03-09T16:02:54.619Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/ftilie:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-03-09T16:02:54.720Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2025-03-09T16:02:54.720Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2025-03-09T16:02:55.470Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/ftilie:testIamPermissions 401
+[debug] [2025-03-09T16:02:55.470Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/ftilie:testIamPermissions {"error":{"code":401,"message":"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":"UNAUTHENTICATED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"ACCESS_TOKEN_TYPE_UNSUPPORTED","metadata":{"method":"google.cloudresourcemanager.v1.Projects.TestIamPermissions","service":"cloudresourcemanager.googleapis.com"}}]}}
+[debug] [2025-03-09T16:02:55.471Z] [iam] error while checking permissions, command may fail: FirebaseError: HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[debug] [2025-03-09T16:02:55.472Z] > refreshing access token with scopes: []
+[debug] [2025-03-09T16:02:55.472Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-03-09T16:02:55.472Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-03-09T16:02:55.541Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2025-03-09T16:02:55.541Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-03-09T16:02:55.541Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/ftilie [none]
+[debug] [2025-03-09T16:02:55.728Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/ftilie 401
+[debug] [2025-03-09T16:02:55.728Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/ftilie {"error":{"code":401,"message":"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":"UNAUTHENTICATED"}}
+[debug] [2025-03-09T16:02:55.728Z] HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[error] 
+[error] Error: Assertion failed: resolving hosting target of a site with no site name or target name. This should have caused an error earlier

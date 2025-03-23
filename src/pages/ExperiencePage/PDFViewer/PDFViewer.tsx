@@ -4,7 +4,7 @@ import "@react-pdf-viewer/core/lib/styles/index.css";
 import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 import * as pdfjsLib from "pdfjs-dist";
 import "./PDFViewer.css";
-import { Stack } from "@mui/material";
+import { Fab, Stack } from "@mui/material";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = new URL("pdfjs-dist/build/pdf.worker.min.js", import.meta.url).toString();
 

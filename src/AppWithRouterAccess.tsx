@@ -2,12 +2,13 @@ import { NavLink, Navigate, Route, RouterProvider, createBrowserRouter, createRo
 import { lazy, useEffect, useRef } from "react";
 import { Box, Button, Divider, Stack, Theme, useMediaQuery, useTheme } from "@mui/material";
 import GlobalErrorBoundary from "~/components/GlobalErrorBoundary/GlobalErrorBoundary";
-import MaintenancePage from "~/pages/MaintenancePage/MaintenancePage";
 import IconLookup from "~/utils/IconLookup";
 
 const RootLayout = lazy(() => import("~/layouts/RootLayout"));
+const MaintenancePage = lazy(() => import("~/pages/MaintenancePage/MaintenancePage"));
 const AboutPage = lazy(() => import("~/pages/AboutPage/AboutPage"));
 const ExperiencePage = lazy(() => import("~/pages/ExperiencePage/ExperiencePage"));
+const ContactPage = lazy(() => import("~/pages/ContactPage/ContactPage"));
 
 const headerMenuLinks = [
     { label: "About", to: "/about", icon: "Home" },

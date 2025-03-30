@@ -2,26 +2,3 @@
 .rpv-core__inner-page {
     background-color: transparent !important;
 }
-
-/* Custom scrollbar for PDF viewer */
-.rpv-core__viewer::-webkit-scrollbar {
-    width: 10px;
-}
-
-.rpv-core__viewer::-webkit-scrollbar-track {
-    background: #141414; /* Dark track */
-}
-
-.rpv-core__viewer::-webkit-scrollbar-thumb {
-    background: #323232; /* Scrollbar thumb color */
-    border-radius: 5px;
-}
-
-.rpv-core__viewer::-webkit-scrollbar-thumb:hover {
-    background: #525252; /* Hover effect */
-}
-
-/* Firefox scrollbar */
-.rpv-core__viewer {
-    scrollbar-color: #323232 #141414;
-}

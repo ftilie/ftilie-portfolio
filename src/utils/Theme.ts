@@ -1,3 +1,4 @@
+import { BorderColor } from "@mui/icons-material";
 import { createTheme } from "@mui/material";
 import { grey } from "@mui/material/colors";
 
@@ -7,6 +8,7 @@ declare module "@mui/material/Button" {
         contextualMenu: true;
         action: true;
         launch: true;
+        animated: true;
     }
 }
 
@@ -14,6 +16,7 @@ declare module "@mui/material/Chip" {
     interface ChipPropsVariantOverrides {
         filledChip: true;
         outlinedChip: true;
+        messageBubble: true;
     }
 }
 
@@ -196,27 +199,27 @@ export const customMuiTheme = createTheme({
                     props: { variant: "contained" },
                     style: {
                         color: "white",
-                        backgroundColor: "rgb(255, 71, 71)",
-                        "&:hover": { backgroundColor: "rgb(255, 89, 89)" },
+                        backgroundColor: "rgb(145, 70, 255)",
+                        "&:hover": { backgroundColor: "rgb(127, 52, 255)" },
                     },
                 },
                 {
                     props: { variant: "action" },
                     style: {
                         color: "white",
-                        backgroundColor: "rgb(255, 71, 71)",
+                        backgroundColor: "rgb(145, 70, 255)",
                         width: 200,
-                        "&:hover": { backgroundColor: "rgb(255, 89, 89)" },
+                        "&:hover": { backgroundColor: "rgb(127, 52, 255)" },
                     },
                 },
                 {
                     props: { variant: "launch" },
                     style: {
                         color: "white",
-                        backgroundColor: "rgb(255, 71, 71)",
+                        backgroundColor: "rgb(145, 70, 255)",
                         width: 64,
                         height: 24,
-                        "&:hover": { backgroundColor: "rgb(255, 89, 89)" },
+                        "&:hover": { backgroundColor: "rgb(127, 52, 255)" },
                     },
                 },
                 {
@@ -227,6 +230,46 @@ export const customMuiTheme = createTheme({
                         border: "1px solid",
                         borderColor: "white",
                         "&:hover": { borderColor: DarkThemePurpleAccentColor },
+                    },
+                },
+                {
+                    props: { variant: "animated" },
+                    style: {
+                        position: "relative",
+                        color: "white",
+                        backgroundColor: "transparent",
+                        border: "1px solid",
+                        borderRadius: 8, // Outer border radius of the button
+                        borderColor: "white",
+                        overflow: "hidden",
+
+                        "&::before": {
+                            content: '""',
+                            position: "absolute",
+                            top: 0,
+                            left: 0,
+                            width: "0%", // Start with zero width
+                            height: "100%",
+                            backgroundColor: "rgb(145, 70, 255)", // Hover fill color
+                            transition: "width 0.3s ease-in-out, border-radius 0.3s ease-in-out",
+                            zIndex: 1, // Ensure it appears behind the text
+                            borderRadius: "8px 24px 24px 8px", // Rounder on right to create animation effect
+                        },
+
+                        "&:hover::before": {
+                            width: "100%", // Expands from left to right
+                            borderRadius: "8px", // Fully rounded corners when the fill reaches 100%
+                        },
+
+                        "&:hover": {
+                            color: "white", // Ensure text remains visible
+                            borderColor: "rgb(145, 70, 255)",
+                        },
+
+                        "& > *": {
+                            position: "relative",
+                            zIndex: 2, // Ensure the text stays above the hover effect
+                        },
                     },
                 },
                 {
@@ -317,6 +360,15 @@ export const customMuiTheme = createTheme({
                         border: "1px solid",
                         borderColor: "white",
                         "&:hover": { borderColor: DarkThemeLightPurpleAccentColor },
+                    },
+                },
+                {
+                    props: { variant: "messageBubble" },
+                    style: {
+                        color: "white",
+                        fontSize: 16,
+                        backgroundColor: DarkThemePurpleAccentColor,
+                        "&:hover": { borderColor: DarkThemePurpleAccentColor },
                     },
                 },
             ],

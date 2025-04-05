@@ -1,9 +1,8 @@
-import { ChevronRight, Clear, Close, Mail, Send } from "@mui/icons-material";
-import { Avatar, Button, Chip, Grid, IconButton, InputAdornment, Snackbar, SnackbarCloseReason, Stack, TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Clear, Close, Mail } from "@mui/icons-material";
+import { Avatar, Button, Chip, Grid, IconButton, InputAdornment, Snackbar, SnackbarCloseReason, SnackbarContent, Stack, TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { Fragment, useState } from "react";
-import InfoChip from "~/components/InfoChip/InfoChip";
 import { HEADER_HEIGHT } from "~/utils/Constants";
-import { DarkThemePurpleAccentColor } from "~/utils/Theme";
+import { DarkThemeHoveredCardColor, WhiteBackgroundColor } from "~/utils/Theme";
 
 const FIELD_WIDTH = 400;
 const FIELD_MIN_WIDTH = 300;
@@ -151,7 +150,9 @@ const ContactPage = (): JSX.Element => {
                     </Button>
                 </Grid>
             </Grid>
-            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} message="Note archived" action={action} />
+            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                <SnackbarContent message="Message sent!" action={action} style={{ background: DarkThemeHoveredCardColor, color: WhiteBackgroundColor }} />
+            </Snackbar>
         </Stack>
     );
 };

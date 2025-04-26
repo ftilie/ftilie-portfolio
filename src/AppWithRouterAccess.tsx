@@ -78,7 +78,7 @@ const router = createBrowserRouter(
                 <Route index element={<Navigate to="/about" />} />
                 <Route path="about" element={<AboutPage />} />
                 <Route path="experience" element={<ExperiencePage />} />
-                <Route path="contact" element={<MaintenancePage />} />
+                <Route path="contact" element={<ContactPage />} />
             </Route>
         </>
     )

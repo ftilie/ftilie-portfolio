@@ -23,6 +23,7 @@ declare module "@mui/material/Chip" {
 //THEME COLOURS
 //Each theme will have its own set of colors
 export const WhiteBackgroundColor = "#FFFFFF";
+export const RedAccentColor = "#FF4747";
 
 //LIGHT THEME
 

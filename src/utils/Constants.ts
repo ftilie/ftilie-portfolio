@@ -5,6 +5,8 @@ export const EMAIL_JS_PUBLIC_KEY = import.meta.env.VITE_EMAIL_JS_PUBLIC_KEY;
 export const EMAIL_JS_SERVICE_ID = import.meta.env.VITE_EMAIL_JS_SERVICE_ID;
 export const EMAIL_JS_TEMPLATE_ID = import.meta.env.VITE_EMAIL_JS_TEMPLATE_ID;
 
+export const GOFILE_GET_SERVER_URL = "https://api.gofile.io/servers";
+
 export const HEADER_HEIGHT = "60px";
 export const SIDE_PADDING = 8;
 

@@ -15,7 +15,7 @@ export const TextAreaWrapper = (props: WidgetProps): JSX.Element => {
             placeholder={(props.options.placeholderText as string) ?? ""}
             error={props.rawErrors && props.rawErrors.length > 0}
             multiline={true}
-            minRows={5}
+            minRows={props.options.rows ?? 5}
         />
     );
 };

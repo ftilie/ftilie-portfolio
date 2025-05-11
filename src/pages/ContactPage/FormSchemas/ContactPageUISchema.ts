@@ -21,7 +21,7 @@ export const contactPageUISchema: any = {
             widgetTitle: "Message",
             gridSize: 12,
             multiline: true,
-            rows: 4,
+            rows: 5,
         },
     },
 };

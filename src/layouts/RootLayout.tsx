@@ -12,7 +12,7 @@ const RootLayout = (): JSX.Element => {
                 <Stack direction="column">
                     <Header />
                     <Stack direction="row" sx={{ height: `calc(100vh - ${HEADER_HEIGHT})` }}>
-                        {/* <SideMenu /> */}
+                        <SideMenu />
                         <Paper elevation={0} sx={{ width: "100%", overflowY: "auto" }}>
                             <Container maxWidth={false} disableGutters>
                                 <Outlet />

@@ -1,8 +1,8 @@
 import { AddCircleOutline, AttachFile, CheckCircleOutline, Close, Mail } from "@mui/icons-material";
-import { Avatar, Box, Button, Chip, Fade, Grid, Grow, IconButton, Snackbar, SnackbarCloseReason, SnackbarContent, Stack, Typography, useMediaQuery, useTheme, Zoom } from "@mui/material";
+import { Avatar, Badge, Box, Button, Chip, Fade, Grid, Grow, IconButton, Snackbar, SnackbarCloseReason, SnackbarContent, Stack, Typography, useMediaQuery, useTheme, Zoom } from "@mui/material";
 import { Fragment, useState } from "react";
-import { EMAIL_JS_PUBLIC_KEY, EMAIL_JS_SERVICE_ID, EMAIL_JS_TEMPLATE_ID, HEADER_HEIGHT } from "~/utils/Constants";
-import { DarkThemeGrayAccentColor, DarkThemeHoveredCardColor, DarkThemeLightGrayAccentColor, DarkThemePurpleAccentColor, RedAccentColor, WhiteBackgroundColor } from "~/utils/Theme";
+import { EMAIL_JS_PUBLIC_KEY, EMAIL_JS_SERVICE_ID, EMAIL_JS_TEMPLATE_ID, GOFILE_GET_SERVER_URL, HEADER_HEIGHT } from "~/utils/Constants";
+import { DarkThemeGrayAccentColor, DarkThemeHoveredCardColor, DarkThemeLightGrayAccentColor, DarkThemeLightPurpleAccentColor, DarkThemePurpleAccentColor, RedAccentColor, WhiteBackgroundColor } from "~/utils/Theme";
 import emailjs from "@emailjs/browser";
 import { InputWrapper } from "~/components/FormWidgets/InputWrapper";
 import { TextAreaWrapper } from "~/components/FormWidgets/TextAreaWrapper";
@@ -24,6 +24,7 @@ type EmailParams = {
 const FIELD_WIDTH = 400;
 const FIELD_MIN_WIDTH = 300;
 const AVATAR_SIZE = 100;
+const BOX_SIZE = 40;
 
 const ContactPageForm = generateForm<any, any, ContactPageFormData>();
 
@@ -37,6 +38,7 @@ const ContactPage = (): JSX.Element => {
     } as ContactPageFormData);
     const [attachment, setAttachment] = useState<File | null>(null);
     const [hasSubmissionError, setHasSubmissionError] = useState<boolean>(false);
+    const [isProcessing, setIsProcessing] = useState<boolean>(false);
 
     const handleFileSelection = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
@@ -47,6 +49,30 @@ const ContactPage = (): JSX.Element => {
 
     const handleRemoveFile = () => {
         setAttachment(null);
+    };
+
+    const getUploadServer = async () => {
+        const response = await fetch(GOFILE_GET_SERVER_URL);
+        const data = await response.json();
+        return data.data.servers[0].name;
+    };
+
+    const uploadToGofile = async (file: File) => {
+        const server = await getUploadServer();
+        const formData = new FormData();
+        formData.append("file", file);
+
+        const response = await fetch(`https://${server}.gofile.io/uploadfile`, {
+            method: "POST",
+            body: formData,
+        });
+
+        const result = await response.json();
+        if (result.status === "ok") {
+            return result.data.downloadPage;
+        } else {
+            throw new Error("Upload failed");
+        }
     };
 
     const handleClose = (event: React.SyntheticEvent | Event, reason?: SnackbarCloseReason) => {
@@ -61,6 +87,9 @@ const ContactPage = (): JSX.Element => {
         setHasConfirmation(false);
         setHasSubmissionError(false);
         setFormData({ name: "", email: "", message: "" } as ContactPageFormData);
+        setAttachment(null);
+        setNotification(false);
+        setIsProcessing(false);
     };
 
     const sendEmail = async (name: string, email: string, message: string): Promise<void> => {
@@ -70,19 +99,14 @@ const ContactPage = (): JSX.Element => {
             message: message,
         };
         try {
-            console.log("Sending email with:", {
-                service: EMAIL_JS_SERVICE_ID,
-                template: EMAIL_JS_TEMPLATE_ID,
-                params: templateParams,
-                key: EMAIL_JS_PUBLIC_KEY,
-            });
-
             await emailjs.send(EMAIL_JS_SERVICE_ID, EMAIL_JS_TEMPLATE_ID, templateParams, EMAIL_JS_PUBLIC_KEY);
             setNotification(true);
             setHasConfirmation(true);
+            setIsProcessing(false);
         } catch (error) {
             setHasSubmissionError(true);
             setHasConfirmation(false);
+            setIsProcessing(false);
         }
     };
 
@@ -94,8 +118,14 @@ const ContactPage = (): JSX.Element => {
     };
 
     const onSubmit = async ({ formData }: any) => {
+        setIsProcessing(true);
         try {
-            await sendEmail(formData.name, formData.email, formData.message);
+            if (attachment) {
+                const downloadLink = await uploadToGofile(attachment);
+                await sendEmail(formData.name, formData.email, `${formData.message} \n\nAttachment: ${downloadLink}`);
+            } else {
+                await sendEmail(formData.name, formData.email, formData.message);
+            }
         } catch (e: any) {
             setHasSubmissionError(true);
         }
@@ -181,6 +211,13 @@ const ContactPage = (): JSX.Element => {
                         <Grid item xs={12}>
                             <Chip variant="messageBubble" label={formData?.message} style={{ textWrap: "wrap", backgroundColor: DarkThemeGrayAccentColor }} />
                         </Grid>
+                        {attachment && (
+                            <Grid item xs={12}>
+                                <Typography variant="h5" style={{ color: DarkThemeLightGrayAccentColor }}>
+                                    {attachment.name}
+                                </Typography>
+                            </Grid>
+                        )}
                     </Grid>
                 </Grow>
             )}
@@ -280,32 +317,56 @@ const ContactPage = (): JSX.Element => {
             onChange={handleFormChange}
             validator={validator}
             customValidate={contactPageFormValidator}
-            onError={() => setHasSubmissionError(true)}
             showErrorList={false}
         >
-            {/* <Grid item xs={12} display={"flex"} justifyContent={"space-between"} paddingTop={2} paddingBottom={2}>
-                <Box width={40} justifyContent={"start"} display={"flex"} alignItems={"center"}>
+            {attachment ? (
+                <Box height={BOX_SIZE}>
+                    <Grid item xs={12} display={"flex"} justifyContent={"space-between"} alignItems={"center"} paddingTop={2} gap={8}>
+                        <Typography variant="h5" sx={{ color: DarkThemeLightGrayAccentColor }}>
+                            {attachment?.name}
+                        </Typography>
+                        <IconButton
+                            disabled={isProcessing}
+                            component="label"
+                            sx={{
+                                borderRadius: "50%",
+                            }}
+                            onClick={handleRemoveFile}
+                        >
+                            <Close fontSize="small" sx={{ color: DarkThemeLightGrayAccentColor }} />
+                        </IconButton>
+                    </Grid>
+                </Box>
+            ) : (
+                <Box height={BOX_SIZE} />
+            )}
+            <Grid item xs={12} display={"flex"} justifyContent={"center"} paddingTop={16} paddingBottom={16} gap={8}>
+                <Box width={BOX_SIZE} justifyContent={"start"} display={"flex"} alignItems={"center"}>
                     <IconButton
+                        disabled={isProcessing}
                         component="label"
                         sx={{
-                            backgroundColor: DarkThemeGrayAccentColor,
                             borderRadius: "50%",
                             "&:hover": {
-                                backgroundColor: DarkThemePurpleAccentColor,
+                                backgroundColor: DarkThemeGrayAccentColor,
                             },
                         }}
                     >
-                        <AttachFile />
+                        <Badge badgeContent={attachment ? 1 : 0} color="primary">
+                            <AttachFile />
+                        </Badge>
+
                         <input type="file" hidden onChange={handleFileSelection} />
                     </IconButton>
-                    <Typography>{attachment ? "sss" : "xxx"}</Typography>
                 </Box>
-            </Grid> */}
-            <Grid item xs={12} display={"flex"} justifyContent={"center"} paddingTop={16} paddingBottom={16}>
-                <Button variant="animated" type="submit">
-                    <Mail />
-                    <Typography padding={2}>Send</Typography>
+                <Button type="submit" variant="animated" disabled={isProcessing}>
+                    <Mail sx={{ color: isProcessing ? DarkThemeLightPurpleAccentColor : WhiteBackgroundColor }} />
+                    <Typography padding={2} color={isProcessing ? DarkThemeLightPurpleAccentColor : WhiteBackgroundColor}>
+                        Send
+                    </Typography>
                 </Button>
+
+                <Box width={BOX_SIZE} />
             </Grid>
         </ContactPageForm>
     );
@@ -338,7 +399,7 @@ const ContactPage = (): JSX.Element => {
                     </Grid>
                 ) : null}
             </Grid>
-            <Snackbar open={notification} autoHideDuration={6000} onClose={handleClose}>
+            <Snackbar open={notification} autoHideDuration={5000} onClose={handleClose}>
                 <SnackbarContent message="Message sent!" action={action} style={{ background: DarkThemeHoveredCardColor, color: WhiteBackgroundColor }} />
             </Snackbar>
         </Stack>

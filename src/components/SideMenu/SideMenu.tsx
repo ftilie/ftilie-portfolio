@@ -9,7 +9,7 @@ const SideMenu = (props: any): JSX.Element => {
     return (
         <Stack sx={{ backgroundColor: DarkThemeSideMenuColor }} display={"flex"} alignItems={"center"}>
             <Stack gap={2} justifyContent={"flex-end"} height={"100%"} sx={{ backgroundColor: DarkThemeSideMenuColor, overflow: "auto" }}>
-                <Link href={githubLink} underline={"none"} rel={"noopener noreferrer"} target={"_blank"}>
+                {/* <Link href={githubLink} underline={"none"} rel={"noopener noreferrer"} target={"_blank"}>
                     <Button disabled size={"large"} id={"label"} variant={"text"} sx={{ width: "100%" }}>
                         <Box>
                             <Stack direction="row" gap={1}>
@@ -17,7 +17,7 @@ const SideMenu = (props: any): JSX.Element => {
                             </Stack>
                         </Box>
                     </Button>
-                </Link>
+                </Link> */}
                 <Link href={linkedInLink} underline={"none"} rel={"noopener noreferrer"} target={"_blank"}>
                     <Button disabled size={"large"} id={"label"} variant={"text"} sx={{ width: "100%" }}>
                         <Box>

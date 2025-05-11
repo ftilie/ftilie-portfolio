@@ -271,6 +271,17 @@ export const customMuiTheme = createTheme({
                             position: "relative",
                             zIndex: 2, // Ensure the text stays above the hover effect
                         },
+                        "&:active": {
+                            backgroundColor: "rgb(145, 70, 255)", // Background color when clicked
+                            borderColor: "rgb(145, 70, 255)", // Optional: Change border color on click
+                            borderRadius: "8px",
+                        },
+                        "&:disabled": {
+                            backgroundColor: "rgb(145, 70, 255)", // Keep the background color after click when disabled
+                            borderColor: "rgb(145, 70, 255)", // Optional: Keep the border color
+                            color: "white", // Ensure text stays visible when disabled
+                            cursor: "not-allowed", // Disable pointer events
+                        },
                     },
                 },
                 {

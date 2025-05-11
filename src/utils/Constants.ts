@@ -1,10 +1,9 @@
 import { csharpIcon, dotNetIcon, mongoIcon, protobufIcon, reactIcon, tanStackIcon, typescriptIcon, sqlIcon, pythonIcon, tensorflowIcon, pytorchIcon, cppIcon, cIcon } from "./Icons";
-import { DarkThemeHoveredCardColor } from "./Theme";
 import { PersonalInterests, Skill } from "./Types";
 
-export const EMAIL_JS_PUBLIC_KEY = "79cXQt6VUwjCRnm94";
-export const EMAIL_JS_SERVICE_ID = "service_ftilie_portfolio";
-export const EMAIL_JS_TEMPLATE_ID = "contact_template";
+export const EMAIL_JS_PUBLIC_KEY = import.meta.env.VITE_EMAIL_JS_PUBLIC_KEY;
+export const EMAIL_JS_SERVICE_ID = import.meta.env.VITE_EMAIL_JS_SERVICE_ID;
+export const EMAIL_JS_TEMPLATE_ID = import.meta.env.VITE_EMAIL_JS_TEMPLATE_ID;
 
 export const HEADER_HEIGHT = "60px";
 export const SIDE_PADDING = 8;

@@ -14,7 +14,6 @@ import { IChangeEvent } from "@rjsf/core";
 import { generateForm } from "@rjsf/mui";
 import { FormValidation } from "@rjsf/utils";
 import validator from "@rjsf/validator-ajv8";
-import { AttachmentWrapper } from "~/components/FormWidgets/AttachmentWrapper";
 
 type EmailParams = {
     name: string;
@@ -71,10 +70,19 @@ const ContactPage = (): JSX.Element => {
             message: message,
         };
         try {
+            console.log("Sending email with:", {
+                service: EMAIL_JS_SERVICE_ID,
+                template: EMAIL_JS_TEMPLATE_ID,
+                params: templateParams,
+                key: EMAIL_JS_PUBLIC_KEY,
+            });
+
             await emailjs.send(EMAIL_JS_SERVICE_ID, EMAIL_JS_TEMPLATE_ID, templateParams, EMAIL_JS_PUBLIC_KEY);
             setNotification(true);
+            setHasConfirmation(true);
         } catch (error) {
             setHasSubmissionError(true);
+            setHasConfirmation(false);
         }
     };
 
@@ -88,7 +96,6 @@ const ContactPage = (): JSX.Element => {
     const onSubmit = async ({ formData }: any) => {
         try {
             await sendEmail(formData.name, formData.email, formData.message);
-            setHasConfirmation(true);
         } catch (e: any) {
             setHasSubmissionError(true);
         }
@@ -258,7 +265,6 @@ const ContactPage = (): JSX.Element => {
     const widgets = {
         Input: InputWrapper,
         TextArea: TextAreaWrapper,
-        FileWidget: AttachmentWrapper,
     };
 
     const contactPageForm = (

@@ -110,6 +110,27 @@ export const DESCRIPTION_CARD_MAX_WIDTH = 1000;
 export const DESCRIPTION_CARD_MIN_WIDTH = 400;
 export const DESCRIPTION_CARD_BACKGROUND_ICON = 250;
 export const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
+export const ANIMATION_TIMEOUT = 1000;
+export const ANIMATION_TOP_LEFT_STYLE = {
+    position: "absolute",
+    top: "0px",
+    left: "0px",
+};
+export const ANIMATION_TOP_RIGHT_STYLE = {
+    position: "absolute",
+    top: "0px",
+    right: "0px",
+};
+export const ANIMATION_BOTTOM_LEFT_STYLE = {
+    position: "absolute",
+    bottom: "0px",
+    left: "0px",
+};
+export const ANIMATION_BOTTOM_RIGHT_STYLE = {
+    position: "absolute",
+    bottom: "0px",
+    right: "0px",
+};
 
 // InterestTabs
 export const personalInterests: PersonalInterests[] = [

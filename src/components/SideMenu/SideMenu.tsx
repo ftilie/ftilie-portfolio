@@ -19,10 +19,21 @@ const SideMenu = (props: any): JSX.Element => {
                     </Button>
                 </Link> */}
                 <Link href={linkedInLink} underline={"none"} rel={"noopener noreferrer"} target={"_blank"}>
-                    <Button disabled size={"large"} id={"label"} variant={"text"} sx={{ width: "100%" }}>
+                    <Button
+                        size={"large"}
+                        id={"label"}
+                        variant={"text"}
+                        sx={{
+                            width: "100%",
+                            color: DarkThemeLightGrayAccentColor,
+                            "&:hover": {
+                                color: "#ffffff",
+                            },
+                        }}
+                    >
                         <Box>
                             <Stack direction="row" gap={1}>
-                                <LinkedIn fontSize={"large"} sx={{ color: DarkThemeLightGrayAccentColor }} />
+                                <LinkedIn fontSize={"large"} />
                             </Stack>
                         </Box>
                     </Button>

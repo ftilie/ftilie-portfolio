@@ -1,8 +1,20 @@
-import { Code, DesignServices } from "@mui/icons-material";
-import { Box, Grid, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
-import { DESCRIPTION_CARD_BACKGROUND_ICON, DESCRIPTION_CARD_HEIGHT, DESCRIPTION_CARD_MAX_WIDTH, DESCRIPTION_CARD_MIN_WIDTH, isMobile } from "~/utils/Constants";
+import { Code } from "@mui/icons-material";
+import { Box, Grid, Grow, Slide, Stack, Typography, useMediaQuery, useTheme, Zoom } from "@mui/material";
+import { useRef } from "react";
+import {
+    ANIMATION_BOTTOM_LEFT_STYLE,
+    ANIMATION_BOTTOM_RIGHT_STYLE,
+    ANIMATION_TIMEOUT,
+    ANIMATION_TOP_RIGHT_STYLE,
+    DESCRIPTION_CARD_BACKGROUND_ICON,
+    DESCRIPTION_CARD_HEIGHT,
+    DESCRIPTION_CARD_MAX_WIDTH,
+    DESCRIPTION_CARD_MIN_WIDTH,
+    isMobile,
+} from "~/utils/Constants";
 import { mongoIcon, reactIcon, recoilIcon, tanStackIcon, typescriptIcon } from "~/utils/Icons";
 import { DarkThemeHoveredCardColor, DarkThemeLightGrayAccentColor, WhiteBackgroundColor } from "~/utils/Theme";
+import { DescriptionProps } from "~/utils/Types";
 
 const cardContainerStyles = {
     borderRadius: "20px",
@@ -212,32 +224,133 @@ const tanStackBadge = (
     />
 );
 
-const WebDevelopmentDescription = (): JSX.Element => {
+const WebDevelopmentDescription = ({ isActive }: DescriptionProps): JSX.Element => {
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
+    const containerRef = useRef<HTMLElement>(null);
     return (
         <Box sx={{ position: "relative", display: "inline-block", width: "100%", maxWidth: DESCRIPTION_CARD_MAX_WIDTH }}>
             {/* Top Left Corner Badge */}
             {/* Top Right Corner Badge */}
-            {firstMongoBadge}
-            {secondMongoBadge}
-            {tanStackBadge}
-            {thirdMongoBadge}
-            {fourthMongoBadge}
+            <Grow in={isActive} style={{ transformOrigin: "0 0 0 0", transitionDelay: "200ms" }} timeout={ANIMATION_TIMEOUT}>
+                <Box
+                    sx={{
+                        ...ANIMATION_TOP_RIGHT_STYLE,
+                        zIndex: 1,
+                    }}
+                >
+                    {firstMongoBadge}
+                </Box>
+            </Grow>
+            <Grow in={isActive} style={{ transformOrigin: "0 0 0 0", transitionDelay: "200ms" }} timeout={ANIMATION_TIMEOUT}>
+                <Box
+                    sx={{
+                        ...ANIMATION_TOP_RIGHT_STYLE,
+                        zIndex: 1,
+                    }}
+                >
+                    {secondMongoBadge}
+                </Box>
+            </Grow>
+            <Zoom in={isActive} timeout={ANIMATION_TIMEOUT}>
+                <Box
+                    sx={{
+                        ...ANIMATION_TOP_RIGHT_STYLE,
+                        zIndex: 3,
+                    }}
+                >
+                    {tanStackBadge}
+                </Box>
+            </Zoom>
+            <Grow in={isActive} style={{ transformOrigin: "0 0 0 0", transitionDelay: "200ms" }} timeout={ANIMATION_TIMEOUT}>
+                <Box
+                    sx={{
+                        ...ANIMATION_TOP_RIGHT_STYLE,
+                        zIndex: 1,
+                    }}
+                >
+                    {thirdMongoBadge}
+                </Box>
+            </Grow>
+            <Grow in={isActive} style={{ transformOrigin: "0 0 0 0", transitionDelay: "200ms" }} timeout={ANIMATION_TIMEOUT}>
+                <Box
+                    sx={{
+                        ...ANIMATION_TOP_RIGHT_STYLE,
+                        zIndex: 1,
+                    }}
+                >
+                    {fourthMongoBadge}
+                </Box>
+            </Grow>
             {/* Bottom Left Corner Badge */}
-            {typescriptBadge}
-            {firstReactBadge}
-            {secondReactBadge}
-            {dotBadge}
+            <Slide in={isActive} direction="down" timeout={ANIMATION_TIMEOUT} container={containerRef.current}>
+                <Box
+                    sx={{
+                        ...ANIMATION_BOTTOM_LEFT_STYLE,
+                        zIndex: 2,
+                    }}
+                >
+                    {typescriptBadge}
+                </Box>
+            </Slide>
+            <Zoom in={isActive} timeout={ANIMATION_TIMEOUT}>
+                <Box
+                    sx={{
+                        ...ANIMATION_BOTTOM_LEFT_STYLE,
+                        zIndex: 1,
+                    }}
+                >
+                    {firstReactBadge}
+                </Box>
+            </Zoom>
+            <Grow in={isActive} style={{ transformOrigin: "0 0 0 0", transitionDelay: "200ms" }} timeout={ANIMATION_TIMEOUT}>
+                <Box
+                    sx={{
+                        ...ANIMATION_BOTTOM_LEFT_STYLE,
+                        zIndex: 1,
+                    }}
+                >
+                    {secondReactBadge}
+                </Box>
+            </Grow>
+            <Zoom in={isActive} timeout={ANIMATION_TIMEOUT}>
+                <Box
+                    sx={{
+                        ...ANIMATION_BOTTOM_LEFT_STYLE,
+                        zIndex: 3,
+                    }}
+                >
+                    {dotBadge}
+                </Box>
+            </Zoom>
             {/* Bottom Right Corner Badge */}
-            {recoilBadge}
-            {reactBadge}
+            <Zoom in={isActive} timeout={ANIMATION_TIMEOUT}>
+                <Box
+                    sx={{
+                        ...ANIMATION_BOTTOM_RIGHT_STYLE,
+                        zIndex: 2,
+                    }}
+                >
+                    {recoilBadge}
+                </Box>
+            </Zoom>
+            <Zoom in={isActive} timeout={ANIMATION_TIMEOUT} style={{ transitionDelay: "200ms" }}>
+                <Box
+                    sx={{
+                        ...ANIMATION_BOTTOM_RIGHT_STYLE,
+                        zIndex: 1,
+                    }}
+                >
+                    {reactBadge}
+                </Box>
+            </Zoom>
 
             <Box
                 style={{
                     maxWidth: DESCRIPTION_CARD_MAX_WIDTH,
                     minWidth: DESCRIPTION_CARD_MIN_WIDTH,
                 }}
+                ref={containerRef}
             >
                 <Grid container sx={{ ...cardContainerStyles, padding: 4, paddingLeft: 16, paddingRight: 16 }} alignItems="center" gap={16}>
                     {!isMobile && !isSmallScreen && (

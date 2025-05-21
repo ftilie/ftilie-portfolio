@@ -9,6 +9,8 @@ import WebDevelopmentDescription from "~/components/DescriptionCarousel/WebDevel
 import FunFactDescription from "~/components/DescriptionCarousel/FunFactDescription";
 import DescriptionCarousel from "~/components/DescriptionCarousel/DescriptionCarousel";
 import WebDesignDescription from "~/components/DescriptionCarousel/WebDesignDescription";
+import { useInView } from "react-intersection-observer";
+import { useState } from "react";
 
 const MIN_SKILL_CARD_WIDTH = 350;
 const MAX_SKILL_CARD_WIDTH = 500;
@@ -65,6 +67,7 @@ const AboutPage = (): JSX.Element => {
     const theme = useTheme();
     const isSmScreen = useMediaQuery(theme.breakpoints.down("sm"));
     const isXlScreen = useMediaQuery(theme.breakpoints.up("xl"));
+    const [selectedDescriptionIndex, setSelectedDescriptionIndex] = useState(0);
 
     const pageHeading = (
         <Grid container justifyContent={"center"} direction={"row"} alignItems={"center"} spacing={2} height={"30vh"}>
@@ -154,15 +157,19 @@ const AboutPage = (): JSX.Element => {
         </Grid>
     );
 
-    const description = (
+    const { ref: descriptionRef, inView: isDescriptionVisible } = useInView({
+        triggerOnce: false,
+        threshold: 0.3,
+    });
+
+    const description = isDescriptionVisible && (
         <Grid container justifyContent="center" alignItems="center" gap={8}>
             <Grid item xs={12}>
-                <DescriptionCarousel>
-                    {/* This approach allows individual customization on each carousel element */}
-                    <SoftwareEngineerDescription />
-                    <WebDevelopmentDescription />
-                    <WebDesignDescription />
-                    <FunFactDescription />
+                <DescriptionCarousel outsideTrigger={{ selectedIndex: selectedDescriptionIndex, setSelectedIndex: setSelectedDescriptionIndex }}>
+                    <SoftwareEngineerDescription isActive={false} />
+                    <WebDevelopmentDescription isActive={false} />
+                    <WebDesignDescription isActive={false} />
+                    <FunFactDescription isActive={false} />
                 </DescriptionCarousel>
             </Grid>
         </Grid>
@@ -207,6 +214,7 @@ const AboutPage = (): JSX.Element => {
 
                 {/* Description Section */}
                 <Stack
+                    ref={descriptionRef}
                     gap={16}
                     sx={
                         isXlScreen

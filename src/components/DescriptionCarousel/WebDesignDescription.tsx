@@ -1,8 +1,20 @@
 import { Architecture } from "@mui/icons-material";
-import { Avatar, Box, Grid, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
-import { AVATAR_SIZE, DESCRIPTION_CARD_BACKGROUND_ICON, DESCRIPTION_CARD_HEIGHT, DESCRIPTION_CARD_MAX_WIDTH, DESCRIPTION_CARD_MIN_WIDTH, isMobile } from "~/utils/Constants";
+import { Avatar, Box, Grid, Grow, Slide, Stack, Typography, useMediaQuery, useTheme, Zoom } from "@mui/material";
+import { useRef } from "react";
+import {
+    ANIMATION_BOTTOM_RIGHT_STYLE,
+    ANIMATION_TIMEOUT,
+    ANIMATION_TOP_LEFT_STYLE,
+    AVATAR_SIZE,
+    DESCRIPTION_CARD_BACKGROUND_ICON,
+    DESCRIPTION_CARD_HEIGHT,
+    DESCRIPTION_CARD_MAX_WIDTH,
+    DESCRIPTION_CARD_MIN_WIDTH,
+    isMobile,
+} from "~/utils/Constants";
 import { figmaIcon, materialUiIcon, typescriptIcon } from "~/utils/Icons";
 import { DarkThemeHoveredCardColor, DarkThemeLightGrayAccentColor, WhiteBackgroundColor } from "~/utils/Theme";
+import { DescriptionProps } from "~/utils/Types";
 
 const cardContainerStyles = {
     borderRadius: "20px",
@@ -154,29 +166,85 @@ const thirdMaterialUiBadge = (
     />
 );
 
-const WebDesignDescription = (): JSX.Element => {
+const WebDesignDescription = ({ isActive }: DescriptionProps): JSX.Element => {
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
+    const containerRef = useRef<HTMLElement>(null);
     return (
         <Box sx={{ position: "relative", display: "inline-block", width: "100%", maxWidth: DESCRIPTION_CARD_MAX_WIDTH }}>
             {/* Top Left Corner Badge */}
-            {firstMaterialUiBadge}
-            {secondMaterialUiBadge}
-            {thirdMaterialUiBadge}
+            <Zoom in={isActive} timeout={ANIMATION_TIMEOUT}>
+                <Box
+                    sx={{
+                        ...ANIMATION_TOP_LEFT_STYLE,
+                        zIndex: 1,
+                    }}
+                >
+                    {firstMaterialUiBadge}
+                </Box>
+            </Zoom>
+            <Slide in={isActive} direction="left" timeout={ANIMATION_TIMEOUT} container={containerRef.current}>
+                <Box
+                    sx={{
+                        ...ANIMATION_TOP_LEFT_STYLE,
+                        zIndex: 2,
+                    }}
+                >
+                    {secondMaterialUiBadge}
+                </Box>
+            </Slide>
+            <Slide in={isActive} direction="up" timeout={ANIMATION_TIMEOUT} container={containerRef.current}>
+                <Box
+                    sx={{
+                        ...ANIMATION_TOP_LEFT_STYLE,
+                        zIndex: 2,
+                    }}
+                >
+                    {thirdMaterialUiBadge}
+                </Box>
+            </Slide>
             {/* Top Right Corner Badge */}
             {/* Bottom Left Corner Badge */}
             {/* Bottom Right Corner Badge */}
-            {figmaBadge}
-            {typescriptBadge}
-            {firstDotBadge}
-            {secondDotBadge}
-            {thirdDotBadge}
+            <Slide in={isActive} direction="down" timeout={ANIMATION_TIMEOUT} container={containerRef.current}>
+                <Box
+                    sx={{
+                        ...ANIMATION_BOTTOM_RIGHT_STYLE,
+                        zIndex: 2,
+                    }}
+                >
+                    {figmaBadge}
+                </Box>
+            </Slide>
+            <Zoom in={isActive} timeout={ANIMATION_TIMEOUT} style={{ transitionDelay: "500ms" }}>
+                <Box
+                    sx={{
+                        ...ANIMATION_BOTTOM_RIGHT_STYLE,
+                        zIndex: 1,
+                    }}
+                >
+                    {typescriptBadge}
+                </Box>
+            </Zoom>
+            <Zoom in={isActive} timeout={ANIMATION_TIMEOUT}>
+                <Box
+                    sx={{
+                        ...ANIMATION_BOTTOM_RIGHT_STYLE,
+                        zIndex: 1,
+                    }}
+                >
+                    {firstDotBadge}
+                    {secondDotBadge}
+                    {thirdDotBadge}
+                </Box>
+            </Zoom>
 
             <Box
                 style={{
                     maxWidth: DESCRIPTION_CARD_MAX_WIDTH,
                     minWidth: DESCRIPTION_CARD_MIN_WIDTH,
                 }}
+                ref={containerRef}
             >
                 <Grid container sx={{ ...cardContainerStyles, padding: 4, paddingLeft: 16, paddingRight: 16 }} alignItems="center" gap={16}>
                     {!isMobile && !isSmallScreen && (

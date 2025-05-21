@@ -1,8 +1,20 @@
 import { AccessTime } from "@mui/icons-material";
-import { Avatar, Box, Grid, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
-import { AVATAR_SIZE, DESCRIPTION_CARD_HEIGHT, DESCRIPTION_CARD_MAX_WIDTH, DESCRIPTION_CARD_MIN_WIDTH, isMobile } from "~/utils/Constants";
+import { Avatar, Box, Grid, Grow, Slide, Stack, Typography, useMediaQuery, useTheme, Zoom } from "@mui/material";
+import { useRef } from "react";
+import {
+    ANIMATION_BOTTOM_RIGHT_STYLE,
+    ANIMATION_TIMEOUT,
+    ANIMATION_TOP_LEFT_STYLE,
+    ANIMATION_TOP_RIGHT_STYLE,
+    AVATAR_SIZE,
+    DESCRIPTION_CARD_HEIGHT,
+    DESCRIPTION_CARD_MAX_WIDTH,
+    DESCRIPTION_CARD_MIN_WIDTH,
+    isMobile,
+} from "~/utils/Constants";
 import { accessTimeIcon, autoAwesomeIcon, historyIcon, mongoIcon } from "~/utils/Icons";
 import { DarkThemeHoveredCardColor, DarkThemeLightGrayAccentColor, WhiteBackgroundColor } from "~/utils/Theme";
+import { DescriptionProps } from "~/utils/Types";
 
 const cardContainerStyles = {
     borderRadius: "20px",
@@ -124,27 +136,83 @@ const secondAutoAwesomeBadge = (
     />
 );
 
-const FunFactDescription = (): JSX.Element => {
+const FunFactDescription = ({ isActive }: DescriptionProps): JSX.Element => {
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
+    const containerRef = useRef<HTMLElement>(null);
     return (
         <Box sx={{ position: "relative", display: "inline-block", width: "100%", maxWidth: DESCRIPTION_CARD_MAX_WIDTH }}>
             {/* Top Left Corner Badge */}
             {/* Top Right Corner Badge */}
-            {secondAutoAwesomeBadge}
+            <Zoom in={isActive} timeout={ANIMATION_TIMEOUT}>
+                <Box
+                    sx={{
+                        ...ANIMATION_TOP_RIGHT_STYLE,
+                        zIndex: 2,
+                    }}
+                >
+                    {secondAutoAwesomeBadge}
+                </Box>
+            </Zoom>
+
             {/* Bottom Left Corner Badge */}
             {/* Bottom Right Corner Badge */}
-            {watchBadge}
-            {historyBadge}
-            {firstAutoAwesomeBadge}
-            {firstMongoBadge}
-            {secondMongoBadge}
-
+            <Zoom in={isActive} timeout={ANIMATION_TIMEOUT}>
+                <Box
+                    sx={{
+                        ...ANIMATION_BOTTOM_RIGHT_STYLE,
+                        zIndex: 4,
+                    }}
+                >
+                    {watchBadge}
+                </Box>
+            </Zoom>
+            <Zoom in={isActive} timeout={ANIMATION_TIMEOUT} style={{ transitionDelay: "200ms" }}>
+                <Box
+                    sx={{
+                        ...ANIMATION_BOTTOM_RIGHT_STYLE,
+                        zIndex: 3,
+                    }}
+                >
+                    {historyBadge}
+                </Box>
+            </Zoom>
+            <Zoom in={isActive} timeout={ANIMATION_TIMEOUT} style={{ transitionDelay: "200ms" }}>
+                <Box
+                    sx={{
+                        ...ANIMATION_BOTTOM_RIGHT_STYLE,
+                        zIndex: 2,
+                    }}
+                >
+                    {firstAutoAwesomeBadge}
+                </Box>
+            </Zoom>
+            <Slide in={isActive} direction="down" timeout={ANIMATION_TIMEOUT} container={containerRef.current}>
+                <Box
+                    sx={{
+                        ...ANIMATION_BOTTOM_RIGHT_STYLE,
+                        zIndex: 2,
+                    }}
+                >
+                    {firstMongoBadge}
+                </Box>
+            </Slide>
+            <Slide in={isActive}  direction="down" timeout={1500} container={containerRef.current}>
+                <Box
+                    sx={{
+                        ...ANIMATION_BOTTOM_RIGHT_STYLE,
+                        zIndex: 1,
+                    }}
+                >
+                    {secondMongoBadge}
+                </Box>
+            </Slide>
             <Box
                 style={{
                     maxWidth: DESCRIPTION_CARD_MAX_WIDTH,
                     minWidth: DESCRIPTION_CARD_MIN_WIDTH,
                 }}
+                ref={containerRef}
             >
                 <Grid container sx={{ ...cardContainerStyles, padding: 4, paddingLeft: 16, paddingRight: 16 }} alignItems="center" gap={16}>
                     {!isMobile && !isSmallScreen && (

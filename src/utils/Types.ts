@@ -9,3 +9,7 @@ export type PersonalInterests = {
     interest: string;
     description: string;
 };
+
+export type DescriptionProps = {
+    isActive: boolean;
+};

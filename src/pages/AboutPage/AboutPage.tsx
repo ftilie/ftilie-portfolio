@@ -159,10 +159,10 @@ const AboutPage = (): JSX.Element => {
 
     const { ref: descriptionRef, inView: isDescriptionVisible } = useInView({
         triggerOnce: false,
-        threshold: 0.3,
+        threshold: 0.1,
     });
 
-    const description = isDescriptionVisible && (
+    const description = (isDescriptionVisible || !isXlScreen) && (
         <Grid container justifyContent="center" alignItems="center" gap={8}>
             <Grid item xs={12}>
                 <DescriptionCarousel outsideTrigger={{ selectedIndex: selectedDescriptionIndex, setSelectedIndex: setSelectedDescriptionIndex }}>

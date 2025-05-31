@@ -232,7 +232,7 @@ const WebDevelopmentDescription = ({ isActive }: DescriptionProps): JSX.Element 
         <Box sx={{ position: "relative", display: "inline-block", width: "100%", maxWidth: DESCRIPTION_CARD_MAX_WIDTH }}>
             {/* Top Left Corner Badge */}
             {/* Top Right Corner Badge */}
-            <Grow in={isActive} style={{ transformOrigin: "0 0 0 0", transitionDelay: "200ms" }} timeout={ANIMATION_TIMEOUT}>
+            <Grow in={isActive} style={{ transformOrigin: "0 0 0 0", transitionDelay: "300ms" }} timeout={ANIMATION_TIMEOUT}>
                 <Box
                     sx={{
                         ...ANIMATION_TOP_RIGHT_STYLE,
@@ -242,7 +242,7 @@ const WebDevelopmentDescription = ({ isActive }: DescriptionProps): JSX.Element 
                     {firstMongoBadge}
                 </Box>
             </Grow>
-            <Grow in={isActive} style={{ transformOrigin: "0 0 0 0", transitionDelay: "200ms" }} timeout={ANIMATION_TIMEOUT}>
+            <Grow in={isActive} style={{ transformOrigin: "0 0 0 0", transitionDelay: "400ms" }} timeout={ANIMATION_TIMEOUT}>
                 <Box
                     sx={{
                         ...ANIMATION_TOP_RIGHT_STYLE,
@@ -272,7 +272,7 @@ const WebDevelopmentDescription = ({ isActive }: DescriptionProps): JSX.Element 
                     {thirdMongoBadge}
                 </Box>
             </Grow>
-            <Grow in={isActive} style={{ transformOrigin: "0 0 0 0", transitionDelay: "200ms" }} timeout={ANIMATION_TIMEOUT}>
+            <Grow in={isActive} style={{ transformOrigin: "0 0 0 0", transitionDelay: "100ms" }} timeout={ANIMATION_TIMEOUT}>
                 <Box
                     sx={{
                         ...ANIMATION_TOP_RIGHT_STYLE,

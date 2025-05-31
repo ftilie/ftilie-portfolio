@@ -197,7 +197,7 @@ const FunFactDescription = ({ isActive }: DescriptionProps): JSX.Element => {
                     {firstMongoBadge}
                 </Box>
             </Slide>
-            <Slide in={isActive}  direction="down" timeout={1500} container={containerRef.current}>
+            <Slide in={isActive} direction="down" timeout={1500} container={containerRef.current}>
                 <Box
                     sx={{
                         ...ANIMATION_BOTTOM_RIGHT_STYLE,
@@ -217,17 +217,19 @@ const FunFactDescription = ({ isActive }: DescriptionProps): JSX.Element => {
                 <Grid container sx={{ ...cardContainerStyles, padding: 4, paddingLeft: 16, paddingRight: 16 }} alignItems="center" gap={16}>
                     {!isMobile && !isSmallScreen && (
                         <Grid item {...avatarGridItemStyles} sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                            <Avatar
-                                alt="Profile Avatar"
-                                src="/assets/images/Profile.png"
-                                sx={{
-                                    maxWidth: AVATAR_SIZE,
-                                    maxHeight: AVATAR_SIZE,
-                                    width: "100%",
-                                    height: "100%",
-                                    borderRadius: "50%",
-                                }}
-                            />
+                            <Zoom in={isActive} timeout={ANIMATION_TIMEOUT} style={{ transitionDelay: "200ms" }}>
+                                <Avatar
+                                    alt="Profile Avatar"
+                                    src="/assets/images/Profile.png"
+                                    sx={{
+                                        maxWidth: AVATAR_SIZE,
+                                        maxHeight: AVATAR_SIZE,
+                                        width: "100%",
+                                        height: "100%",
+                                        borderRadius: "50%",
+                                    }}
+                                />
+                            </Zoom>
                         </Grid>
                     )}
 

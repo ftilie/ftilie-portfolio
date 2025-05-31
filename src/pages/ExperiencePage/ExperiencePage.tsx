@@ -8,7 +8,7 @@ import { useState } from "react";
 
 const ExperiencePage = (): JSX.Element => {
     const theme = useTheme();
-    const isXlScreen = useMediaQuery(theme.breakpoints.up("xl"));
+    const isXlScreen = useMediaQuery(theme.breakpoints.up("lg"));
     const [open, setOpen] = useState(false);
 
     const floatingButtonStyle = {

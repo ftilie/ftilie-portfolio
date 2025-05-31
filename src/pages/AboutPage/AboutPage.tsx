@@ -65,8 +65,10 @@ const sectionStyle = {
 
 const AboutPage = (): JSX.Element => {
     const theme = useTheme();
-    const isSmScreen = useMediaQuery(theme.breakpoints.down("sm"));
-    const isXlScreen = useMediaQuery(theme.breakpoints.up("xl"));
+    const isSmScreen = useMediaQuery(theme.breakpoints.down("sm")); // xs and sm (<900px)
+    const isMdScreen = useMediaQuery(theme.breakpoints.only("md")); // md only (900–1199.95px)
+    const isXlScreen = useMediaQuery(theme.breakpoints.up("lg")); // lg and xl (≥1200px)
+
     const [selectedDescriptionIndex, setSelectedDescriptionIndex] = useState(0);
 
     const pageHeading = (
